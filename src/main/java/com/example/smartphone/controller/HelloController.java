@@ -13,4 +13,9 @@ public class HelloController {
         return "hello";
     }
 
+    @GetMapping("/admin/create")
+    public String createUser() {
+        return "admin/user/create";
+    }
+
 }

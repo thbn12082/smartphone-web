@@ -18,7 +18,6 @@
             <h1>
                 ${thebinh}
             </h1>
-            <button>submit</button>
         </body>
 
         </html>
