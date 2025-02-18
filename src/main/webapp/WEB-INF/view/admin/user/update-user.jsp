@@ -20,7 +20,7 @@
                             <div class="row">
                                 <div class="col-xl-3"></div>
                                 <div class="col-xl-6">
-                                    <h1 style="text-align: center;">Create a user</h1>
+                                    <h1 style="text-align: center;">Update user ${idUser}</h1>
                                     <hr>
                                     <br>
                                     <div class="col-xl-3"></div>
@@ -32,23 +32,12 @@
                             <div class="row">
                                 <div class="col-xl-3"></div>
                                 <div class="col-xl-6">
-                                    <form:form action="/admin/user/create" method="post" modelAttribute="newUser">
+                                    <form:form action="/admin/user/update/${idUser}" method="post"
+                                        modelAttribute="updateUser">
                                         <div class="form-group">
-                                            <label for="exampleInputEmail1">Email address</label>
+                                            <label for="exampleInputEmail1">Email:</label>
                                             <form:input type="email" class="form-control" id="exampleInputEmail1"
                                                 aria-describedby="emailHelp" placeholder="Enter email" path="email" />
-                                            <small id="emailHelp" class="form-text text-muted">We'll never share
-                                                your
-                                                email
-                                                with
-                                                anyone
-                                                else.</small>
-                                        </div>
-                                        <br>
-                                        <div class="form-group">
-                                            <label for="exampleInputPassword1">Password</label>
-                                            <form:input type="password" class="form-control" id="exampleInputPassword1"
-                                                placeholder="Password" path="password" />
                                         </div>
                                         <br>
                                         <div class="form-group">
@@ -68,17 +57,15 @@
                                             <form:input type="text" class="form-control" id="address" path="address" />
                                         </div>
                                         <br>
-                                        <button type="submit" class="btn btn-primary">Create</button>
+                                        <button type="submit" class="btn btn-warning">Update</button>
                                     </form:form>
                                 </div>
-                                <div class="col-xl-3"></div>
+
+
                             </div>
 
-
                         </div>
-
                     </div>
-                </div>
 
 
             </body>
