@@ -1,10 +1,17 @@
 <%@page contentType="text/html" pageEncoding="UTF-8" %>
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
         <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-
+            <!DOCTYPE html>
             <html lang="en">
 
             <head>
+                <meta charset="utf-8" />
+                <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+                <link rel="apple-touch-icon" sizes="76x76" href="img/apple-icon.png">
+                <link rel="icon" type="image/png" href="img/favicon.png">
+                <title>
+                    TheBinh
+                </title>
                 <meta charset="UTF-8">
                 <meta name="viewport" content="width=device-width, initial-scale=1.0">
                 <title>Document</title>
@@ -14,7 +21,9 @@
             </head>
 
             <body>
+
                 <div class="container">
+
                     <div class="row">
                         <div class="col-md-3"></div>
                         <div class="col-md-6">
@@ -62,6 +71,10 @@
                     </div>
 
                 </div>
+
+
+
             </body>
+
 
             </html>

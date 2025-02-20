@@ -25,7 +25,7 @@ public class UserController {
     @GetMapping("/admin/user/create")
     public String createUser(Model model) {
         model.addAttribute("newUser", new User());
-        return "admin/user/create";
+        return "admin/user/create-user";
     }
 
     @PostMapping("/admin/user/create")
