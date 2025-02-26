@@ -12,67 +12,78 @@
                 <title>
                     TheBinh
                 </title>
-                <meta charset="UTF-8">
-                <meta name="viewport" content="width=device-width, initial-scale=1.0">
-                <title>Document</title>
-                <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-                <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-                <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-            </head>
+                <link rel="stylesheet"
+                    href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+                <!--     Fonts and icons     -->
+                <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
+                <!-- Nucleo Icons -->
+                <link href="https://demos.creative-tim.com/argon-dashboard-pro/assets/css/nucleo-icons.css"
+                    rel="stylesheet" />
+                <link href="https://demos.creative-tim.com/argon-dashboard-pro/assets/css/nucleo-svg.css"
+                    rel="stylesheet" />
+                <!-- Font Awesome Icons -->
+                <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
+                <!-- CSS Files -->
+                <link href="/css/dashboard.css" rel="stylesheet" />
 
-            <body>
+            <body class="g-sidenav-show   bg-gray-100">
+                <jsp:include page="../layout/sidebar.jsp" />
+                <main>
 
-                <div class="container">
+                    <div class="container-fluid">
 
-                    <div class="row">
-                        <div class="col-md-3"></div>
-                        <div class="col-md-6">
-                            <div class="inner-header"
-                                style="display: flex; justify-content: space-between;margin-top: 50px;">
-                                <h2>Table users</h2>
-                                <button type="button" class="btn btn-primary"
-                                    onclick="window.location.href='http://localhost:8080/admin/user/create'">Create
-                                    User</button>
+                        <div class="row">
+                            <div class="col-md-3"></div>
+                            <div class="col-md-6">
+                                <div class="inner-header"
+                                    style="display: flex; justify-content: space-between;margin-top: 94px;">
+                                    <h2 style="color: antiquewhite;">Table users</h2>
+                                    <button type="button" class="btn btn-primary"
+                                        onclick="window.location.href='http://localhost:8080/admin/user/create'">Create
+                                        User</button>
+                                </div>
+                                <hr>
                             </div>
-                            <hr>
-                        </div>
-                        <div class="col-md-3"></div>
-                        <div class="col-md-3"></div>
-                        <div class="col-md-6">
-                            <table class="table table-hover">
-                                <thead>
-                                    <tr>
-                                        <th scope="col">ID</th>
-                                        <th scope="col">Email</th>
-                                        <th scope="col">Full Name</th>
-                                        <th scope="col">Action</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <c:forEach var="user" items="${users}">
+                            <div class="col-md-3"></div>
+                            <div class="col-md-3"></div>
+                            <div class="col-md-6">
+                                <table class="table table-hover">
+                                    <thead>
                                         <tr>
-                                            <th scope="row">${user.id}</th>
-                                            <td>${user.email}</td>
-                                            <td>${user.fullName}</td>
-                                            <td>
-                                                <a href="/admin/user/${user.id}" class="btn btn-success">View</a>
-                                                <a href="/admin/user/update/${user.id}"
-                                                    class="btn btn-warning">Update</a>
-                                                <a href="/admin/user/delete/${user.id}"
-                                                    class="btn btn-danger">Delete</a>
-                                            </td>
+                                            <th scope="col" style="color: antiquewhite;">ID</th>
+                                            <th scope="col" style="color: antiquewhite;">Email</th>
+                                            <th scope="col" style="color: antiquewhite;">Full Name</th>
+                                            <th scope="col" style="color: antiquewhite;padding-left: 104px;">Action</th>
                                         </tr>
-                                    </c:forEach>
+                                    </thead>
+                                    <tbody>
+                                        <c:forEach var="user" items="${users}">
+                                            <tr>
+                                                <th scope="row">${user.id}</th>
+                                                <td>${user.email}</td>
+                                                <td>${user.fullName}</td>
+                                                <td>
+                                                    <a href="/admin/user/${user.id}" class="btn btn-success">View</a>
+                                                    <a href="/admin/user/update/${user.id}"
+                                                        class="btn btn-warning">Update</a>
+                                                    <a href="/admin/user/delete/${user.id}"
+                                                        class="btn btn-danger">Delete</a>
+                                                </td>
+                                            </tr>
+                                        </c:forEach>
 
-                                </tbody>
-                            </table>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="col-md-3"></div>
                         </div>
-                        <div class="col-md-3"></div>
+
                     </div>
+                </main>
 
-                </div>
-
-
+                <jsp:include page="../layout/footer.jsp" />
+                <script src="/js/bootstrap.min.js"></script>
+                <script src="/js/dashboard.js"></script>
 
             </body>
 
