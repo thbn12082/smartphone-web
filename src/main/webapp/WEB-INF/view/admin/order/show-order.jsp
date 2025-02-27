@@ -27,6 +27,7 @@
                 <link href="/css/dashboard.css" rel="stylesheet" />
 
             <body class="g-sidenav-show   bg-gray-100">
+                <div class="min-height-300 bg-dark position-absolute w-100"></div>
                 <jsp:include page="../layout/sidebar.jsp" />
                 <main>
                     <div class="container-fluid">

@@ -31,6 +31,9 @@ public class ConfigWebMVC implements WebMvcConfigurer {
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry.addResourceHandler("/css/**").addResourceLocations("/resources/css/");
         registry.addResourceHandler("/js/**").addResourceLocations("/resources/js/");
+        // ảnh base của template
         registry.addResourceHandler("/img/**").addResourceLocations("/resources/img/");
+        // ảnh của ta
+        registry.addResourceHandler("/images/**").addResourceLocations("/resources/images/");
     }
 }

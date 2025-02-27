@@ -27,11 +27,14 @@
                 <link href="/css/dashboard.css" rel="stylesheet" />
             </head>
 
-            <body class="g-sidenav-show   bg-gray-100">
+            <body>
+
+                <div class="min-height-300 bg-dark position-absolute w-100"></div>
                 <jsp:include page="../layout/sidebar.jsp" />
+
+
                 <main>
                     <div class="container-fluid">
-
                         <div class="row">
                             <div class="col-md-3"></div>
                             <div class="col-md-6">
@@ -50,8 +53,10 @@
 
                     </div>
                 </main>
+                <footer>
+                    <jsp:include page="../layout/footer.jsp" />
+                </footer>
 
-                <jsp:include page="../layout/footer.jsp" />
 
                 <script src="/js/bootstrap.min.js"></script>
                 <script src="/js/dashboard.js"></script>

@@ -1,5 +1,9 @@
 package com.example.smartphone.controller.admin;
 
+import java.io.BufferedOutputStream;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.List;
 
 import org.springframework.stereotype.Controller;
@@ -8,18 +12,21 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.example.smartphone.domain.User;
+import com.example.smartphone.service.UploadService;
 import com.example.smartphone.service.UserService;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RequestBody;
 
 @Controller
 public class UserController {
     private final UserService userService;
+    private final UploadService uploadService;
 
-    public UserController(UserService userService) {
+    public UserController(UserService userService, UploadService uploadService) {
         this.userService = userService;
+        this.uploadService = uploadService;
     }
 
     @GetMapping("/admin/user/create")
@@ -29,8 +36,10 @@ public class UserController {
     }
 
     @PostMapping("/admin/user/create")
-    public String getDataCreateUser(@ModelAttribute("newUser") User user) {
+    public String getDataCreateUser(Model model, @ModelAttribute("newUser") User user,
+            @RequestParam("thebinhFile") MultipartFile file) throws IOException {
         if (this.userService.checkExitsUser(user)) {
+            String avatar = this.uploadService.handleSaveUploadFile(file, "avatar");
             this.userService.handleSaveUser(user);
         } else {
             System.out.println("User đã tồn tại");
@@ -62,12 +71,14 @@ public class UserController {
 
     @PostMapping("/admin/user/update/{id}")
     public String postUpdateUser(@ModelAttribute("updateUser") User updateUser, @PathVariable Long id) {
-        User user = this.userService.handleUserById(id);
-        user.setEmail(updateUser.getEmail());
-        user.setPhone(updateUser.getPhone());
-        user.setFullName(updateUser.getFullName());
-        user.setAddress(updateUser.getAddress());
-        this.userService.handleSaveUser(user);
+        if (updateUser != null) {
+            User user = this.userService.handleUserById(id);
+            user.setEmail(updateUser.getEmail());
+            user.setPhone(updateUser.getPhone());
+            user.setFullName(updateUser.getFullName());
+            user.setAddress(updateUser.getAddress());
+            this.userService.handleSaveUser(user);
+        }
         return "redirect:/admin/user";
     }
 
