@@ -54,6 +54,7 @@
                                             <th scope="col" style="color: antiquewhite;">ID</th>
                                             <th scope="col" style="color: antiquewhite;">Email</th>
                                             <th scope="col" style="color: antiquewhite;">Full Name</th>
+                                            <th scope="col" style="color: antiquewhite;">Role</th>
                                             <th scope="col" style="color: antiquewhite;padding-left: 104px;">Action</th>
                                         </tr>
                                     </thead>
@@ -63,6 +64,7 @@
                                                 <th scope="row">${user.id}</th>
                                                 <td>${user.email}</td>
                                                 <td>${user.fullName}</td>
+                                                <td>${user.role.name}</td>
                                                 <td>
                                                     <a href="/admin/user/${user.id}" class="btn btn-success">View</a>
                                                     <a href="/admin/user/update/${user.id}"

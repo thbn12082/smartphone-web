@@ -1,11 +1,9 @@
 package com.example.smartphone.controller.admin;
 
-import java.io.BufferedOutputStream;
-import java.io.File;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.List;
 
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,6 +14,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.example.smartphone.domain.User;
+import com.example.smartphone.repository.RoleRepository;
+import com.example.smartphone.service.RoleService;
 import com.example.smartphone.service.UploadService;
 import com.example.smartphone.service.UserService;
 
@@ -23,10 +23,15 @@ import com.example.smartphone.service.UserService;
 public class UserController {
     private final UserService userService;
     private final UploadService uploadService;
+    private final PasswordEncoder password;
+    private final RoleService roleService;
 
-    public UserController(UserService userService, UploadService uploadService) {
+    public UserController(UserService userService, UploadService uploadService, PasswordEncoder pass,
+            RoleService roleService) {
         this.userService = userService;
         this.uploadService = uploadService;
+        this.password = pass;
+        this.roleService = roleService;
     }
 
     @GetMapping("/admin/user/create")
@@ -40,6 +45,9 @@ public class UserController {
             @RequestParam("thebinhFile") MultipartFile file) throws IOException {
         if (this.userService.checkExitsUser(user)) {
             String avatar = this.uploadService.handleSaveUploadFile(file, "avatar");
+            user.setAvatar(avatar);
+            user.setRole(this.roleService.handleRoleByName(user.getRole().getName()));
+            user.setPassword(this.password.encode(user.getPassword()));
             this.userService.handleSaveUser(user);
         } else {
             System.out.println("User đã tồn tại");
