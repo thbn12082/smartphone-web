@@ -10,5 +10,6 @@ public class SmartphoneApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(SmartphoneApplication.class, args);
 	}
+	// test
 
 }
