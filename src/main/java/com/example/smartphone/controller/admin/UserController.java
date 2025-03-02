@@ -6,6 +6,8 @@ import java.util.List;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -18,6 +20,8 @@ import com.example.smartphone.repository.RoleRepository;
 import com.example.smartphone.service.RoleService;
 import com.example.smartphone.service.UploadService;
 import com.example.smartphone.service.UserService;
+
+import jakarta.validation.Valid;
 
 @Controller
 public class UserController {
@@ -41,8 +45,14 @@ public class UserController {
     }
 
     @PostMapping("/admin/user/create")
-    public String getDataCreateUser(Model model, @ModelAttribute("newUser") User user,
-            @RequestParam("thebinhFile") MultipartFile file) throws IOException {
+    public String getDataCreateUser(Model model, @ModelAttribute("newUser") @Valid User user, BindingResult bindingResult,
+            @RequestParam("thebinhFile") MultipartFile file )throws IOException {
+        if (bindingResult.hasErrors()) {
+            List<FieldError> errors = bindingResult.getFieldErrors();
+            for (FieldError error : errors) {
+                System.out.println(error.getObjectName() + " - " + error.getDefaultMessage());
+            }
+        }
         if (this.userService.checkExitsUser(user)) {
             String avatar = this.uploadService.handleSaveUploadFile(file, "avatar");
             user.setAvatar(avatar);

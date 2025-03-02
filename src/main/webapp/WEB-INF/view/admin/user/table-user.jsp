@@ -38,7 +38,7 @@
                             <div class="col-md-6">
                                 <div class="inner-header"
                                     style="display: flex; justify-content: space-between;margin-top: 94px;">
-                                    <h2 style="color: antiquewhite;">Table users</h2>
+                                    <h2 style="color: antiquewhite;">Manage users</h2>
                                     <button type="button" class="btn btn-primary"
                                         onclick="window.location.href='http://localhost:8080/admin/user/create'">Create
                                         User</button>

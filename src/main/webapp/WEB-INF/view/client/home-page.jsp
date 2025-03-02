@@ -26,6 +26,7 @@
                 <link
                     href="https://fonts.googleapis.com/css2?family=Inria+Serif:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Island+Moments&display=swap"
                     rel="stylesheet">
+
                 <style>
                     .BannerTheme_sliderWrap__csOTb .container {
                         position: relative;
@@ -60,27 +61,7 @@
 
             <body id="page-top">
                 <!-- Navigation -->
-                <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
-                    <div class="container">
-                        <!-- <a class="navbar-brand" href="#page-top"><img src="assets/img/navbar-logo.svg" alt="..." /></a> -->
-                        <p style="color: antiquewhite; font-size: 30px;">Smartphone shop</p>
-                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                            data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
-                            aria-label="Toggle navigation">
-                            Menu
-                            <i class="fas fa-bars ms-1"></i>
-                        </button>
-                        <div class="collapse navbar-collapse" id="navbarResponsive">
-                            <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
-                                <li class="nav-item"><a class="nav-link" href="#services">Dịch vụ</a></li>
-                                <li class="nav-item"><a class="nav-link" href="#portfolio">Mặt hàng bán chạy</a></li>
-                                <li class="nav-item"><a class="nav-link" href="#about">Về chúng tôi</a></li>
-                                <li class="nav-item"><a class="nav-link" href="#team">Team</a></li>
-                                <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </nav>
+                <jsp:include page="layout/header.jsp" />
                 <!-- Masthead -->
                 <div class="BannerTheme_sliderWrap__csOTb">
                     <a class="BannerTheme_sliderItem__0Yheb BannerTheme_fadeIn__f2GRS"
@@ -104,33 +85,8 @@
 
                     </a>
                 </div>
+                <br>
 
-                <!-- check -->
-                <div class="col-md-12 col-lg-5">
-                    <div id="carouselId" class="carousel slide position-relative" data-bs-ride="carousel">
-                        <div class="carousel-inner" role="listbox">
-                            <div class="carousel-item rounded active">
-                                <img src="img/hero-img-1.png" class="img-fluid w-100 h-100 bg-secondary rounded"
-                                    alt="First slide">
-                                <a href="#" class="btn px-4 py-2 text-white rounded">Fruites</a>
-                            </div>
-                            <div class="carousel-item rounded">
-                                <img src="img/hero-img-2.jpg" class="img-fluid w-100 h-100 rounded" alt="Second slide">
-                                <a href="#" class="btn px-4 py-2 text-white rounded">Vesitables</a>
-                            </div>
-                        </div>
-                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselId"
-                            data-bs-slide="prev">
-                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                            <span class="visually-hidden">Previous</span>
-                        </button>
-                        <button class="carousel-control-next" type="button" data-bs-target="#carouselId"
-                            data-bs-slide="next">
-                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                            <span class="visually-hidden">Next</span>
-                        </button>
-                    </div>
-                </div>
 
 
 
@@ -209,6 +165,34 @@
                     <div class="container">
                         <!-- <div class="text-center"> -->
                         <h2 class="section-heading check">Các mặt hàng bán chạy</h2>
+                        <!-- <div class="container"> -->
+                        <div class="col-md-12 col-lg-5">
+                            <div id="carouselId" class="carousel slide position-relative" data-bs-ride="carousel">
+                                <div class="carousel-inner" role="listbox">
+                                    <div class="carousel-item rounded active">
+                                        <img src="/client/img/img1.png"
+                                            class="img-fluid w-100 h-100 bg-secondary rounded" alt="First slide">
+                                        <a href="#" class="btn px-4 py-2 text-white rounded">Fruites</a>
+                                    </div>
+                                    <div class="carousel-item rounded">
+                                        <img src="/client/img/img2.png" class="img-fluid w-100 h-100 rounded"
+                                            alt="Second slide">
+                                        <a href="#" class="btn px-4 py-2 text-white rounded">Vesitables</a>
+                                    </div>
+                                </div>
+                                <button class="carousel-control-prev" type="button" data-bs-target="#carouselId"
+                                    data-bs-slide="prev">
+                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    <span class="visually-hidden">Previous</span>
+                                </button>
+                                <button class="carousel-control-next" type="button" data-bs-target="#carouselId"
+                                    data-bs-slide="next">
+                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                    <span class="visually-hidden">Next</span>
+                                </button>
+                            </div>
+                        </div>
+                        <!-- </div> -->
                         <!-- <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3> -->
                         <!-- </div> -->
 
@@ -254,174 +238,100 @@
 
                     </div>
                 </section>
-                <!-- Team-->
-                <section class="page-section bg-light" id="team">
-                    <div class="container">
-                        <div class="text-center">
-                            <h2 class="section-heading text-uppercase">Our Amazing Team</h2>
-                            <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
-                        </div>
-                        <div class="row">
-                            <div class="col-lg-4">
-                                <div class="team-member">
-                                    <img class="mx-auto rounded-circle" src="assets/img/team/1.jpg" alt="..." />
-                                    <h4>Parveen Anand</h4>
-                                    <p class="text-muted">Lead Designer</p>
-                                    <a class="btn btn-dark btn-social mx-2" href="#!"
-                                        aria-label="Parveen Anand Twitter Profile"><i class="fab fa-twitter"></i></a>
-                                    <a class="btn btn-dark btn-social mx-2" href="#!"
-                                        aria-label="Parveen Anand Facebook Profile"><i
-                                            class="fab fa-facebook-f"></i></a>
-                                    <a class="btn btn-dark btn-social mx-2" href="#!"
-                                        aria-label="Parveen Anand LinkedIn Profile"><i
-                                            class="fab fa-linkedin-in"></i></a>
+                <!-- san pham noi bat -->
+                <div class="container-fluid fruite py-5">
+                    <div class="container py-5">
+                        <div class="tab-class text-center">
+                            <div class="row g-4">
+                                <div class="col-lg-4 text-start">
+                                    <h1 class="check">Sản phẩm nổi bật</h1>
+                                </div>
+                                <div class="col-lg-8 text-end">
+                                    <ul class="nav nav-pills d-inline-flex text-center mb-5">
+                                        <li class="nav-item">
+                                            <a class="d-flex m-2 py-2 bg-light rounded-pill active"
+                                                data-bs-toggle="pill" href="#tab-1">
+                                                <span class="text-dark" style="width: 130px;">All Products</span>
+                                            </a>
+                                        </li>
+                                    </ul>
                                 </div>
                             </div>
-                            <div class="col-lg-4">
-                                <div class="team-member">
-                                    <img class="mx-auto rounded-circle" src="assets/img/team/2.jpg" alt="..." />
-                                    <h4>Diana Petersen</h4>
-                                    <p class="text-muted">Lead Marketer</p>
-                                    <a class="btn btn-dark btn-social mx-2" href="#!"
-                                        aria-label="Diana Petersen Twitter Profile"><i class="fab fa-twitter"></i></a>
-                                    <a class="btn btn-dark btn-social mx-2" href="#!"
-                                        aria-label="Diana Petersen Facebook Profile"><i
-                                            class="fab fa-facebook-f"></i></a>
-                                    <a class="btn btn-dark btn-social mx-2" href="#!"
-                                        aria-label="Diana Petersen LinkedIn Profile"><i
-                                            class="fab fa-linkedin-in"></i></a>
+                            <div class="tab-content">
+                                <div id="tab-1" class="tab-pane fade show p-0 active">
+                                    <div class="row g-4">
+                                        <div class="col-lg-12">
+                                            <div class="row g-4">
+                                                <c:forEach var="product" items="${listProduct}">
+                                                    <div class="col-md-6 col-lg-4 col-xl-3">
+                                                        <div class="rounded position-relative fruite-item">
+                                                            <div class="fruite-img">
+                                                                <img src="/images/product/${product.image}"
+                                                                    class="img-fluid w-100 rounded-top" alt="">
+                                                            </div>
+                                                            <div class="text-white bg-secondary px-3 py-1 rounded position-absolute"
+                                                                style="top: 10px; left: 10px;">Laptop</div>
+                                                            <div
+                                                                class="p-4 border border-secondary border-top-0 rounded-bottom">
+                                                                <a href="/product/${product.id}">
+                                                                    <h4 style="font-size: 15px;">${product.name}</h4>
+
+
+                                                                    <p style="font-size: 13px;">${product.shortDesc}</p>
+                                                                    <div
+                                                                        class="d-flex justify-content-between flex-lg-wrap">
+                                                                        <p style="font-size: 15px; text-align: cnter; width: 100%;"
+                                                                            class="text-dark fw-bold mb-3">
+                                                                            <fmt:formatNumber type="number"
+                                                                                value="${product.price}" /> VND
+                                                                        </p>
+                                                                </a>
+                                                                <a href="#"
+                                                                    class="btn border border-secondary rounded-pill px-3 text-primary"><i
+                                                                        class="fa fa-shopping-bag me-2 text-primary"></i>
+                                                                    Add to cart</a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                            </div>
+                                            </c:forEach>
+
+
+                                        </div>
+
+                                    </div>
                                 </div>
                             </div>
-                            <div class="col-lg-4">
-                                <div class="team-member">
-                                    <img class="mx-auto rounded-circle" src="assets/img/team/3.jpg" alt="..." />
-                                    <h4>Larry Parker</h4>
-                                    <p class="text-muted">Lead Developer</p>
-                                    <a class="btn btn-dark btn-social mx-2" href="#!"
-                                        aria-label="Larry Parker Twitter Profile"><i class="fab fa-twitter"></i></a>
-                                    <a class="btn btn-dark btn-social mx-2" href="#!"
-                                        aria-label="Larry Parker Facebook Profile"><i class="fab fa-facebook-f"></i></a>
-                                    <a class="btn btn-dark btn-social mx-2" href="#!"
-                                        aria-label="Larry Parker LinkedIn Profile"><i
-                                            class="fab fa-linkedin-in"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-lg-8 mx-auto text-center">
-                                <p class="large text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                                    Aut eaque,
-                                    laboriosam veritatis, quos non quis ad perspiciatis, totam corporis ea, alias ut
-                                    unde.</p>
-                            </div>
+
                         </div>
                     </div>
-                </section>
+                </div>
+
+                <!-- end sanphamnoibat -->
                 <!-- Clients-->
                 <div class="py-5">
                     <div class="container">
                         <div class="row align-items-center">
-                            <!-- <div class="col-md-3 col-sm-6 my-3">
-                    <a href="#!"><img class="img-fluid img-brand d-block mx-auto" src="assets/img/logos/microsoft.svg"
-                            alt="..." aria-label="Microsoft Logo" /></a>
-                </div>
-                <div class="col-md-3 col-sm-6 my-3">
-                    <a href="#!"><img class="img-fluid img-brand d-block mx-auto" src="assets/img/logos/google.svg"
-                            alt="..." aria-label="Google Logo" /></a>
-                </div>
-                <div class="col-md-3 col-sm-6 my-3">
-                    <a href="#!"><img class="img-fluid img-brand d-block mx-auto" src="assets/img/logos/facebook.svg"
-                            alt="..." aria-label="Facebook Logo" /></a>
-                </div>
-                <div class="col-md-3 col-sm-6 my-3">
-                    <a href="#!"><img class="img-fluid img-brand d-block mx-auto" src="assets/img/logos/ibm.svg"
-                            alt="..." aria-label="IBM Logo" /></a>
-                </div> -->
-                            <div class="survey-wrap survey-wrap-cate">
-
-                                <div class="crm-survey-render" data-type="QUESTION_FORM" data-applicationid="1"
-                                    data-programid="442" data-programcode="6499B11B3D461F2" data-siteid="1"
-                                    data-provinceid="3" data-districtid="0" data-attributeid-2="Laptop" data-wardid="0">
-                                    <div id="survey-question-form"
-                                        class="main-form-programid442 survey-system-question-form-Thegioididong program_442 svelte-1pwfq7v">
-                                        <div class="crm-wrapper-survey">
-                                            <div class="main-form" style="border-color: rgb(255, 212, 0);">
-                                                <div id="crm-question-form-null-442">
-                                                    <div class="flex-container svelte-cktoy5">
-                                                        <div
-                                                            class="crm-ask-and-answer_survey_system flex-reverse-direction">
-                                                            <div class="wrap_question_survey_system">
-                                                                <div class="crm-ask" style="text-align: left;"><span
-                                                                        class="question-name"
-                                                                        style="font-style: normal; font-weight: 600; font-size: 13px; line-height: 18px; color: rgb(81, 87, 100); flex: 0 0 auto; order: 0;">Bạn
-                                                                        có hài lòng với trải nghiệm tìm kiếm thông tin,
-                                                                        sản
-                                                                        phẩm
-                                                                        trên website không?</span></div>
-                                                            </div>
-                                                            <div id="wrap_lst_answer_questionid1284"
-                                                                class="wrap_lst_answer_Horizontal svelte-cktoy5">
-                                                                <div id="div-button-crm-survey" class="svelte-unsrhu">
-                                                                    <div class="wrap_anwser_survey_system_survey_system svelte-13ainzo"
-                                                                        style="width: 100%;float: left; --backgroundColorMain:#ffd400">
-                                                                        <div key="5020"
-                                                                            class="answer-input dflex svelte-13ainzo"
-                                                                            style="height: 100%;"><button
-                                                                                class="crmsurvey-btnanswer-icon svelte-13ainzo"
-                                                                                style="border-color: rgb(255, 212, 0);">
-                                                                                <div style="flex: 1 0 0%;"><img
-                                                                                        src="https://cdn.tgdd.vn/crmweb/survey/img/icon-happy.png"
-                                                                                        alt="radio_5020"
-                                                                                        class="hoverScale transition-hover surver-img-hasIcon svelte-13ainzo">
-                                                                                </div>
-                                                                                <div style="flex: 1 0 0%;"><span
-                                                                                        class="surver-text-hasIcon svelte-13ainzo"
-                                                                                        style="line-height: 20px;">Hài
-                                                                                        lòng</span>
-                                                                                </div>
-                                                                            </button></div>
-                                                                    </div>
-                                                                    <div class="wrap_anwser_survey_system_survey_system svelte-13ainzo"
-                                                                        style="width: 100%;float: left; --backgroundColorMain:#ffd400">
-                                                                        <div key="5021"
-                                                                            class="answer-input dflex svelte-13ainzo"
-                                                                            style="height: 100%;"><button
-                                                                                class="crmsurvey-btnanswer-icon svelte-13ainzo"
-                                                                                style="border-color: rgb(255, 212, 0);">
-                                                                                <div style="flex: 1 0 0%;"><img
-                                                                                        src="https://cdn.tgdd.vn/crmweb/survey/img/icon-bad.png"
-                                                                                        alt="radio_5021"
-                                                                                        class="hoverScale transition-hover surver-img-hasIcon svelte-13ainzo">
-                                                                                </div>
-                                                                                <div style="flex: 1 0 0%;"><span
-                                                                                        class="surver-text-hasIcon svelte-13ainzo"
-                                                                                        style="line-height: 20px;">Không
-                                                                                        hài
-                                                                                        lòng</span></div>
-                                                                            </button></div>
-                                                                    </div>
-                                                                </div>
-                                                                <div id="div-text-crm-survey" class="svelte-unsrhu">
-                                                                </div>
-                                                                <div></div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div id="crmspantextinputerror"></div>
-                                                </div>
-                                                <div id="main-form-tks-programid-null-442"></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <link href="//cdn.tgdd.vn/crmweb/survey/js/survey.min.v202502270610.css"
-                                    rel="stylesheet" type="text/css">
-                                <script defer="defer" async="async"
-                                    src="//cdn.tgdd.vn/crmweb/survey/js/survey.min.v202502270610.js"></script>
-
-
+                            <div class="col-md-3 col-sm-6 my-3">
+                                <a href="#!"><img class="img-fluid img-brand d-block mx-auto"
+                                        src="assets/img/logos/microsoft.svg" alt="..."
+                                        aria-label="Microsoft Logo" /></a>
                             </div>
-
+                            <div class="col-md-3 col-sm-6 my-3">
+                                <a href="#!"><img class="img-fluid img-brand d-block mx-auto"
+                                        src="assets/img/logos/google.svg" alt="..." aria-label="Google Logo" /></a>
+                            </div>
+                            <div class="col-md-3 col-sm-6 my-3">
+                                <a href="#!"><img class="img-fluid img-brand d-block mx-auto"
+                                        src="assets/img/logos/facebook.svg" alt="..." aria-label="Facebook Logo" /></a>
+                            </div>
+                            <div class="col-md-3 col-sm-6 my-3">
+                                <a href="#!"><img class="img-fluid img-brand d-block mx-auto"
+                                        src="assets/img/logos/ibm.svg" alt="..." aria-label="IBM Logo" /></a>
+                            </div>
+                            <!-- experience -->
+                            <jsp:include page="layout/experience.jsp" />
 
 
                         </div>
@@ -507,25 +417,7 @@
                     </div>
                 </section>
                 <!-- Footer-->
-                <footer class="footer py-4">
-                    <div class="container">
-                        <div class="row align-items-center">
-                            <div class="col-lg-4 text-lg-start">Copyright &copy; Your Website 2023</div>
-                            <div class="col-lg-4 my-3 my-lg-0">
-                                <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="Twitter"><i
-                                        class="fab fa-twitter"></i></a>
-                                <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="Facebook"><i
-                                        class="fab fa-facebook-f"></i></a>
-                                <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="LinkedIn"><i
-                                        class="fab fa-linkedin-in"></i></a>
-                            </div>
-                            <div class="col-lg-4 text-lg-end">
-                                <a class="link-dark text-decoration-none me-3" href="#!">Privacy Policy</a>
-                                <a class="link-dark text-decoration-none" href="#!">Terms of Use</a>
-                            </div>
-                        </div>
-                    </div>
-                </footer>
+                <jsp:include page="layout/footer.jsp" />
                 <!-- Portfolio Modals-->
                 <!-- Portfolio item 1 modal popup-->
                 <div class="portfolio-modal modal fade" id="portfolioModal1" tabindex="-1" role="dialog"

@@ -34,25 +34,63 @@
 
 
                 <main>
+
                     <div class="container-fluid">
+
                         <div class="row">
                             <div class="col-md-3"></div>
                             <div class="col-md-6">
                                 <div class="inner-header"
                                     style="display: flex; justify-content: space-between;margin-top: 94px;">
-                                    <h2 style="color: antiquewhite;">Table product</h2>
+                                    <h2 style="color: antiquewhite;">Manage Products</h2>
                                     <button type="button" class="btn btn-primary"
                                         onclick="window.location.href='http://localhost:8080/admin/product/create'">Create
-                                        Product</button>
+                                        a product</button>
                                 </div>
                                 <hr>
                             </div>
+                            <div class="col-md-3"></div>
+                            <div class="col-md-3"></div>
+                            <div class="col-md-6">
+                                <table class="table table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col" style="color: antiquewhite;">ID</th>
+                                            <th scope="col" style="color: antiquewhite;">Name</th>
+                                            <th scope="col" style="color: antiquewhite;">Price</th>
+                                            <th scope="col" style="color: antiquewhite;">Factory</th>
+                                            <th scope="col" style="color: antiquewhite;padding-left: 104px;">Action</th>
+                                        </tr>
+                                    </thead>
 
+                                    <!-- noi xuat du lieu -->
+                                    <tbody>
+                                        <c:forEach var="product" items="${products}">
+                                            <tr>
+                                                <th scope="row" style="text-align: center;">${product.id}</th>
+                                                <td style="text-align: center;">${product.name}</td>
+                                                <td style="text-align: center;">${product.price}</td>
+                                                <td style="text-align: center;">${product.factory}</td>
+                                                <td>
+                                                    <a href="/admin/product/${product.id}"
+                                                        class="btn btn-success">View</a>
+                                                    <a href="/admin/product/update/${product.id}"
+                                                        class="btn btn-warning">Update</a>
+                                                    <a href="/admin/product/delete/${product.id}"
+                                                        class="btn btn-danger">Delete</a>
+                                                </td>
+                                            </tr>
+                                        </c:forEach>
+
+                                    </tbody>
+                                </table>
+                            </div>
                             <div class="col-md-3"></div>
                         </div>
 
                     </div>
                 </main>
+
                 <footer>
                     <jsp:include page="../layout/footer.jsp" />
                 </footer>
