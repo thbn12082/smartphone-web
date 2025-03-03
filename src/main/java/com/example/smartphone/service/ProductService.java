@@ -1,6 +1,7 @@
 package com.example.smartphone.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
@@ -21,6 +22,10 @@ public class ProductService {
 
     public List<Product> handleAllProduct() {
         return this.productRepository.findAll();
+    }
+
+    public Product handleProductById(long id) {
+        return this.productRepository.findById(id);
     }
 
 }

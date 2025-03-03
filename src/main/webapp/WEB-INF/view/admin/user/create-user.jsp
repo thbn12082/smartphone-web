@@ -83,41 +83,70 @@
                                                 <div style="display: flex;">
                                                     <div>
                                                         <div class="form-group" class="col-xl-3">
+                                                            <c:set var="errorEmail">
+                                                                <form:errors path="email" cssClass="invalid-feedback" />
+                                                            </c:set>
                                                             <label for="exampleInputEmail1">Email address</label>
-                                                            <form:input type="email" class="form-control"
+                                                            <form:input type="email"
+                                                                class="form-control ${not empty errorEmail ? 'is-invalid' : ''}"
                                                                 id="exampleInputEmail1" placeholder="Enter email"
                                                                 path="email" />
+                                                            ${errorEmail}
+
                                                         </div>
                                                     </div>
                                                     <div>
                                                         <div class="form-group" class="col-xl-3">
+                                                            <c:set var="errorPassword">
+                                                                <form:errors path="password"
+                                                                    cssClass="invalid-feedback" />
+                                                            </c:set>
+
                                                             <label for="exampleInputPassword1">Password</label>
-                                                            <form:input type="password" class="form-control"
+                                                            <form:input type="password"
+                                                                class="form-control ${not empty errorPassword ? 'is-invalid' : ''}"
                                                                 id="exampleInputPassword1" placeholder="Password"
                                                                 path="password" />
+                                                            ${errorPassword}
                                                         </div>
                                                     </div>
                                                 </div>
 
                                                 <div style="display: flex;">
                                                     <div class="form-group">
+                                                        <c:set var="phoneError">
+                                                            <form:errors path="phone" cssClass="invalid-feedback" />
+                                                        </c:set>
                                                         <label>Phone Number:</label>
-                                                        <form:input type="text" class="form-control" id="PhoneNumber"
-                                                            path="phone" />
+                                                        <form:input type="text"
+                                                            class="form-control ${not empty phoneError ? 'is-invalid' : ''}"
+                                                            id="PhoneNumber" path="phone" />
+                                                        ${phoneError}
                                                     </div>
 
                                                     <div class="form-group">
+
+                                                        <c:set var="errorFullname">
+                                                            <form:errors path="fullName" cssClass="invalid-feedback" />
+                                                        </c:set>
                                                         <label>Full Name:</label>
-                                                        <form:input type="text" class="form-control" id="FullName"
-                                                            path="fullName" />
+                                                        <form:input type="text"
+                                                            class="form-control ${not empty errorFullname ? 'is-invalid' : ''}"
+                                                            id="FullName" path="fullName" />
+
                                                     </div>
                                                 </div>
 
 
                                                 <div class="form-group">
+                                                    <c:set var="errorAddress">
+                                                        <form:errors path="address" cssClass="invalid-feedback" />
+                                                    </c:set>
                                                     <label>Address:</label>
-                                                    <form:input type="text" class="form-control" id="address"
-                                                        path="address" />
+                                                    <form:input type="text"
+                                                        class="form-control ${not empty errorAddress ? 'is-invalid' : ''}"
+                                                        id="address" path="address" />
+                                                    ${errorAddress}
                                                 </div>
 
                                                 <div style="display: flex;">

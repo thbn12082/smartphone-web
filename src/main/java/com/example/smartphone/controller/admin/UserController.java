@@ -45,13 +45,15 @@ public class UserController {
     }
 
     @PostMapping("/admin/user/create")
-    public String getDataCreateUser(Model model, @ModelAttribute("newUser") @Valid User user, BindingResult bindingResult,
-            @RequestParam("thebinhFile") MultipartFile file )throws IOException {
+    public String getDataCreateUser(Model model, @ModelAttribute("newUser") @Valid User user,
+            BindingResult bindingResult,
+            @RequestParam("thebinhFile") MultipartFile file) throws IOException {
+        // List<FieldError> errors = bindingResult.getFieldErrors();
+        // for (FieldError error : errors) {
+        // System.out.println(error.getField() + " - " + error.getDefaultMessage());
+        // }
         if (bindingResult.hasErrors()) {
-            List<FieldError> errors = bindingResult.getFieldErrors();
-            for (FieldError error : errors) {
-                System.out.println(error.getObjectName() + " - " + error.getDefaultMessage());
-            }
+            return "admin/user/create-user";
         }
         if (this.userService.checkExitsUser(user)) {
             String avatar = this.uploadService.handleSaveUploadFile(file, "avatar");

@@ -12,6 +12,7 @@ import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.Getter;
@@ -28,16 +29,18 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @NotNull
-    @Email
+    @Email(message = "Email khong hop le", regexp = "^[a-zA-Z0-9_!#$%&'*+/=?`{|}~^.-]+@[a-zA-Z0-9.-]+$")
+    @NotEmpty(message = "Email khong duoc de trong")
     private String email;
     @NotNull
-    @Min(3)
+    @Min(value = 3, message = "password phai co toi thieu 3 ki tu")
     private String password;
     @NotNull
-    @Min(2)
+    @Min(value = 2, message = "fullname phai co toi thieu 3 ki tu")
     private String fullName;
+    @NotEmpty(message = "address khong duoc de trong")
     private String address;
+    @NotEmpty(message = "phone khong duoc de trong")
     private String phone;
     private String avatar;
 

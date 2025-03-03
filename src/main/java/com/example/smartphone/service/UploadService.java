@@ -21,6 +21,9 @@ public class UploadService {
     // targetFolder ở đây ta có thể truyền vào là avatar hoặc product => tạo sản
     // phẩm hoặc thêm ảnh đại diện
     public String handleSaveUploadFile(MultipartFile file, String targetFolder) throws IOException {
+        if (file.isEmpty()) {
+            return "";
+        }
         byte[] bytes = file.getBytes();
         String rootPath = this.servletContext.getRealPath("/resources/images");
 
