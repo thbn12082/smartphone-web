@@ -48,10 +48,6 @@ public class UserController {
     public String getDataCreateUser(Model model, @ModelAttribute("newUser") @Valid User user,
             BindingResult bindingResult,
             @RequestParam("thebinhFile") MultipartFile file) throws IOException {
-        // List<FieldError> errors = bindingResult.getFieldErrors();
-        // for (FieldError error : errors) {
-        // System.out.println(error.getField() + " - " + error.getDefaultMessage());
-        // }
         if (bindingResult.hasErrors()) {
             return "admin/user/create-user";
         }
@@ -78,6 +74,7 @@ public class UserController {
     public String getViewUser(Model model, @PathVariable Long id) {
         model.addAttribute("userId", id);
         User user = this.userService.handleUserById(id);
+        System.out.println(user.getAvatar());
         model.addAttribute("user", user);
         return "admin/user/user-detail";
     }

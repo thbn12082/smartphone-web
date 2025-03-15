@@ -9,7 +9,7 @@
                 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
                 <meta name="description" content="" />
                 <meta name="author" content="" />
-                <title>Agency - Start Bootstrap Theme</title>
+                <title>Dashboard</title>
                 <!-- Favicon-->
                 <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
                 <!-- Font Awesome icons (free version)-->
@@ -28,33 +28,129 @@
                     rel="stylesheet">
 
                 <style>
-                    .BannerTheme_sliderWrap__csOTb .container {
-                        position: relative;
-                        /* Đảm bảo container có position relative */
+                    .rating-box {
+                        background-color: #fff9c4;
+                        /* Màu nền khung */
+                        border: 2px solid #ffeb3b;
+                        /* Viền khung */
+                        border-radius: 10px;
+                        padding: 20px;
+                        text-align: center;
+                        width: 400px;
+                        /* Độ rộng khung */
+                        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+                    }
+
+                    .question {
+                        font-size: 18px;
+                        margin-bottom: 20px;
+                    }
+
+                    .options {
+                        display: flex;
+                        justify-content: space-around;
+                    }
+
+                    .option {
+                        background-color: transparent;
+                        border: none;
+                        font-size: 16px;
+                        cursor: pointer;
+                        display: flex;
+                        flex-direction: column;
+                        align-items: center;
+                        outline: none;
+                    }
+
+                    .emoji {
+                        font-size: 30px;
+                        margin-bottom: 5px;
+                    }
+
+                    .label {
+                        color: #ff9800;
+                        /* Màu chữ "Hài lòng" và "Không hài lòng" */
+                    }
+
+                    .check {
+                        font-family: 'Island Moments', cursive;
+                        font-size: 57px;
                     }
 
                     .BannerTheme_sliderWrap__csOTb .container img {
                         position: absolute;
-                        /* Đặt hình ảnh điện thoại ở vị trí tuyệt đối */
                         top: 50%;
-                        /* Đặt hình ảnh ở giữa theo chiều dọc */
                         left: 50%;
-                        /* Đặt hình ảnh ở giữa theo chiều ngang */
-                        transform: translate(-612px, -570px);
-                        /* Căn giữa hình ảnh */
+                        transform: translate(-50%, -50%);
                         z-index: 2;
-                        /* Đảm bảo hình ảnh nằm trên background */
                     }
 
-                    .BannerTheme_sliderWrap__csOTb .bg-\[length\:100\%_auto\].bg-\[center_top\].bg-no-repeat.BannerTheme_sliderBg__lb4oh img {
-                        z-index: 1;
-                        /* Đặt z-index thấp hơn cho background */
+                    .overlap-container {
+                        position: relative;
+                        width: 100%;
+                        /* Ensure the container takes up the full width */
+                        height: auto;
+                        /* Adjust height based on the background image */
                     }
 
-                    .check {
+                    .overlap-container img:first-child {
+                        position: relative;
+                        /* Background image remains in its normal flow */
+                        width: 100%;
+                        /* Ensure the background image spans the container */
+                        height: auto;
+                    }
 
-                        font-family: 'Island Moments', cursive;
-                        font-size: 57px;
+                    .overlap-container .foreground-img {
+                        position: absolute;
+                        top: 50%;
+                        left: 50%;
+                        transform: translate(-50%, -50%);
+                        /* Center the foreground image */
+                        z-index: 2;
+                        /* Ensure it overlaps the background */
+                    }
+
+                    .carousel-item {
+                        position: relative;
+                    }
+
+                    .card-content {
+                        position: absolute;
+                        bottom: 20px;
+                        left: 20px;
+                        background: rgba(0, 0, 0, 0.5);
+                        color: white;
+                        padding: 20px;
+                        border-radius: 8px;
+                    }
+
+                    .card-content h3,
+                    .card-content p,
+                    .card-content a {
+                        margin: 0;
+                        padding: 5px 0;
+                    }
+
+                    .card-content a {
+                        color: #ffcc00;
+                        text-decoration: underline;
+                    }
+
+                    .carousel-item img {
+                        height: 400px;
+                        object-fit: cover;
+                    }
+
+                    @media (max-width: 768px) {
+                        .check {
+                            font-size: 36px;
+                        }
+
+                        .BannerTheme_sliderWrap__csOTb .container img {
+                            transform: translate(-50%, -50%);
+                            width: 80%;
+                        }
                     }
                 </style>
             </head>
@@ -62,150 +158,208 @@
             <body id="page-top">
                 <!-- Navigation -->
                 <jsp:include page="layout/header.jsp" />
+
                 <!-- Masthead -->
                 <div class="BannerTheme_sliderWrap__csOTb">
-                    <a class="BannerTheme_sliderItem__0Yheb BannerTheme_fadeIn__f2GRS"
-                        href="https://fptshop.com.vn/dien-thoai/samsung-galaxy-s25-ultra" target="_blank" rel="dofollow"
-                        draggable="false">
+                    <a class="BannerTheme_sliderItem__0Yheb BannerTheme_fadeIn__f2GRS" href="/" target="_blank"
+                        rel="dofollow" draggable="false">
                         <div class="bg-[length:100%_auto] bg-[center_top] bg-no-repeat BannerTheme_sliderBg__lb4oh"
                             style="background-color:#F3F4F6 !important">
-                            <img alt="background" fetchpriority="high" width="1440" height="600" decoding="async"
-                                data-nimg="1" style="color: transparent; width: 100vw; height: auto;"
-                                srcset="https://cdn2.fptshop.com.vn/unsafe/1920x0/filters:quality(100)/desk_header_bg_2_fc50affb12.png 1x"
-                                src="https://cdn2.fptshop.com.vn/unsafe/1920x0/filters:quality(100)/desk_header_bg_2_fc50affb12.png">
-
-                        </div>
-                        <div
-                            class="container relative top-[24px]  m-auto flex min-h-[148px] items-center justify-center md:top-[42px] md:min-h-[285px]">
-                            <img alt="https://fptshop.com.vn/" draggable="false" loading="lazy" width="1240"
-                                height="285" decoding="async" data-nimg="1" style="color: transparent;"
-                                srcset="https://cdn2.fptshop.com.vn/unsafe/1920x0/filters:quality(100)/desk_header_11f5decdf9.png 1x"
-                                src="https://cdn2.fptshop.com.vn/unsafe/1920x0/filters:quality(100)/desk_header_11f5decdf9.png">
-                        </div>
-
-                    </a>
-                </div>
-                <br>
-
-
-
-
-
-                <!-- Services-->
-                <section class="page-section" id="services">
-                    <div class="container">
-                        <h2 class="section-heading check" style="margin-bottom: 40px;">Dịch vụ của chúng tôi</h2>
-                    </div>
-                    <div class="row text-center">
-                        <div class="col-md-2">
-                            <span class="fa-stack fa-2x">
-                                <i class="fas fa-circle fa-stack-2x text-secondary"></i>
-                                <i class="fas fa-shopping-cart fa-stack-1x fa-inverse"></i>
-                            </span>
-                            <h4 class="my-3">E-Commerce</h4>
-                            <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima
-                                maxime quam
-                                architecto quo inventore harum ex magni, dicta impedit.</p>
-                        </div>
-                        <div class="col-md-2">
-                            <span class="fa-stack fa-2x">
-                                <i class="fas fa-circle fa-stack-2x text-secondary"></i>
-                                <i class="fas fa-laptop fa-stack-1x fa-inverse"></i>
-                            </span>
-                            <h4 class="my-3">Responsive Design</h4>
-                            <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima
-                                maxime quam
-                                architecto quo inventore harum ex magni, dicta impedit.</p>
-                        </div>
-                        <div class="col-md-2">
-                            <span class="fa-stack fa-2x">
-                                <i class="fas fa-circle fa-stack-2x text-secondary"></i>
-                                <i class="fas fa-lock fa-stack-1x fa-inverse"></i>
-                            </span>
-                            <h4 class="my-3">Web Security</h4>
-                            <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima
-                                maxime quam
-                                architecto quo inventore harum ex magni, dicta impedit.</p>
-                        </div>
-                        <div class="col-md-2">
-                            <span class="fa-stack fa-2x">
-                                <i class="fas fa-circle fa-stack-2x text-secondary"></i>
-                                <i class="fas fa-shopping-cart fa-stack-1x fa-inverse"></i>
-                            </span>
-                            <h4 class="my-3">E-Commerce</h4>
-                            <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima
-                                maxime quam
-                                architecto quo inventore harum ex magni, dicta impedit.</p>
-                        </div>
-                        <div class="col-md-2">
-                            <span class="fa-stack fa-2x">
-                                <i class="fas fa-circle fa-stack-2x text-secondary"></i>
-                                <i class="fas fa-laptop fa-stack-1x fa-inverse"></i>
-                            </span>
-                            <h4 class="my-3">Responsive Design</h4>
-                            <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima
-                                maxime quam
-                                architecto quo inventore harum ex magni, dicta impedit.</p>
-                        </div>
-                        <div class="col-md-2">
-                            <span class="fa-stack fa-2x">
-                                <i class="fas fa-circle fa-stack-2x text-secondary"></i>
-                                <i class="fas fa-lock fa-stack-1x fa-inverse"></i>
-                            </span>
-                            <h4 class="my-3">Web Security</h4>
-                            <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima
-                                maxime quam
-                                architecto quo inventore harum ex magni, dicta impedit.</p>
-                        </div>
-                    </div>
-                    </div>
-                </section>
-                <!-- Portfolio Grid-->
-                <section class="page-section bg-light" id="portfolio">
-                    <div class="container">
-                        <!-- <div class="text-center"> -->
-                        <h2 class="section-heading check">Các mặt hàng bán chạy</h2>
-                        <!-- <div class="container"> -->
-                        <div class="col-md-12 col-lg-5">
-                            <div id="carouselId" class="carousel slide position-relative" data-bs-ride="carousel">
-                                <div class="carousel-inner" role="listbox">
-                                    <div class="carousel-item rounded active">
-                                        <img src="/client/img/img1.png"
-                                            class="img-fluid w-100 h-100 bg-secondary rounded" alt="First slide">
-                                        <a href="#" class="btn px-4 py-2 text-white rounded">Fruites</a>
-                                    </div>
-                                    <div class="carousel-item rounded">
-                                        <img src="/client/img/img2.png" class="img-fluid w-100 h-100 rounded"
-                                            alt="Second slide">
-                                        <a href="#" class="btn px-4 py-2 text-white rounded">Vesitables</a>
-                                    </div>
+                            <div class="overlap-container">
+                                <div class="overlap-container">
+                                    <img alt="background" fetchpriority="high" class="img-fluid" decoding="async"
+                                        src="https://cdn2.fptshop.com.vn/unsafe/1920x0/filters:quality(100)/desk_header_bg_2_fc50affb12.png">
+                                    <img alt="foreground" class="foreground-img img-fluid"
+                                        src="https://cdn2.fptshop.com.vn/unsafe/1920x0/filters:quality(100)/desk_header_11f5decdf9.png">
                                 </div>
-                                <button class="carousel-control-prev" type="button" data-bs-target="#carouselId"
-                                    data-bs-slide="prev">
-                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                    <span class="visually-hidden">Previous</span>
-                                </button>
-                                <button class="carousel-control-next" type="button" data-bs-target="#carouselId"
-                                    data-bs-slide="next">
-                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                    <span class="visually-hidden">Next</span>
-                                </button>
                             </div>
                         </div>
-                        <!-- </div> -->
-                        <!-- <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3> -->
-                        <!-- </div> -->
+                    </a>
+                </div>
+                <div class="container my-4">
+                    <h2 class="section-heading check text-center mb-4">Các mặt hàng bán chạy</h2>
+                    <div class="row">
+                        <div class="col-sm-6 col-md-4 col-lg-3 mb-4">
+                            <div class="card">
+                                <img src="https://cdn.viettelstore.vn/Images/Product/ProductImage/70698293.jpeg"
+                                    class="card-img-top img-fluid" alt="Xiaomi Redmi Note 14">
+                                <div class="card-body">
+                                    <h5 class="card-title">Xiaomi Redmi Note </h5>
+                                    <p class="card-text">8GB/128GB</p>
+                                    <p class="text-primary fw-bold">5.490.000₫</p>
+                                    <p class="text-muted">Quà 200.000₫</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6 col-md-4 col-lg-3 mb-4">
+                            <div class="card">
+                                <img src="https://cdn.tgdd.vn/Products/Images/42/305658/iphone-15-pro-max-blue-thumbnew-600x600.jpg"
+                                    class="card-img-top img-fluid" alt="iPhone 15 Pro Max">
+                                <div class="card-body">
+                                    <h5 class="card-title">iPhone 15 Pro Max</h5>
+                                    <p class="card-text">8GB/128GB</p>
+                                    <p class="card-text">32.890.000₫</p>
+                                    <p class="text-muted">Quà 1.000.000₫</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6 col-md-4 col-lg-3 mb-4">
+                            <div class="card">
+                                <img src="https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/1/5/15_2_7_2_5.jpg"
+                                    class="card-img-top img-fluid" alt="iPhone 13">
+                                <div class="card-body">
+                                    <h5 class="card-title">iPhone 13</h5>
+                                    <p class="card-text">8GB/128GB</p>
+                                    <p class="card-text">12.850.000₫</p>
+                                    <p class="text-muted">Quà 500.000₫</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6 col-md-4 col-lg-3 mb-4">
+                            <div class="card">
+                                <img src="https://didongthongminh.vn/images/products/2025/02/08/original/A60_5g.jpg"
+                                    class="card-img-top img-fluid" alt="OPPO A60">
+                                <div class="card-body">
+                                    <h5 class="card-title">OPPO A60 </h5>
+                                    <p class="card-text">8GB/128GB</p>
+                                    <p class="card-text">5.490.000₫</p>
+                                    <p class="text-muted">Quà 200.000₫</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6 col-md-4 col-lg-3 mb-4">
+                            <div class="card">
+                                <img src="https://cdn2.cellphones.com.vn/insecure/rs:fill:0:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/_/s/_sm-a536_04._device_design_m_1_2.jpg"
+                                    class="card-img-top img-fluid" alt="Xiaomi Redmi Note 14">
+                                <div class="card-body">
+                                    <h5 class="card-title">Samsung A50</h5>
+                                    <p class="card-text">8GB/128GB</p>
+                                    <p class="text-primary fw-bold">5.490.000₫</p>
+                                    <p class="text-muted">Quà 200.000₫</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6 col-md-4 col-lg-3 mb-4">
+                            <div class="card">
+                                <img src="https://cdn2.cellphones.com.vn/x/media/catalog/product/s/s/ss-s24-ultra-xam-222.png"
+                                    class="card-img-top img-fluid" alt="iPhone 15 Pro Max">
+                                <div class="card-body">
+                                    <h5 class="card-title">Samsung S24 Ultra</h5>
+                                    <p class="card-text">8GB/128GB</p>
+                                    <p class="card-text">32.890.000₫</p>
+                                    <p class="text-muted">Quà 1.000.000₫</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6 col-md-4 col-lg-3 mb-4">
+                            <div class="card">
+                                <img src="https://clickbuy.com.vn/uploads/pro/iphone-16-8975-lthx-300x300-217852.jpg"
+                                    class="card-img-top img-fluid" alt="iPhone 13">
+                                <div class="card-body">
+                                    <h5 class="card-title">iPhone 13</h5>
+                                    <p class="card-text">8GB/128GB</p>
+                                    <p class="card-text">12.850.000₫</p>
+                                    <p class="text-muted">Quà 500.000₫</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6 col-md-4 col-lg-3 mb-4">
+                            <div class="card">
+                                <img src="https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/d/i/dien-thoai-xiaomi-redmi-note-14_2__2.png"
+                                    class="card-img-top img-fluid" alt="OPPO A60">
+                                <div class="card-body">
+                                    <h5 class="card-title">OPPO A60 </h5>
+                                    <p class="card-text">8GB/128GB</p>
+                                    <p class="card-text">5.490.000₫</p>
+                                    <p class="text-muted">Quà 200.000₫</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Featured Products -->
+                <div class="container-fluid py-5">
+                    <div class="container">
+                        <h1 class="check text-center mb-4">Bài viết nên đọc</h1>
+                        <!-- Portfolio Grid -->
+                        <section class="page-section bg-light" id="portfolio">
+                            <div class="container">
+                                <div id="carouselId" class="carousel slide" data-bs-ride="carousel">
+                                    <div class="carousel-inner">
+                                        <a href="#" style="text-decoration: none;">
+                                            <div class="carousel-item active">
+                                                <img src="https://image.dienthoaivui.com.vn/x,webp,q90/https://dashboard.dienthoaivui.com.vn/uploads/dashboard/editor_upload/sac-du-phong-gia-re-duoi-100k-11.jpg"
+                                                    class="img-fluid w-100 rounded" alt="First slide">
+                                                <div class="card-content">
+                                                    <div style="display: flex; justify-content: space-evenly;">
+                                                        <h3 style="color: lightblue;">Sạc đầy năng lượng kết nối không
+                                                            ngừng
+                                                        </h3>
+
+                                                    </div>
+
+
+                                                    <p>Sạc dự phòng là một món phụ kiện không thể thiếu cho những ai sử
+                                                        dụng
+                                                        điện thoại thông minh thường
+                                                        xuyên. Sạc dự phòng giúp người dùng không còn phải lo lắng về
+                                                        pin
+                                                        bất ngờ hết khi đang di chuyển,
+                                                        công tác hay đi du lịch. Tuy nhiên, với thị trường đa dạng như
+                                                        hiện
+                                                        nay, việc lựa chọn được một sản
+                                                        phẩm sạc dự phòng tốt không phải là điều dễ dàng.</p>
+                                                </div>
+                                            </div>
+                                        </a>
+
+                                        <a href="#" style="text-decoration: none;">
+                                            <div class="carousel-item">
+                                                <img src="https://www.digitaltrends.com/wp-content/uploads/2020/09/gopro-hero9-black-review-dm-6.jpg?p=1"
+                                                    class="img-fluid w-100 rounded" alt="Second slide">
+                                                <div class="card-content">
+                                                    <div style="display: flex; justify-content: space-evenly;">
+                                                        <h3 style="color: lightblue;">Gói trọn mùa Xuân trong từng thước
+                                                            phim</h3>
+
+                                                    </div>
+
+
+                                                    <p>Vào mùa Tết, các combo khuyến mại cũng được nhiều nhãn hàng tung
+                                                        ra
+                                                        thị trường với mức giá hấp dẫn để
+                                                        đẩy thêm nhiều sản phẩm cuối năm. Mức giá hy được áp dụng chỉ từ
+                                                        99k, 199k, 299k,... đây là những
+                                                        mức giá hấp dẫn, nhanh tay kẻo hết.</p>
+                                                </div>
+                                            </div>
+                                        </a>
+
+                                    </div>
+                                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselId"
+                                        data-bs-slide="prev">
+                                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                        <span class="visually-hidden">Previous</span>
+                                    </button>
+                                    <button class="carousel-control-next" type="button" data-bs-target="#carouselId"
+                                        data-bs-slide="next">
+                                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                        <span class="visually-hidden">Next</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </section>
 
                     </div>
-                </section>
-                <!-- About-->
+                </div>
+                <!-- About -->
                 <section class="page-section" id="about">
                     <div class="container">
-
-
-                        <div class="col" style="display: flex; justify-content: space-around;">
-                            <div class="content col-lg-5">
-                                <h2 class="section-heading check" style="text-align: center;">Về chúng tôi</h2>
+                        <div class="row align-items-center">
+                            <div class="col-lg-6 text-center text-lg-start">
+                                <h1 class="section-heading check text-center">Về chúng tôi</h1>
                                 <p>Được thành lập vào tháng 8 năm 2004 bởi ông Nguyễn Thế Bình và các cộng sự, Công ty
                                     Cổ phần
                                     Smartphone Shop bước đầu gia nhập thị trường với mô hình kinh doanh đầy táo bạo: Kết
@@ -221,483 +375,28 @@
                                     nhanh
                                     chóng
                                     gây được tiếng vang lớn trong cộng đồng người tiêu dùng Việt Nam</p>
-                                <div style="display: flex; justify-content: center;">
-                                    <button type="button" class="btn btn-dark" style="margin-right: 25px;">Tìm hiểu
-                                        thêm</button>
-                                    <button type="button" class="btn btn-light">Mua sắm ngay</button>
+                                <br>
+                                <div class="d-flex justify-content-center justify-content-lg-start">
+                                    <button class="btn btn-dark me-2">Tìm hiểu thêm</button>
+                                    <button class="btn btn-light">Mua sắm ngay</button>
                                 </div>
-
-
-
                             </div>
-                            <div class="img col-lg-5">
-                                <img src="https://www.apple.com.cn/newsroom/images/environments/stores/standard/Apple_Changsha_NewStore_09012021_Full-Bleed-Image.jpg.large.jpg"
-                                    style="width: 100%; height: 100%; object-fit: cover;" alt="">
+                            <div class="col-lg-6">
+                                <img src="https://www.apple.com.cn/newsroom/images/environments/stores/standard/Apple_Changsha_NewStore_09012021_Full-Bleed-Image.jpg"
+                                    class="img-fluid rounded" alt="About Us">
                             </div>
                         </div>
-
                     </div>
                 </section>
-                <!-- san pham noi bat -->
-                <div class="container-fluid fruite py-5">
-                    <div class="container py-5">
-                        <div class="tab-class text-center">
-                            <div class="row g-4">
-                                <div class="col-lg-4 text-start">
-                                    <h1 class="check">Sản phẩm nổi bật</h1>
-                                </div>
-                                <div class="col-lg-8 text-end">
-                                    <ul class="nav nav-pills d-inline-flex text-center mb-5">
-                                        <li class="nav-item">
-                                            <a class="d-flex m-2 py-2 bg-light rounded-pill active"
-                                                data-bs-toggle="pill" href="#tab-1">
-                                                <span class="text-dark" style="width: 130px;">All Products</span>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="tab-content">
-                                <div id="tab-1" class="tab-pane fade show p-0 active">
-                                    <div class="row g-4">
-                                        <div class="col-lg-12">
-                                            <div class="row g-4">
-                                                <c:forEach var="product" items="${listProduct}">
-                                                    <div class="col-md-6 col-lg-4 col-xl-3">
-                                                        <div class="rounded position-relative fruite-item">
-                                                            <div class="fruite-img">
-                                                                <img src="/images/product/${product.image}"
-                                                                    class="img-fluid w-100 rounded-top" alt="">
-                                                            </div>
-                                                            <div class="text-white bg-secondary px-3 py-1 rounded position-absolute"
-                                                                style="top: 10px; left: 10px;">Laptop</div>
-                                                            <div
-                                                                class="p-4 border border-secondary border-top-0 rounded-bottom">
-                                                                <a href="/product/${product.id}">
-                                                                    <h4 style="font-size: 15px;">${product.name}</h4>
+                <jsp:include page="./layout/experience.jsp" />
 
-
-                                                                    <p style="font-size: 13px;">${product.shortDesc}</p>
-                                                                    <div
-                                                                        class="d-flex justify-content-between flex-lg-wrap">
-                                                                        <p style="font-size: 15px; text-align: cnter; width: 100%;"
-                                                                            class="text-dark fw-bold mb-3">
-                                                                            <fmt:formatNumber type="number"
-                                                                                value="${product.price}" /> VND
-                                                                        </p>
-                                                                </a>
-                                                                <a href="#"
-                                                                    class="btn border border-secondary rounded-pill px-3 text-primary"><i
-                                                                        class="fa fa-shopping-bag me-2 text-primary"></i>
-                                                                    Add to cart</a>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-
-                                            </div>
-                                            </c:forEach>
-
-
-                                        </div>
-
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-
-                <!-- end sanphamnoibat -->
-                <!-- Clients-->
-                <div class="py-5">
-                    <div class="container">
-                        <div class="row align-items-center">
-                            <div class="col-md-3 col-sm-6 my-3">
-                                <a href="#!"><img class="img-fluid img-brand d-block mx-auto"
-                                        src="assets/img/logos/microsoft.svg" alt="..."
-                                        aria-label="Microsoft Logo" /></a>
-                            </div>
-                            <div class="col-md-3 col-sm-6 my-3">
-                                <a href="#!"><img class="img-fluid img-brand d-block mx-auto"
-                                        src="assets/img/logos/google.svg" alt="..." aria-label="Google Logo" /></a>
-                            </div>
-                            <div class="col-md-3 col-sm-6 my-3">
-                                <a href="#!"><img class="img-fluid img-brand d-block mx-auto"
-                                        src="assets/img/logos/facebook.svg" alt="..." aria-label="Facebook Logo" /></a>
-                            </div>
-                            <div class="col-md-3 col-sm-6 my-3">
-                                <a href="#!"><img class="img-fluid img-brand d-block mx-auto"
-                                        src="assets/img/logos/ibm.svg" alt="..." aria-label="IBM Logo" /></a>
-                            </div>
-                            <!-- experience -->
-                            <jsp:include page="layout/experience.jsp" />
-
-
-                        </div>
-                    </div>
-                </div>
-                <!-- Contact-->
-                <section class="page-section" id="contact">
-                    <div class="container">
-                        <div class="text-center">
-                            <h2 class="section-heading text-uppercase">Contact Us</h2>
-                            <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
-                        </div>
-                        <!-- * * * * * * * * * * * * * * *-->
-                        <!-- * * SB Forms Contact Form * *-->
-                        <!-- * * * * * * * * * * * * * * *-->
-                        <!-- This form is pre-integrated with SB Forms.-->
-                        <!-- To make this form functional, sign up at-->
-                        <!-- https://startbootstrap.com/solution/contact-forms-->
-                        <!-- to get an API token!-->
-                        <form id="contactForm" data-sb-form-api-token="API_TOKEN">
-                            <div class="row align-items-stretch mb-5">
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <!-- Name input-->
-                                        <input class="form-control" id="name" type="text" placeholder="Your Name *"
-                                            data-sb-validations="required" />
-                                        <div class="invalid-feedback" data-sb-feedback="name:required">A name is
-                                            required.</div>
-                                    </div>
-                                    <div class="form-group">
-                                        <!-- Email address input-->
-                                        <input class="form-control" id="email" type="email" placeholder="Your Email *"
-                                            data-sb-validations="required,email" />
-                                        <div class="invalid-feedback" data-sb-feedback="email:required">An email is
-                                            required.</div>
-                                        <div class="invalid-feedback" data-sb-feedback="email:email">Email is not valid.
-                                        </div>
-                                    </div>
-                                    <div class="form-group mb-md-0">
-                                        <!-- Phone number input-->
-                                        <input class="form-control" id="phone" type="tel" placeholder="Your Phone *"
-                                            data-sb-validations="required" />
-                                        <div class="invalid-feedback" data-sb-feedback="phone:required">A phone number
-                                            is required.
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group form-group-textarea mb-md-0">
-                                        <!-- Message input-->
-                                        <textarea class="form-control" id="message" placeholder="Your Message *"
-                                            data-sb-validations="required"></textarea>
-                                        <div class="invalid-feedback" data-sb-feedback="message:required">A message is
-                                            required.
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- Submit success message-->
-                            <!---->
-                            <!-- This is what your users will see when the form-->
-                            <!-- has successfully submitted-->
-                            <div class="d-none" id="submitSuccessMessage">
-                                <div class="text-center text-white mb-3">
-                                    <div class="fw-bolder">Form submission successful!</div>
-                                    To activate this form, sign up at
-                                    <br />
-                                    <a
-                                        href="https://startbootstrap.com/solution/contact-forms">https://startbootstrap.com/solution/contact-forms</a>
-                                </div>
-                            </div>
-                            <!-- Submit error message-->
-                            <!---->
-                            <!-- This is what your users will see when there is-->
-                            <!-- an error submitting the form-->
-                            <div class="d-none" id="submitErrorMessage">
-                                <div class="text-center text-danger mb-3">Error sending message!</div>
-                            </div>
-                            <!-- Submit Button-->
-                            <div class="text-center"><button class="btn btn-primary btn-xl text-uppercase disabled"
-                                    id="submitButton" type="submit">Send Message</button></div>
-                        </form>
-                    </div>
-                </section>
-                <!-- Footer-->
+                <!-- Footer -->
                 <jsp:include page="layout/footer.jsp" />
-                <!-- Portfolio Modals-->
-                <!-- Portfolio item 1 modal popup-->
-                <div class="portfolio-modal modal fade" id="portfolioModal1" tabindex="-1" role="dialog"
-                    aria-hidden="true">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="close-modal" data-bs-dismiss="modal"><img src="assets/img/close-icon.svg"
-                                    alt="Close modal" /></div>
-                            <div class="container">
-                                <div class="row justify-content-center">
-                                    <div class="col-lg-8">
-                                        <div class="modal-body">
-                                            <!-- Project details-->
-                                            <h2 class="text-uppercase">Project Name</h2>
-                                            <p class="item-intro text-muted">Lorem ipsum dolor sit amet consectetur.</p>
-                                            <img class="img-fluid d-block mx-auto" src="assets/img/portfolio/1.jpg"
-                                                alt="..." />
-                                            <p>Use this area to describe your project. Lorem ipsum dolor sit amet,
-                                                consectetur
-                                                adipisicing elit. Est blanditiis dolorem culpa incidunt minus
-                                                dignissimos deserunt
-                                                repellat aperiam quasi sunt officia expedita beatae cupiditate, maiores
-                                                repudiandae,
-                                                nostrum, reiciendis facere nemo!</p>
-                                            <ul class="list-inline">
-                                                <li>
-                                                    <strong>Client:</strong>
-                                                    Threads
-                                                </li>
-                                                <li>
-                                                    <strong>Category:</strong>
-                                                    Illustration
-                                                </li>
-                                            </ul>
-                                            <button class="btn btn-primary btn-xl text-uppercase"
-                                                data-bs-dismiss="modal" type="button">
-                                                <i class="fas fa-xmark me-1"></i>
-                                                Close Project
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Portfolio item 2 modal popup-->
-                <div class="portfolio-modal modal fade" id="portfolioModal2" tabindex="-1" role="dialog"
-                    aria-hidden="true">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="close-modal" data-bs-dismiss="modal"><img src="assets/img/close-icon.svg"
-                                    alt="Close modal" /></div>
-                            <div class="container">
-                                <div class="row justify-content-center">
-                                    <div class="col-lg-8">
-                                        <div class="modal-body">
-                                            <!-- Project details-->
-                                            <h2 class="text-uppercase">Project Name</h2>
-                                            <p class="item-intro text-muted">Lorem ipsum dolor sit amet consectetur.</p>
-                                            <img class="img-fluid d-block mx-auto" src="assets/img/portfolio/2.jpg"
-                                                alt="..." />
-                                            <p>Use this area to describe your project. Lorem ipsum dolor sit amet,
-                                                consectetur
-                                                adipisicing elit. Est blanditiis dolorem culpa incidunt minus
-                                                dignissimos deserunt
-                                                repellat aperiam quasi sunt officia expedita beatae cupiditate, maiores
-                                                repudiandae,
-                                                nostrum, reiciendis facere nemo!</p>
-                                            <ul class="list-inline">
-                                                <li>
-                                                    <strong>Client:</strong>
-                                                    Explore
-                                                </li>
-                                                <li>
-                                                    <strong>Category:</strong>
-                                                    Graphic Design
-                                                </li>
-                                            </ul>
-                                            <button class="btn btn-primary btn-xl text-uppercase"
-                                                data-bs-dismiss="modal" type="button">
-                                                <i class="fas fa-xmark me-1"></i>
-                                                Close Project
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Portfolio item 3 modal popup-->
-                <div class="portfolio-modal modal fade" id="portfolioModal3" tabindex="-1" role="dialog"
-                    aria-hidden="true">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="close-modal" data-bs-dismiss="modal"><img src="assets/img/close-icon.svg"
-                                    alt="Close modal" /></div>
-                            <div class="container">
-                                <div class="row justify-content-center">
-                                    <div class="col-lg-8">
-                                        <div class="modal-body">
-                                            <!-- Project details-->
-                                            <h2 class="text-uppercase">Project Name</h2>
-                                            <p class="item-intro text-muted">Lorem ipsum dolor sit amet consectetur.</p>
-                                            <img class="img-fluid d-block mx-auto" src="assets/img/portfolio/3.jpg"
-                                                alt="..." />
-                                            <p>Use this area to describe your project. Lorem ipsum dolor sit amet,
-                                                consectetur
-                                                adipisicing elit. Est blanditiis dolorem culpa incidunt minus
-                                                dignissimos deserunt
-                                                repellat aperiam quasi sunt officia expedita beatae cupiditate, maiores
-                                                repudiandae,
-                                                nostrum, reiciendis facere nemo!</p>
-                                            <ul class="list-inline">
-                                                <li>
-                                                    <strong>Client:</strong>
-                                                    Finish
-                                                </li>
-                                                <li>
-                                                    <strong>Category:</strong>
-                                                    Identity
-                                                </li>
-                                            </ul>
-                                            <button class="btn btn-primary btn-xl text-uppercase"
-                                                data-bs-dismiss="modal" type="button">
-                                                <i class="fas fa-xmark me-1"></i>
-                                                Close Project
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Portfolio item 4 modal popup-->
-                <div class="portfolio-modal modal fade" id="portfolioModal4" tabindex="-1" role="dialog"
-                    aria-hidden="true">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="close-modal" data-bs-dismiss="modal"><img src="assets/img/close-icon.svg"
-                                    alt="Close modal" /></div>
-                            <div class="container">
-                                <div class="row justify-content-center">
-                                    <div class="col-lg-8">
-                                        <div class="modal-body">
-                                            <!-- Project details-->
-                                            <h2 class="text-uppercase">Project Name</h2>
-                                            <p class="item-intro text-muted">Lorem ipsum dolor sit amet consectetur.</p>
-                                            <img class="img-fluid d-block mx-auto" src="assets/img/portfolio/4.jpg"
-                                                alt="..." />
-                                            <p>Use this area to describe your project. Lorem ipsum dolor sit amet,
-                                                consectetur
-                                                adipisicing elit. Est blanditiis dolorem culpa incidunt minus
-                                                dignissimos deserunt
-                                                repellat aperiam quasi sunt officia expedita beatae cupiditate, maiores
-                                                repudiandae,
-                                                nostrum, reiciendis facere nemo!</p>
-                                            <ul class="list-inline">
-                                                <li>
-                                                    <strong>Client:</strong>
-                                                    Lines
-                                                </li>
-                                                <li>
-                                                    <strong>Category:</strong>
-                                                    Branding
-                                                </li>
-                                            </ul>
-                                            <button class="btn btn-primary btn-xl text-uppercase"
-                                                data-bs-dismiss="modal" type="button">
-                                                <i class="fas fa-xmark me-1"></i>
-                                                Close Project
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Portfolio item 5 modal popup-->
-                <div class="portfolio-modal modal fade" id="portfolioModal5" tabindex="-1" role="dialog"
-                    aria-hidden="true">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="close-modal" data-bs-dismiss="modal"><img src="assets/img/close-icon.svg"
-                                    alt="Close modal" /></div>
-                            <div class="container">
-                                <div class="row justify-content-center">
-                                    <div class="col-lg-8">
-                                        <div class="modal-body">
-                                            <!-- Project details-->
-                                            <h2 class="text-uppercase">Project Name</h2>
-                                            <p class="item-intro text-muted">Lorem ipsum dolor sit amet consectetur.</p>
-                                            <img class="img-fluid d-block mx-auto" src="assets/img/portfolio/5.jpg"
-                                                alt="..." />
-                                            <p>Use this area to describe your project. Lorem ipsum dolor sit amet,
-                                                consectetur
-                                                adipisicing elit. Est blanditiis dolorem culpa incidunt minus
-                                                dignissimos deserunt
-                                                repellat aperiam quasi sunt officia expedita beatae cupiditate, maiores
-                                                repudiandae,
-                                                nostrum, reiciendis facere nemo!</p>
-                                            <ul class="list-inline">
-                                                <li>
-                                                    <strong>Client:</strong>
-                                                    Southwest
-                                                </li>
-                                                <li>
-                                                    <strong>Category:</strong>
-                                                    Website Design
-                                                </li>
-                                            </ul>
-                                            <button class="btn btn-primary btn-xl text-uppercase"
-                                                data-bs-dismiss="modal" type="button">
-                                                <i class="fas fa-xmark me-1"></i>
-                                                Close Project
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Portfolio item 6 modal popup-->
-                <div class="portfolio-modal modal fade" id="portfolioModal6" tabindex="-1" role="dialog"
-                    aria-hidden="true">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="close-modal" data-bs-dismiss="modal"><img src="assets/img/close-icon.svg"
-                                    alt="Close modal" /></div>
-                            <div class="container">
-                                <div class="row justify-content-center">
-                                    <div class="col-lg-8">
-                                        <div class="modal-body">
-                                            <!-- Project details-->
-                                            <h2 class="text-uppercase">Project Name</h2>
-                                            <p class="item-intro text-muted">Lorem ipsum dolor sit amet consectetur.</p>
-                                            <img class="img-fluid d-block mx-auto" src="assets/img/portfolio/6.jpg"
-                                                alt="..." />
-                                            <p>Use this area to describe your project. Lorem ipsum dolor sit amet,
-                                                consectetur
-                                                adipisicing elit. Est blanditiis dolorem culpa incidunt minus
-                                                dignissimos deserunt
-                                                repellat aperiam quasi sunt officia expedita beatae cupiditate, maiores
-                                                repudiandae,
-                                                nostrum, reiciendis facere nemo!</p>
-                                            <ul class="list-inline">
-                                                <li>
-                                                    <strong>Client:</strong>
-                                                    Window
-                                                </li>
-                                                <li>
-                                                    <strong>Category:</strong>
-                                                    Photography
-                                                </li>
-                                            </ul>
-                                            <button class="btn btn-primary btn-xl text-uppercase"
-                                                data-bs-dismiss="modal" type="button">
-                                                <i class="fas fa-xmark me-1"></i>
-                                                Close Project
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Bootstrap core JS-->
+
+                <!-- Bootstrap core JS -->
                 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-                <!-- Core theme JS-->
+                <!-- Core theme JS -->
                 <script src="/client/js/homepage.js"></script>
-                <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
-                <!-- * *                               SB Forms JS                               * *-->
-                <!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
-                <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
-                <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
             </body>
 
             </html>

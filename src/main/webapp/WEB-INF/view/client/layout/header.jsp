@@ -2,9 +2,9 @@
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
         <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
             <!-- <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav"> -->
-            <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav" style="background-color: #0e0b0b;">
+            <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav" style="background-color: black;">
                 <div class="container">
-                    <a href="/">
+                    <a href="/" style="text-decoration: none;">
                         <p style="color: antiquewhite; font-size: 30px;">Smartphone shop</p>
                     </a>
 

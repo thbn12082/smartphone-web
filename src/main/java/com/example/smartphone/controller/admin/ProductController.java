@@ -18,7 +18,6 @@ import com.example.smartphone.service.UploadService;
 import jakarta.validation.Valid;
 
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 
 @Controller
 public class ProductController {
@@ -57,6 +56,7 @@ public class ProductController {
     @GetMapping("/admin/product/{id}")
     public String getProduct(@PathVariable Long id, Model model) {
         model.addAttribute("product", this.productService.handleProductById(id));
+        System.out.println(this.productService.handleProductById(id).getImage());
         return "admin/product/product-detail";
     }
 
@@ -73,4 +73,35 @@ public class ProductController {
         return "";
     }
 
+    @GetMapping("/admin/product/delete/{id}")
+    public String getDeleteProduct(Model model, @PathVariable Long id) {
+        model.addAttribute("productId", id);
+        return "admin/product/delete-product";
+    }
+
+    @PostMapping("/admin/product/delete/{id}")
+    public String postDeleteProduct(@PathVariable Long id) {
+        this.productService.handleDelProduct(id);
+        return "redirect:/admin/product";
+    }
+
+    @GetMapping("/test")
+    public String getMethodName() {
+        return "client/all-product";
+    }
+
+    @GetMapping("/test1")
+    public String get() {
+        return "client/contact-us";
+    }
+
+    @GetMapping("/test2")
+    public String get1() {
+        return "client/product-detail";
+    }
+
+    @GetMapping("/test3")
+    public String get2() {
+        return "auth/login/login";
+    }
 }

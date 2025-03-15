@@ -4,6 +4,7 @@ import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.UUID;
 
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
@@ -32,14 +33,17 @@ public class UploadService {
             dir.mkdirs();
 
         // Create the file on server
-        File serverFile = new File(dir.getAbsolutePath() + File.separator +
-                +System.currentTimeMillis() + "-" + file.getOriginalFilename());
+        String timeUpdateFile = System.currentTimeMillis() + "";
+        File serverFile = new File(
+                dir.getAbsolutePath() + File.separator + timeUpdateFile + "-" + file.getOriginalFilename());
+        // File serverFile = new File(dir.getAbsolutePath() + File.separator +
+        // + UUID.randomUUID().toString() + "-" + file.getOriginalFilename());
 
         BufferedOutputStream stream = new BufferedOutputStream(
                 new FileOutputStream(serverFile));
         stream.write(bytes);
         stream.close();
-        return System.currentTimeMillis() + "-" + file.getOriginalFilename();
+        return timeUpdateFile + "-" + file.getOriginalFilename();
     }
 
 }

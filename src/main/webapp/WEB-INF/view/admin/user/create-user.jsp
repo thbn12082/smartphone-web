@@ -92,7 +92,6 @@
                                                                 id="exampleInputEmail1" placeholder="Enter email"
                                                                 path="email" />
                                                             ${errorEmail}
-
                                                         </div>
                                                     </div>
                                                     <div>
@@ -101,17 +100,15 @@
                                                                 <form:errors path="password"
                                                                     cssClass="invalid-feedback" />
                                                             </c:set>
-
                                                             <label for="exampleInputPassword1">Password</label>
                                                             <form:input type="password"
-                                                                class="form-control ${not empty errorPassword ? 'is-invalid' : ''}"
+                                                                class="form-control ${not empty errorPassword ? 'is-invalid' : ''} "
                                                                 id="exampleInputPassword1" placeholder="Password"
                                                                 path="password" />
                                                             ${errorPassword}
                                                         </div>
                                                     </div>
                                                 </div>
-
                                                 <div style="display: flex;">
                                                     <div class="form-group">
                                                         <c:set var="phoneError">
@@ -125,7 +122,6 @@
                                                     </div>
 
                                                     <div class="form-group">
-
                                                         <c:set var="errorFullname">
                                                             <form:errors path="fullName" cssClass="invalid-feedback" />
                                                         </c:set>
@@ -133,10 +129,9 @@
                                                         <form:input type="text"
                                                             class="form-control ${not empty errorFullname ? 'is-invalid' : ''}"
                                                             id="FullName" path="fullName" />
-
+                                                        ${errorFullname}
                                                     </div>
                                                 </div>
-
 
                                                 <div class="form-group">
                                                     <c:set var="errorAddress">

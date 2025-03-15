@@ -52,40 +52,11 @@
                                 <div class="row">
                                     <div class="col-xl-3"></div>
                                     <div class="col-xl-6">
-                                        <!-- <form:form action="/admin/product/update/${idProduct}" method="post"
+                                        <form:form action="/admin/product/update/${idProduct}" method="post"
                                             modelAttribute="newProduct">
-                                            <div class="form-group">
-                                                <label for="exampleInputEmail1">Email:</label>
-                                                <form:input type="email" class="form-control" id="exampleInputEmail1"
-                                                    aria-describedby="emailHelp" placeholder="Enter email"
-                                                    path="email" />
-                                            </div>
 
-                                            <div class="form-group">
-                                                <label>Phone Number:</label>
-                                                <form:input type="text" class="form-control" id="PhoneNumber"
-                                                    path="phone" />
-                                            </div>
 
-                                            <div class="form-group">
-                                                <label>Full Name:</label>
-                                                <form:input type="text" class="form-control" id="FullName"
-                                                    path="fullName" />
-                                            </div>
-
-                                            <div class="form-group">
-                                                <label>Address:</label>
-                                                <form:input type="text" class="form-control" id="address"
-                                                    path="address" />
-                                            </div>
-
-                                            <div style="display: flex; justify-content: space-between;">
-                                                <button type="submit" class="btn btn-warning">Update</button>
-                                                <a href="/admin/product"><button class="btn btn-success">Back</button></a>
-
-                                            </div>
-
-                                        </form:form> -->
+                                        </form:form>
                                     </div>
 
 

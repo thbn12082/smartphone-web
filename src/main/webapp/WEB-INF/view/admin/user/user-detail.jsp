@@ -45,7 +45,8 @@
                             <div class="row">
                                 <div class="col-xl-3"></div>
                                 <div class="col-xl-6" style="justify-items: center;margin-top: -2%;">
-                                    <div class="card" style="width: 80%;">
+                                    <img class="card-img-top" src="/images/avatar/${user.avatar}">
+                                    <div class="card" style="width: 80%; margin-top: 10px">
                                         <div class="card-header" style="font-weight: 700;">
                                             User Information
                                         </div>
