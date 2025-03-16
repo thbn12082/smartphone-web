@@ -102,6 +102,17 @@ public class ProductController {
 
     @GetMapping("/test3")
     public String get2() {
-        return "auth/login/login";
+        return "auth/login";
     }
+
+    @GetMapping("/test4")
+    public String get3() {
+        return "auth/register";
+    }
+
+    @GetMapping("/test5")
+    public String get4() {
+        return "client/blog";
+    }
+
 }

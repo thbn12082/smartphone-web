@@ -26,6 +26,8 @@
                 <link
                     href="https://fonts.googleapis.com/css2?family=Inria+Serif:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Island+Moments&display=swap"
                     rel="stylesheet">
+                <link href="https://fonts.googleapis.com/css2?family=Jacques+Francois+Shadow&display=swap"
+                    rel="stylesheet">
 
                 <style>
                     .rating-box {
@@ -152,6 +154,12 @@
                             width: 80%;
                         }
                     }
+
+                    .my-element {
+                        font-family: "Jacques Francois Shadow", serif;
+                        font-weight: 400;
+                        font-style: normal;
+                    }
                 </style>
             </head>
 
@@ -160,7 +168,15 @@
                 <jsp:include page="layout/header.jsp" />
 
                 <!-- Masthead -->
-                <div class="BannerTheme_sliderWrap__csOTb">
+                <div class="BannerTheme_sliderWrap__csOTb " style="margin-top: 15vh;">
+                    <div class="container">
+                        <h1>Smartphoneshop</h1>
+                        <div style="display: flex;">
+                            <h2 class="check" style="font-weight: 100;">Mua sắm thông minh tiết kiệm thời gian cùng
+                            </h2>
+                            <h2 style="margin-left: 5px; font-size: 56px;" class="my-element"> Smartphoneshop</h2>
+                        </div>
+                    </div>
                     <a class="BannerTheme_sliderItem__0Yheb BannerTheme_fadeIn__f2GRS" href="/" target="_blank"
                         rel="dofollow" draggable="false">
                         <div class="bg-[length:100%_auto] bg-[center_top] bg-no-repeat BannerTheme_sliderBg__lb4oh"

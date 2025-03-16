@@ -2,7 +2,7 @@
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
         <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
             <div
-                style="display: flex;justify-content: center;align-items: center;margin: 0;background-color: #f0f0f0; margin-bottom: 10px; margin-top: 15px;">
+                style="display: flex;justify-content: center;align-items: center;margin: 0;background-color: #f0f0f0; margin-bottom: 15px; margin-top: 15px;">
                 <div class="rating-box">
                     <p class="question">Bạn có hài lòng với trải nghiệm tìm kiếm thông tin, sản phẩm trên website
                         không?

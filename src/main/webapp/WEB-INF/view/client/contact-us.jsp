@@ -134,7 +134,8 @@
                 <jsp:include page="layout/header.jsp" />
 
                 <div class="container">
-                    <img src="https://housedesign.vn/wp-content/uploads/2019/12/image29-10.jpg" alt="">
+                    <img src="https://housedesign.vn/wp-content/uploads/2019/12/image29-10.jpg" alt=""
+                        style="margin-top: 12vh;">
                     <div class="row align-items-center" style="margin-top: 10%;">
                         <div class="col-lg-6 mb-4">
                             <h1 class="check text-center">About Us</h1>

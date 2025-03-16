@@ -348,110 +348,105 @@
             <body id="page-top">
                 <!-- Navigation -->
                 <jsp:include page="layout/header.jsp" />
-                <div class="product-container container" style="margin-top: 15vh;">
-                    <div class="product-image" style="display: flex;flex-direction: column;">
-                        <img src="https://n11scdn.akamaized.net/a1/375_535/04/38/54/01/IMG-3759521437385414794.jpg"
-                            alt="iPhone 16 Plus 128GB">
-                        <div class="color-options">
-                            <div class="color-list">
-                                <div class="color-item blue" style="margin-right: 5px;">Blue</div>
-                                <div class="color-item green" style="margin-right: 5px;">Green</div>
-                                <div class="color-item pink" style="margin-right: 5px;">Pink</div>
-                                <div class="color-item white" style="margin-right: 5px;">White</div>
-                                <div class="color-item black" style="margin-right: 5px;">Black</div>
-                            </div>
+                <div class="container" style="margin-bottom: 10px;">
 
-                        </div>
+                    <h1 class="check" style="font-weight: 100; margin-top: 15vh;">Sạc dự phòng cho điện thoại</h1>
+                    <div class="pic" style="width: 100%; height: 600px; object-fit: cover; display: flex;">
+                        <img src="https://ugreen.vn/wp-content/uploads/2024/11/pin-du-phong-ugreen-pb724-12000mah-100w-35526b-2.webp"
+                            alt="" style="width: 50%; height: 600px; object-fit: cover;">
+
+                        <img src="https://ugreen.vn/wp-content/uploads/2024/10/top-4-thuong-hieu-pin-sac-du-phong-hang-dau-hien-nay-5.jpg"
+                            alt="">
                     </div>
-                    <div class="product-details">
-                        <h1 class="product-title">iPhone 16 Plus 128GB</h1>
+                    <div style="color: #888; font-size: 20px; margin-top: 10px; margin-bottom: 10px;">
+                        <p>Sạc dự phòng là phụ kiện quen thuộc, được sản xuất dành cho những người dùng điện thoại, máy
+                            tính bảng. Công dụng chính của sản phẩm này là lưu trữ điện năng để cung cấp cho điện
+                            thoại, máy tính bảng... ở bất cứ nơi đâu khi mà họ không thể chủ động được về nguồn điện
+                            nhằm thực hiện quá trình sạc pin như thông thường.
+                            Về cơ bản, sạc dự phòng được thiết kế rất nhỏ gọn, để bạn có thể mang theo dễ dàng tới nhiều
+                            nơi.</p>
+                        <p>Sạc dự phòng là một món phụ kiện không thể thiếu cho những ai sử dụng điện thoại thông minh
+                            thường xuyên. Sạc dự phòng giúp người dùng không gặp phải tình trạng hết pin bất ngờ khi
+                            đang di chuyển, công tác hay đi chơi xa. Tuy nhiên, với thị trường đa dạng như hiện nay,
+                            việc lựa chọn được một sản phẩm sạc dự phòng tốt không phải là điều dễ dàng.</p>
+                        <p>Sạc dự phòng là một thiết bị có khả năng lưu trữ điện năng bằng cách sạc đầy như một chiếc
+                            điện thoại di động từ đó có thể sử dụng để sạc các thiết bị điện tử như smart phone, máy
+                            tính bảng, máy nghe nhạc.</p>
+                        <p>Sạc pin dự phòng là một sản phẩm công nghệ được ưu chuộng hiện nay vì thế sản phẩm ngày càng
+                            đa dạng đáp ứng cho nhu cầu sử dụng hằng ngày và được phân làm 3 loại chính bao gồm:
+                        <ul>
+                            <li>Sạc pin dự phòng thông thường – Loại sạc phổ thông nhất hiện nay được sử dụng cho các
+                                dòng điện thoại và máy tính bảng chạy hệ điều hành IOS và Android thường có dung tích từ
+                                500
+                                đến 50.000 mAh.</li>
+                            <li>Sạc pin dư phòng ốp lưng – Loại sạc có thiết kế giống ốp lưng có khả năng vừa sạc vừa
+                                bảo vệ
+                                an toàn cho thiết bị.</li>
+                            <li>Sạc pin dự phòng không dây – Là dòng sản phẩm cao cấp có khả năng sạc không dây và chỉ
+                                sử
+                                dụng cho các dòng máy cao cấp có hỗ trợ sạc không dây.</p>
+                            </li>
+                        </ul>
 
-                        <div class="price-container">
-                            <div class="price-left">
-                                <p class="buy-now">Mua ngay với giá</p>
-                                <p class="current-price">25.090.000 ₫</p>
-                                <p class="old-price">25.990.000₫ 3%</p>
-
-                            </div>
-
-                        </div>
-                        <div class="promotion-container">
-                            <p class="choose-promotion">Chọn 1 trong các khuyến mãi sau:</p>
-                            <div class="promotion-item">
-                                <div class="promotion-header" style="display: flex;">
-                                    <span class="promotion-title">Giá online siêu rẻ</span>
-                                    <span class="promotion-icon">⚡</span>
 
 
-                                </div>
-                                <p class="promotion-price">25.090.000 ₫ -3%</p>
-                            </div>
-                            <div class="promotion-item">
-                                <p class="promotion-title">Khuyến mãi nổi bật</p>
-                                <ul class="promotion-list">
-                                    <li>Giảm ngay 300,000₫</li>
-
-                                </ul>
-                            </div>
-                        </div>
-
-                        <button class="add-to-cart" style="margin-top: 12%;width: 100%;">Add to
-                            cart</button>
                     </div>
-                </div>
-
-
-                <div class="container text-center" style="margin-top: 3vh;">
-
-                    <h1 class="check" style="font-weight: 100; font-size: 85px">Thông tin sản phẩm</h1>
-                    <div style="display: flex;">
-
-                        <div style="font-size: 20px; text-align: left;">
-                            <p>Không chỉ đột phá về công nghệ, iPhone 16 Pro Max còn mang đến làn gió mới với bảng màu
-                                sắc ấn
-                                tượng, cho phép người dùng tự do thể hiện phong cách cá nhân.
-                                Bên cạnh bộ ba gam màu quen thuộc: Titan đen, Titan trắng, Titan tự nhiên, iPhone 16 Pro
-                                Max còn
-                                giới thiệu phiên bản màu sắc hoàn toàn mới - Titan Sa Mạc. Lấy cảm hứng từ vẻ đẹp hoang
-                                sơ, đầy
-                                mê hoặc của sa mạc, Titan Sa Mạc hứa hẹn sẽ là lựa chọn hàng đầu cho những ai yêu thích
-                                sự độc
-                                đáo và khác biệt.
-                            </p>
-
-                            <p>Màn hình iPhone 16 Pro Max tăng thêm 0.2 inch so với thế hệ trước, nâng tổng kích thước
-                                lên 6.9
-                                inch, chính thức trở thành chiếc iPhone lớn nhất mà hãng từng sản xuất. Dù vẫn giữ
-                                nguyên thiết
-                                kế tổng thể, iPhone 16 Pro Max vẫn mang đến sự đột phá với viền màn hình siêu mỏng -
-                                mỏng nhất
-                                từ trước đến nay - hứa hẹn mang đến trải nghiệm thị giác ấn tượng.</p>
-
-
-                            <p>
-                                Bên cạnh đó, Apple cũng thay đổi chi tiết nhỏ ở cụm camera, với phần viền ống kính đồng
-                                màu với
-                                mặt lưng, tạo nên tổng thể hài hòa và sang trọng. Đặc biệt, iPhone 16 Pro Max sở hữu mặt
-                                lưng
-                                kính nhám kết hợp cùng khung viền titan siêu bền, mang đến vẻ ngoài sang trọng, chống
-                                trầy xước
-                                tốt hơn và cảm giác cầm nắm chắc chắn, thoải mái.
-                            </p>
-                        </div>
-                        <div>
-                            <img src="https://n11scdn.akamaized.net/a1/375_535/04/38/54/01/IMG-3759521437385414794.jpg"
-                                alt="iPhone 16 Plus 128GB">
-                        </div>
-                    </div>
-
-
 
                 </div>
-
 
                 <jsp:include page="./layout/experience.jsp" />
                 <div class="container">
                     <h1 class="check mb-4">Sản phẩm liên quan</h1>
+                    <div class="row">
+                        <div class="col-sm-6 col-md-4 col-lg-3 mb-4">
+                            <div class="card h-100">
+                                <img src="https://cdn.viettelstore.vn/Images/Product/ProductImage/70698293.jpeg"
+                                    class="card-img-top img-fluid" alt="Xiaomi Redmi Note 14">
+                                <div class="card-body">
+                                    <h5 class="card-title">Xiaomi Redmi Note</h5>
+                                    <p class="card-text">8GB/128GB</p>
+                                    <p class="text-primary fw-bold">5.490.000₫</p>
+                                    <p class="text-muted">Quà 200.000₫</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6 col-md-4 col-lg-3 mb-4">
+                            <div class="card h-100">
+                                <img src="https://cdn.tgdd.vn/Products/Images/42/305658/iphone-15-pro-max-blue-thumbnew-600x600.jpg"
+                                    class="card-img-top img-fluid" alt="iPhone 15 Pro Max">
+                                <div class="card-body">
+                                    <h5 class="card-title">iPhone 15 Pro Max</h5>
+                                    <p class="card-text">8GB/128GB</p>
+                                    <p class="card-text">32.890.000₫</p>
+                                    <p class="text-muted">Quà 1.000.000₫</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6 col-md-4 col-lg-3 mb-4">
+                            <div class="card h-100">
+                                <img src="https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/1/5/15_2_7_2_5.jpg"
+                                    class="card-img-top img-fluid" alt="iPhone 13">
+                                <div class="card-body">
+                                    <h5 class="card-title">iPhone 13</h5>
+                                    <p class="card-text">8GB/128GB</p>
+                                    <p class="card-text">12.850.000₫</p>
+                                    <p class="text-muted">Quà 500.000₫</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6 col-md-4 col-lg-3 mb-4">
+                            <div class="card h-100">
+                                <img src="https://didongthongminh.vn/images/products/2025/02/08/original/A60_5g.jpg"
+                                    class="card-img-top img-fluid" alt="OPPO A60">
+                                <div class="card-body">
+                                    <h5 class="card-title">OPPO A60</h5>
+                                    <p class="card-text">8GB/128GB</p>
+                                    <p class="card-text">5.490.000₫</p>
+                                    <p class="text-muted">Quà 200.000₫</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     <div class="row">
                         <div class="col-sm-6 col-md-4 col-lg-3 mb-4">
                             <div class="card h-100">

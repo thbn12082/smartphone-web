@@ -2,10 +2,11 @@
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
         <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
             <!-- <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav"> -->
-            <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav" style="background-color: black;">
+            <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav"
+                style="background-color: whitesmoke;">
                 <div class="container">
                     <a href="/" style="text-decoration: none;">
-                        <p style="color: antiquewhite; font-size: 30px;">Smartphone shop</p>
+                        <p style="color: black; font-size: 30px;">Smartphone shop</p>
                     </a>
 
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
@@ -16,9 +17,9 @@
                     </button>
                     <div class="collapse navbar-collapse" id="navbarResponsive">
                         <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
-                            <li class="nav-item" style="color: antiquewhite;">Trang chu</li>
-                            <li class="nav-item" style="color: antiquewhite;">San pham</li>
-                            <li class="nav-item" style="color: antiquewhite;">Login</li>
+                            <li class="nav-item" style="color: black;">Trang chu</li>
+                            <li class="nav-item" style="color: black;">San pham</li>
+                            <li class="nav-item" style="color: black;">Login</li>
                         </ul>
                     </div>
                 </div>
