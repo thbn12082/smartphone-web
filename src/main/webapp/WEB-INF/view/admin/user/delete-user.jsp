@@ -62,7 +62,6 @@
                     </div>
                 </main>
 
-                <jsp:include page="../layout/footer.jsp" />
                 <script src="/js/bootstrap.min.js"></script>
                 <script src="/js/dashboard.js"></script>
 

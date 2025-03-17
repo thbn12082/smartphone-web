@@ -52,9 +52,121 @@
                                         <a href="/admin/product"><button class="btn btn-success">Back</button></a>
                                     </div>
                                 </div>
+                                <div class="col-xl-3"></div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xl-3"></div>
+                                <div class="col-xl-6">
+                                    <form:form action="/admin/product/create" method="post" modelAttribute="newProduct"
+                                        enctype="multipart/form-data">
 
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <c:set var="errorName">
+                                                        <form:errors path="name" cssClass="invalid-feedback" />
+                                                    </c:set>
+                                                    <label for="name" type="text" class="form-label">Name:</label>
+                                                    <form:input type="text"
+                                                        class="form-control ${not empty errorName ? 'is-invalid' : ''}"
+                                                        id="name" path="name" />
+                                                    ${errorName}
+                                                </div>
+                                            </div>
 
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <c:set var="errorPrice">
+                                                        <form:errors path="price" cssClass="invalid-feedback" />
+                                                    </c:set>
+                                                    <label for="price" class="form-label ">Price:</label>
+                                                    <form:input type="number"
+                                                        class="form-control ${not empty errorPrice ? 'is-invalid':''}"
+                                                        id="price" path="price" />
+                                                    ${errorPrice}
+                                                </div>
+                                            </div>
+                                        </div>
 
+                                        <div class="form-group">
+                                            <c:set var="errorDetailDesc">
+                                                <form:errors path="detailDesc" cssClass="invalid-feedback" />
+                                            </c:set>
+                                            <label for="exampleFormControlTextarea1">Detail description:</label>
+                                            <form:textarea type="text"
+                                                class="form-control ${not empty errorDetailDesc ? 'is-invalid': ''}"
+                                                id="detailDesc" rows="3" path="detailDesc" />
+                                            ${errorDetailDesc}
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <c:set var="errorShortDesc">
+                                                        <form:errors path="shortDesc" cssClass="invalid-feedback" />
+                                                    </c:set>
+                                                    <label for="shortDesc" class="form-label">Short
+                                                        description:</label>
+                                                    <form:input type="text"
+                                                        class="form-control ${not empty errorShortDesc ? 'is-invalid' : ''}"
+                                                        id="shortDesc" path="shortDesc" />
+                                                    ${errorShortDesc}
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <c:set var="errorQuantity">
+                                                        <form:errors path="quantity" cssClass="invalid-feedback" />
+                                                    </c:set>
+                                                    <label for="quantity1" class="form-label ">Quantity:</label>
+                                                    <form:input type="number"
+                                                        class="form-control ${not empty errorQuantity ? 'is-invalid': ''}"
+                                                        id="quantity1" path="quantity" />
+                                                    ${errorQuantity}
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="factory" class="form-label">Factory:</label>
+                                                    <form:select class="form-select" path="factory" id="factory">
+                                                        <form:option value="Apple">Apple</form:option>
+                                                        <form:option value="Samsung">Samsung</form:option>
+
+                                                    </form:select>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="target" class="form-label">Target:</label>
+                                                    <form:select class="form-select" path="target" id="target">
+                                                        <form:option value="Gaming">Gaming</form:option>
+                                                        <form:option value="Work">Work</form:option>
+                                                    </form:select>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="avatarFile" class="form-label">Image:</label>
+                                            <input class="form-control" type="file" id="avatarFile"
+                                                accept=".png, .jpg, .jpeg" name="thebinhFile" />
+                                        </div>
+
+                                        <br>
+                                        <img style="max-height: 250px; display: none;" alt="avatar preview"
+                                            id="avatarPreview" />
+                                        <br>
+
+                                        <div class="d-flex justify-content-between">
+                                            <button type="submit" class="btn btn-primary">Create</button>
+                                            <a href="/admin/product" class="btn btn-success">Back</a>
+                                        </div>
+                                    </form:form>
+
+                                </div>
                                 <div class="col-xl-3"></div>
                             </div>
                         </div>
@@ -62,7 +174,7 @@
                     </div>
                 </main>
 
-                <jsp:include page="../layout/footer.jsp" />
+
                 <script src="/js/bootstrap.min.js"></script>
                 <script src="/js/dashboard.js"></script>
 

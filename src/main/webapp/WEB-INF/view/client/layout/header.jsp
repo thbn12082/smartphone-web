@@ -17,9 +17,18 @@
                     </button>
                     <div class="collapse navbar-collapse" id="navbarResponsive">
                         <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
-                            <li class="nav-item" style="color: black;">Trang chu</li>
-                            <li class="nav-item" style="color: black;">San pham</li>
-                            <li class="nav-item" style="color: black;">Login</li>
+                            <li class="nav-item" style="color: black;"><a href="/test6"
+                                    style="text-decoration: none;color: black;">Đơn hàng của tôi </a></li>
+
+                            <li class="nav-item"><a href="/test" style="text-decoration: none;color: black;">San
+                                    pham</a></li>
+
+
+
+                            <li class="nav-item" style="color: black;"><a href="/test3"
+                                    style="text-decoration: none; margin-left: 10px;color: black;">Login</a></li>
+
+
                         </ul>
                     </div>
                 </div>

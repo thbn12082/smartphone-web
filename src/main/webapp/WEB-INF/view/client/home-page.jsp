@@ -177,7 +177,7 @@
                             <h2 style="margin-left: 5px; font-size: 56px;" class="my-element"> Smartphoneshop</h2>
                         </div>
                     </div>
-                    <a class="BannerTheme_sliderItem__0Yheb BannerTheme_fadeIn__f2GRS" href="/" target="_blank"
+                    <a class="BannerTheme_sliderItem__0Yheb BannerTheme_fadeIn__f2GRS" href="/test2" target="_blank"
                         rel="dofollow" draggable="false">
                         <div class="bg-[length:100%_auto] bg-[center_top] bg-no-repeat BannerTheme_sliderBg__lb4oh"
                             style="background-color:#F3F4F6 !important">
@@ -269,18 +269,23 @@
                                 </div>
                             </div>
                         </div>
+
                         <div class="col-sm-6 col-md-4 col-lg-3 mb-4">
-                            <div class="card">
-                                <img src="https://clickbuy.com.vn/uploads/pro/iphone-16-8975-lthx-300x300-217852.jpg"
-                                    class="card-img-top img-fluid" alt="iPhone 13">
-                                <div class="card-body">
-                                    <h5 class="card-title">iPhone 13</h5>
-                                    <p class="card-text">8GB/128GB</p>
-                                    <p class="card-text">12.850.000₫</p>
-                                    <p class="text-muted">Quà 500.000₫</p>
+                            <a href="/test2" style="text-decoration: none;">
+                                <div class="card">
+                                    <img src="https://clickbuy.com.vn/uploads/pro/iphone-16-8975-lthx-300x300-217852.jpg"
+                                        class="card-img-top img-fluid" alt="iPhone 13">
+                                    <div class="card-body">
+                                        <h5 class="card-title" style="color: black;">iPhone 13</h5>
+                                        <p class="card-text">8GB/128GB</p>
+                                        <p class="card-text">12.850.000₫</p>
+                                        <p class="text-muted">Quà 500.000₫</p>
+                                    </div>
                                 </div>
-                            </div>
+                            </a>
                         </div>
+
+
                         <div class="col-sm-6 col-md-4 col-lg-3 mb-4">
                             <div class="card">
                                 <img src="https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/d/i/dien-thoai-xiaomi-redmi-note-14_2__2.png"
@@ -304,7 +309,7 @@
                             <div class="container">
                                 <div id="carouselId" class="carousel slide" data-bs-ride="carousel">
                                     <div class="carousel-inner">
-                                        <a href="#" style="text-decoration: none;">
+                                        <a href="/test5" style="text-decoration: none;">
                                             <div class="carousel-item active">
                                                 <img src="https://image.dienthoaivui.com.vn/x,webp,q90/https://dashboard.dienthoaivui.com.vn/uploads/dashboard/editor_upload/sac-du-phong-gia-re-duoi-100k-11.jpg"
                                                     class="img-fluid w-100 rounded" alt="First slide">
@@ -393,8 +398,11 @@
                                     gây được tiếng vang lớn trong cộng đồng người tiêu dùng Việt Nam</p>
                                 <br>
                                 <div class="d-flex justify-content-center justify-content-lg-start">
-                                    <button class="btn btn-dark me-2">Tìm hiểu thêm</button>
-                                    <button class="btn btn-light">Mua sắm ngay</button>
+                                    <a href="/test1">
+                                        <button class="btn btn-dark me-2">Tìm hiểu thêm</button>
+                                    </a>
+                                    <a href="/test"><button class="btn btn-light">Mua sắm ngay</button></a>
+
                                 </div>
                             </div>
                             <div class="col-lg-6">

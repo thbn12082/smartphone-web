@@ -269,16 +269,19 @@
                             </div>
                         </div>
                         <div class="col-sm-6 col-md-4 col-lg-3 mb-4">
-                            <div class="card">
-                                <img src="https://clickbuy.com.vn/uploads/pro/iphone-16-8975-lthx-300x300-217852.jpg"
-                                    class="card-img-top img-fluid" alt="iPhone 13">
-                                <div class="card-body">
-                                    <h5 class="card-title">iPhone 13</h5>
-                                    <p class="card-text">8GB/128GB</p>
-                                    <p class="card-text">12.850.000₫</p>
-                                    <p class="text-muted">Quà 500.000₫</p>
+                            <a href="/test2" style="text-decoration: none;">
+                                <div class="card">
+                                    <img src="https://clickbuy.com.vn/uploads/pro/iphone-16-8975-lthx-300x300-217852.jpg"
+                                        class="card-img-top img-fluid" alt="iPhone 13">
+                                    <div class="card-body">
+                                        <h5 class="card-title" style="color: black;">iPhone 13</h5>
+                                        <p class="card-text">8GB/128GB</p>
+                                        <p class="card-text">12.850.000₫</p>
+                                        <p class="text-muted">Quà 500.000₫</p>
+                                    </div>
                                 </div>
-                            </div>
+                            </a>
+
                         </div>
                         <div class="col-sm-6 col-md-4 col-lg-3 mb-4">
                             <div class="card">

@@ -27,6 +27,42 @@
                 <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
                 <!-- CSS Files -->
                 <link href="/css/dashboard.css" rel="stylesheet" />
+                <style>
+                    .satisfaction-stats {
+                        width: 300px;
+                        margin: 50px auto;
+                        text-align: center;
+                        font-family: sans-serif;
+                    }
+
+                    .stats {
+                        display: flex;
+                        justify-content: space-around;
+                        margin-bottom: 20px;
+                    }
+
+                    .satisfied,
+                    .dissatisfied {
+                        padding: 20px;
+                        border-radius: 5px;
+                    }
+
+                    .satisfied {
+                        background-color: #e6f7e6;
+                        color: #27ae60;
+                    }
+
+                    .dissatisfied {
+                        background-color: #ffe6e6;
+                        color: #e74c3c;
+                    }
+
+                    .stats span {
+                        font-size: 2em;
+                        font-weight: bold;
+                        display: block;
+                    }
+                </style>
             </head>
 
             <body class="g-sidenav-show   bg-gray-100">
@@ -147,24 +183,31 @@
                         <div class="col-lg-7 mb-lg-0 mb-4">
                             <div class="card z-index-2 h-100">
                                 <div class="card-header pb-0 pt-3 bg-transparent">
-                                    <h6 class="text-capitalize">Sales overview</h6>
-                                    <p class="text-sm mb-0">
-                                        <i class="fa fa-arrow-up text-success"></i>
-                                        <span class="font-weight-bold">4% more</span> in 2021
-                                    </p>
-                                </div>
-                                <div class="card-body p-3">
-                                    <div class="chart">
-                                        <canvas id="chart-line" class="chart-canvas" height="300"></canvas>
+                                    <div class="satisfaction-stats">
+                                        <h2>Mức độ hài lòng của khách hàng</h2>
+                                        <div class="stats">
+                                            <div class="satisfied">
+                                                <span id="satisfied-count">0</span>
+                                                <p>Hài lòng</p>
+                                            </div>
+                                            <div class="dissatisfied">
+                                                <span id="dissatisfied-count">0</span>
+                                                <p>Không hài lòng</p>
+                                            </div>
+                                        </div>
+                                        <div class="percentage">
+                                            <p>Tỷ lệ hài lòng: <span id="satisfaction-percentage">0</span>%</p>
+                                        </div>
                                     </div>
                                 </div>
+
                             </div>
                         </div>
                         <div class="col-lg-5">
                             <div class="card card-carousel overflow-hidden h-100 p-0">
                                 <div id="carouselExampleCaptions" class="carousel slide h-100" data-bs-ride="carousel">
                                     <div class="carousel-inner border-radius-lg h-100">
-                                        <div class="carousel-item h-100 active" style="background-image: url('img/carousel-1.jpg');
+                                        <div class="carousel-item h-100 active" style="background-image: url('https://img.youtube.com/vi/GDlkCkcIqTs/maxresdefault.jpg');
                         background-size: cover;">
                                             <div
                                                 class="carousel-caption d-none d-md-block bottom-0 text-start start-0 ms-5">
@@ -177,7 +220,7 @@
                                                     to get good at.</p>
                                             </div>
                                         </div>
-                                        <div class="carousel-item h-100" style="background-image: url('img/carousel-2.jpg');
+                                        <div class="carousel-item h-100" style="background-image: url('https://cdn.tgdd.vn/Files/2022/08/18/1457016/4-tinh-nang-an-tren-ipad-001_1280x720-800-resize.jpg');
                         background-size: cover;">
                                             <div
                                                 class="carousel-caption d-none d-md-block bottom-0 text-start start-0 ms-5">
@@ -191,7 +234,7 @@
                                                     learn.</p>
                                             </div>
                                         </div>
-                                        <div class="carousel-item h-100" style="background-image: url('img/carousel-3.jpg');
+                                        <div class="carousel-item h-100" style="background-image: url('https://i.insider.com/65c4f207917a1dae02447572?width=700');
                         background-size: cover;">
                                             <div
                                                 class="carousel-caption d-none d-md-block bottom-0 text-start start-0 ms-5">
@@ -446,13 +489,27 @@
                             </div>
                         </div>
                     </div>
-                    <jsp:include page="../layout/footer.jsp" />
+
                 </div>
                 </main>
                 </div>
                 <!--   Core JS Files   -->
                 <script src="/js/bootstrap.min.js"></script>
                 <script src="/js/dashboard.js"></script>
+                <script>
+                    // Dữ liệu mô phỏng
+                    const satisfiedCount = 150;
+                    const dissatisfiedCount = 30;
+
+                    // Hiển thị số liệu
+                    document.getElementById('satisfied-count').textContent = satisfiedCount;
+                    document.getElementById('dissatisfied-count').textContent = dissatisfiedCount;
+
+                    // Tính toán và hiển thị tỷ lệ
+                    const totalCount = satisfiedCount + dissatisfiedCount;
+                    const satisfactionPercentage = (satisfiedCount / totalCount * 100).toFixed(1);
+                    document.getElementById('satisfaction-percentage').textContent = satisfactionPercentage;
+                </script>
             </body>
 
             </html>

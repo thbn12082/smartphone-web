@@ -90,10 +90,112 @@
 
                     </div>
                 </main>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-6 col-md-4 col-lg-3 mb-4">
+                            <div class="card">
+                                <img src="https://cdn.viettelstore.vn/Images/Product/ProductImage/70698293.jpeg"
+                                    class="card-img-top img-fluid" alt="Xiaomi Redmi Note 14">
+                                <div class="card-body">
+                                    <h5 class="card-title">Xiaomi Redmi Note </h5>
+                                    <p class="card-text">8GB/128GB</p>
+                                    <p class="text-primary fw-bold">5.490.000₫</p>
+                                    <p class="text-muted">Quà 200.000₫</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6 col-md-4 col-lg-3 mb-4">
+                            <div class="card">
+                                <img src="https://cdn.tgdd.vn/Products/Images/42/305658/iphone-15-pro-max-blue-thumbnew-600x600.jpg"
+                                    class="card-img-top img-fluid" alt="iPhone 15 Pro Max">
+                                <div class="card-body">
+                                    <h5 class="card-title">iPhone 15 Pro Max</h5>
+                                    <p class="card-text">8GB/128GB</p>
+                                    <p class="card-text">32.890.000₫</p>
+                                    <p class="text-muted">Quà 1.000.000₫</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6 col-md-4 col-lg-3 mb-4">
+                            <div class="card">
+                                <img src="https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/1/5/15_2_7_2_5.jpg"
+                                    class="card-img-top img-fluid" alt="iPhone 13">
+                                <div class="card-body">
+                                    <h5 class="card-title">iPhone 13</h5>
+                                    <p class="card-text">8GB/128GB</p>
+                                    <p class="card-text">12.850.000₫</p>
+                                    <p class="text-muted">Quà 500.000₫</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6 col-md-4 col-lg-3 mb-4">
+                            <div class="card">
+                                <img src="https://didongthongminh.vn/images/products/2025/02/08/original/A60_5g.jpg"
+                                    class="card-img-top img-fluid" alt="OPPO A60">
+                                <div class="card-body">
+                                    <h5 class="card-title">OPPO A60 </h5>
+                                    <p class="card-text">8GB/128GB</p>
+                                    <p class="card-text">5.490.000₫</p>
+                                    <p class="text-muted">Quà 200.000₫</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6 col-md-4 col-lg-3 mb-4">
+                            <div class="card">
+                                <img src="https://cdn2.cellphones.com.vn/insecure/rs:fill:0:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/_/s/_sm-a536_04._device_design_m_1_2.jpg"
+                                    class="card-img-top img-fluid" alt="Xiaomi Redmi Note 14">
+                                <div class="card-body">
+                                    <h5 class="card-title">Samsung A50</h5>
+                                    <p class="card-text">8GB/128GB</p>
+                                    <p class="text-primary fw-bold">5.490.000₫</p>
+                                    <p class="text-muted">Quà 200.000₫</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6 col-md-4 col-lg-3 mb-4">
+                            <div class="card">
+                                <img src="https://cdn2.cellphones.com.vn/x/media/catalog/product/s/s/ss-s24-ultra-xam-222.png"
+                                    class="card-img-top img-fluid" alt="iPhone 15 Pro Max">
+                                <div class="card-body">
+                                    <h5 class="card-title">Samsung S24 Ultra</h5>
+                                    <p class="card-text">8GB/128GB</p>
+                                    <p class="card-text">32.890.000₫</p>
+                                    <p class="text-muted">Quà 1.000.000₫</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6 col-md-4 col-lg-3 mb-4">
+                            <a href="/test2" style="text-decoration: none;">
+                                <div class="card">
+                                    <img src="https://clickbuy.com.vn/uploads/pro/iphone-16-8975-lthx-300x300-217852.jpg"
+                                        class="card-img-top img-fluid" alt="iPhone 13">
+                                    <div class="card-body">
+                                        <h5 class="card-title" style="color: black;">iPhone 13</h5>
+                                        <p class="card-text">8GB/128GB</p>
+                                        <p class="card-text">12.850.000₫</p>
+                                        <p class="text-muted">Quà 500.000₫</p>
+                                    </div>
+                                </div>
+                            </a>
 
-                <footer>
-                    <jsp:include page="../layout/footer.jsp" />
-                </footer>
+                        </div>
+                        <div class="col-sm-6 col-md-4 col-lg-3 mb-4">
+                            <div class="card">
+                                <img src="https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/d/i/dien-thoai-xiaomi-redmi-note-14_2__2.png"
+                                    class="card-img-top img-fluid" alt="OPPO A60">
+                                <div class="card-body">
+                                    <h5 class="card-title">OPPO A60 </h5>
+                                    <p class="card-text">8GB/128GB</p>
+                                    <p class="card-text">5.490.000₫</p>
+                                    <p class="text-muted">Quà 200.000₫</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
 
 
                 <script src="/js/bootstrap.min.js"></script>

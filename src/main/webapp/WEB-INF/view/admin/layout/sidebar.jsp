@@ -8,7 +8,7 @@
             <div class="sidenav-header">
                 <i class="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-none d-xl-none"
                     aria-hidden="true" id="iconSidenav"></i>
-                <a class="navbar-brand m-0" href="" target="_blank">
+                <a class="navbar-brand m-0" href="/" target="_blank">
                     <svg xmlns="http://www.w3.org/2000/svg" width="26px" height="26px" fill="currentColor"
                         class="bi bi-tablet" viewBox="0 0 16 16">
                         <path
@@ -60,29 +60,7 @@
                         </a>
                     </li>
 
-                    <li class="nav-item mt-3">
-                        <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">Account pages
-                        </h6>
-                    </li>
 
-                    <li class="nav-item">
-                        <a class="nav-link " href="../pages/sign-in.html">
-                            <div
-                                class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-                                <i class="ni ni-single-copy-04 text-dark text-sm opacity-10"></i>
-                            </div>
-                            <span class="nav-link-text ms-1">Sign In</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link " href="../pages/sign-up.html">
-                            <div
-                                class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-                                <i class="ni ni-collection text-dark text-sm opacity-10"></i>
-                            </div>
-                            <span class="nav-link-text ms-1">Sign Up</span>
-                        </a>
-                    </li>
                 </ul>
                 <div class="ps__rail-x" style="left: 0px; bottom: 0px;">
                     <div class="ps__thumb-x" tabindex="0" style="left: 0px; width: 0px;"></div>

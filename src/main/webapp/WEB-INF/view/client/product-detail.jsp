@@ -394,9 +394,11 @@
                                 </ul>
                             </div>
                         </div>
+                        <a href="/test6" style="text-decoration: none;">
+                            <button class="add-to-cart" style="margin-top: 12%;width: 100%;">Add to
+                                cart</button>
+                        </a>
 
-                        <button class="add-to-cart" style="margin-top: 12%;width: 100%;">Add to
-                            cart</button>
                     </div>
                 </div>
 

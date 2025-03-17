@@ -85,34 +85,46 @@ public class ProductController {
         return "redirect:/admin/product";
     }
 
+    // tat ca san pham
     @GetMapping("/test")
     public String getMethodName() {
         return "client/all-product";
     }
 
+    // lien he
     @GetMapping("/test1")
     public String get() {
         return "client/contact-us";
     }
 
+    // chi tiet san pham
     @GetMapping("/test2")
     public String get1() {
         return "client/product-detail";
     }
 
+    // login
     @GetMapping("/test3")
     public String get2() {
         return "auth/login";
     }
 
+    // register
     @GetMapping("/test4")
     public String get3() {
         return "auth/register";
     }
 
+    // blog
     @GetMapping("/test5")
     public String get4() {
         return "client/blog";
+    }
+
+    // order-detail
+    @GetMapping("/test6")
+    public String get5() {
+        return "client/cart-order-detail";
     }
 
 }
