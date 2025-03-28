@@ -2,6 +2,7 @@ package com.example.smartphone.domain;
 
 import java.util.List;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -31,8 +32,11 @@ public class Product {
     private double price;
     private String image;
     @NotEmpty(message = "detailDesc khong duoc de trong")
+    @Column(columnDefinition = "TEXT")
     private String detailDesc;
     @NotEmpty(message = "shortDesc khong duoc de trong")
+    @Column(columnDefinition = "TEXT")
+    // chip nhan cpu
     private String shortDesc;
     @NotNull
     @DecimalMin(value = "1", inclusive = true, message = "quantity phai lon hon 1")

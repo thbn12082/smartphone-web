@@ -2,6 +2,8 @@ package com.example.smartphone.domain;
 
 import java.util.List;
 
+import com.example.smartphone.service.validator.StrongPassword;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -33,6 +35,7 @@ public class User {
     @NotEmpty(message = "Email khong duoc de trong")
     private String email;
     @Size(min = 3, message = "password phai co toi thieu 3 ki tu")
+    @StrongPassword(message = "password phai co it nhat 1 chu hoa, 1 chu thuong, 1 so va 1 ki tu dac biet")
     private String password;
     @Size(min = 2, message = "fullname phai co toi thieu 2 ki tu")
     private String fullName;

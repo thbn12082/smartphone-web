@@ -103,18 +103,6 @@ public class ProductController {
         return "client/product-detail";
     }
 
-    // login
-    @GetMapping("/test3")
-    public String get2() {
-        return "auth/login";
-    }
-
-    // register
-    @GetMapping("/test4")
-    public String get3() {
-        return "auth/register";
-    }
-
     // blog
     @GetMapping("/test5")
     public String get4() {

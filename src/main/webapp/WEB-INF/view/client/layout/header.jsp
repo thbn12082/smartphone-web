@@ -1,35 +1,76 @@
 <%@page contentType="text/html" pageEncoding="UTF-8" %>
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
         <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-            <!-- <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav"> -->
-            <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav"
-                style="background-color: whitesmoke;">
-                <div class="container">
-                    <a href="/" style="text-decoration: none;">
-                        <p style="color: black; font-size: 30px;">Smartphone shop</p>
-                    </a>
+            <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+                <%@ page session="true" %>
+                    <!-- <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav"> -->
+                    <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav"
+                        style="background-color: whitesmoke;">
+                        <div class="container">
+                            <a href="/" style="text-decoration: none;">
+                                <p style="color: black; font-size: 30px;">Smartphone shop</p>
+                            </a>
+                            <c:if test="${not empty pageContext.request.userPrincipal}">
+                                <a href="/test" style="text-decoration: none;color: black; font-size: 19px;"> Tat ca
+                                    san
+                                    pham</a>
+                                <div style="display: flex;">
+                                    <div>
+                                        <p
+                                            style="font-weight: 300; font-size: 15px;margin-right: 37px;margin-top: 25px;color: black;">
+                                            Welcome,
+                                            <c:out value="${sessionScope.fullName}" />
+                                        </p>
 
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                        data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
-                        aria-label="Toggle navigation">
-                        Menu
-                        <i class="fas fa-bars ms-1"></i>
-                    </button>
-                    <div class="collapse navbar-collapse" id="navbarResponsive">
-                        <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
-                            <li class="nav-item" style="color: black;"><a href="/test6"
-                                    style="text-decoration: none;color: black;">Đơn hàng của tôi </a></li>
+                                    </div>
+                                    <a href="#" class="position-relative me-4 my-auto" style="color: gray;">
+                                        <i class="fa fa-shopping-bag fa-2x"></i>
+                                        <span
+                                            class="position-absolute bg-dark rounded-circle d-flex align-items-center justify-content-center text-white px-1"
+                                            style="top: -5px; left: 15px; height: 20px; min-width: 20px;">3</span>
+                                    </a>
 
-                            <li class="nav-item"><a href="/test" style="text-decoration: none;color: black;">San
-                                    pham</a></li>
+                                    <div class="dropdown my-auto">
+                                        <a href="#" class="dropdown" role="button" id="dropdownMenuLink"
+                                            data-bs-toggle="dropdown" aria-expanded="false" data-bs-toggle="dropdown"
+                                            aria-expanded="false" style="color: gray;">
+                                            <i class="fas fa-user fa-2x"></i>
+                                        </a>
+                                        <ul class="dropdown-menu dropdown-menu-end p-4" aria-
+                                            labelledby="dropdownMenuLink">
+                                            <li class="d-flex align-items-center flex-column" style="min-width: 300px;">
+                                                <img style="width: 150px; height: 150px; border-radius: 50%; overflow: hidden;"
+                                                    src="/images/avatar/${sessionScope.avt}" />
+                                                <div class="text-center my-3">
+                                                    <c:out value="${sessionScope.fullName}" />
+                                                </div>
+                                            </li>
+                                            <li><a class="dropdown-item" href="#">Quản lý tài khoản</a></li>
+                                            <li><a class="dropdown-item" href="#">Lịch sử mua hàng</a></li>
+                                            <li>
+                                                <hr class="dropdown-divider">
+                                            </li>
+                                            <li>
+                                                <form action="/logout" method="post">
+
+                                                    <input type="hidden" name="${_csrf.parameterName}"
+                                                        value="${_csrf.token}" />
+
+                                                    <button class="dropdown-item" type="submit">Đăng xuất</button>
+                                                </form>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </c:if>
+                            <c:if test="${empty pageContext.request.userPrincipal}">
+                                <a href="/login" class="position-relative me-4 my-auto"
+                                    style="color: rgb(6, 21, 108);text-decoration: none; padding:10px 20px; border-radius: 10px; font-size: 15px;background-color: burlywood;">
+                                    Đăng nhập
+                                </a>
+                            </c:if>
 
 
 
-                            <li class="nav-item" style="color: black;"><a href="/test3"
-                                    style="text-decoration: none; margin-left: 10px;color: black;">Login</a></li>
-
-
-                        </ul>
-                    </div>
-                </div>
-            </nav>
+                        </div>
+                    </nav>
