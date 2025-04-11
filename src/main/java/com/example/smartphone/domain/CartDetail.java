@@ -16,24 +16,22 @@ import lombok.ToString;
 
 @Getter
 @Setter
-@ToString
 @Entity
-@Table(name = "orders")
-public class Order {
+@Table(name = "cart_details")
+public class CartDetail {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
-    private double totalPrice;
+    private Long id;
 
-    private String recriverName;
-    private String receiverAddress;
-    private String receiverPhone;
-    private String status;
+    private long quantity;
+    private double price;
 
     @ManyToOne
-    @JoinColumn(name = "user_id")
-    private User user;
+    @JoinColumn(name = "product_id")
+    private Product product;
 
-    @OneToMany(mappedBy = "order")
-    List<OrderDetail> orderDetails;
+    @ManyToOne
+    @JoinColumn(name = "cart_id")
+    private Cart cart;
+
 }

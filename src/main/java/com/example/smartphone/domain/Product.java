@@ -7,6 +7,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.DecimalMin;
@@ -18,7 +20,6 @@ import lombok.ToString;
 
 @Getter
 @Setter
-@ToString
 @Entity
 @Table(name = "products")
 public class Product {
@@ -48,4 +49,7 @@ public class Product {
 
     @OneToMany(mappedBy = "product")
     List<OrderDetail> orderDetails;
+
+    @OneToMany(mappedBy = "product")
+    private List<CartDetail> cartDetails;
 }

@@ -73,4 +73,5 @@ public class HomePageController {
         this.userService.handleSaveUser(user);
         return "redirect:/login";
     }
+
 }

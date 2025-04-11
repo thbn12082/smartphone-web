@@ -51,11 +51,14 @@ public class CustomSuccessHandler implements AuthenticationSuccessHandler {
         }
 
         session.removeAttribute(WebAttributes.AUTHENTICATION_EXCEPTION);
-        // session.setAttribute("name", "The Binh");
         String email = authentication.getName();
         User user = this.userService.handleUserByEmail(email);
         session.setAttribute("fullName", user.getFullName());
         session.setAttribute("avt", user.getAvatar());
+        session.setAttribute("email", user.getEmail());
+        session.setAttribute("id", user.getId());
+        long sum = user.getCart() == null ? 0 : user.getCart().getSum();
+        session.setAttribute("sum", sum);
     }
 
     @Override

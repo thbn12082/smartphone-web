@@ -4,9 +4,12 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
+import com.example.smartphone.domain.Order;
 import com.example.smartphone.domain.Role;
 import com.example.smartphone.domain.User;
 import com.example.smartphone.domain.DTO.RegisterDTO;
+import com.example.smartphone.repository.OrderRepository;
+import com.example.smartphone.repository.ProductRepository;
 import com.example.smartphone.repository.RoleRepository;
 import com.example.smartphone.repository.UserRepository;
 
@@ -18,8 +21,13 @@ import jakarta.validation.constraints.Size;
 public class UserService {
     private final UserRepository userRepository;
     private final RoleRepository roleRepository;
+    private final ProductRepository productRepository;
+    private final OrderRepository orderRepository;
 
-    public UserService(UserRepository userRepository, RoleRepository roleRepository) {
+    public UserService(UserRepository userRepository, RoleRepository roleRepository,
+            ProductRepository productRepository, OrderRepository orderRepository) {
+        this.productRepository = productRepository;
+        this.orderRepository = orderRepository;
         this.userRepository = userRepository;
         this.roleRepository = roleRepository;
     }
@@ -71,6 +79,18 @@ public class UserService {
         user.setFullName(registerDTO.getFirstName() + " " + registerDTO.getLastName());
         return user;
 
+    }
+
+    public long countUser() {
+        return this.userRepository.count();
+    }
+
+    public long countProduct() {
+        return this.productRepository.count();
+    }
+
+    public long countOrder() {
+        return this.orderRepository.count();
     }
 
 }

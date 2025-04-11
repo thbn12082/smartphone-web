@@ -231,20 +231,25 @@
                                                     <p class="text-muted" style="font-size: 13px;text-align: center;">
                                                         ${product.shortDesc}
                                                     </p>
-                                                    <div class="d-flex flex-lg-wrap">
+                                                    <div class="d-flex flex-lg-wrap justify-content-center">
                                                         <p class="text-primary fw-bold mb-3"
                                                             style="font-size: 15px;text-align: center; width: 100%;">
                                                             <fmt:formatNumber type="number" value="${product.price}" />
                                                             ₫
                                                         </p>
-                                                        <a href="#"
-                                                            class="mx-auto btn border border-secondary rounded-pill px-3 "
-                                                            style="color: gray;">
-                                                            <i class="fa fa-shopping-bag me-2 "></i>
-                                                            Add to cart
-                                                        </a>
-                                                    </div>
 
+                                                        <form action="/add-product-to-cart/${product.id}" method="post">
+                                                            <input type="hidden" name="${_csrf.parameterName}"
+                                                                value="${_csrf.token}" />
+                                                            <button
+                                                                class="mx-auto btn border border-secondary rounded-pill px-3 "
+                                                                style="color: gray;">
+                                                                <i class="fa fa-shopping-bag me-2 "></i>
+                                                                Add to cart
+                                                            </button>
+                                                        </form>
+
+                                                    </div>
 
                                                 </div>
                                             </div>

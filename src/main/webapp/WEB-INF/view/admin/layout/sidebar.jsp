@@ -64,12 +64,16 @@
                                     </li>
 
                                 </ul>
-                                <div class="d-flex align-items-center flex-column" style="margin-top: 35vh;">
-                                    <img style="width: 150px; height: 150px; overflow: hidden; "
-                                        src="/images/avatar/${sessionScope.avt}" />
-                                    <div class="text-center my-3">
-                                        <c:out value="${sessionScope.fullName}" />
-                                    </div>
+
+                                <div
+                                    style="font-weight: 300; font-size: 20px;margin-top: 25px;color: white; padding: 10px 20px; border-radius: 10px; background-color: burlywood;">
+
+                                    <form action="/logout" method="post">
+
+                                        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+
+                                        <button class="dropdown-item" type="submit">Logout</button>
+                                    </form>
                                 </div>
                             </div>
 
@@ -94,28 +98,7 @@
 
                     <main class="main-content position-relative border-radius-lg ps">
                         <!-- Navbar -->
-                        <nav class="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl "
-                            id="navbarBlur" data-scroll="false">
-                            <div class="container-fluid py-1 px-3">
-                                <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
-                                    <div class="ms-md-auto pe-md-3 d-flex align-items-center">
-                                        <div
-                                            style="font-weight: 300; font-size: 20px;margin-right: 37px;margin-top: 25px;color: white; padding: 10px 20px; border-radius: 10px; background-color: burlywood;">
 
-                                            <form action="/logout" method="post">
-
-                                                <input type="hidden" name="${_csrf.parameterName}"
-                                                    value="${_csrf.token}" />
-
-                                                <button class="dropdown-item" type="submit">Logout</button>
-                                            </form>
-                                        </div>
-
-                                    </div>
-
-                                </div>
-                            </div>
-                        </nav>
                         <!-- End Navbar -->
 
                         <div class="ps__rail-x" style="left: 0px; bottom: 0px;">
