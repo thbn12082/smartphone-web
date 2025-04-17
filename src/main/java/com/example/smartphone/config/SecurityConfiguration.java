@@ -71,10 +71,10 @@ public class SecurityConfiguration {
                                 DispatcherType.INCLUDE)
                         .permitAll()
                         .requestMatchers("/", "/register", "/product/**", "/login", "/client/**", "/css/**", "/js/**",
-                                "/img/**",
-                                "/images/**")
+                                "/img/**", "/register",
+                                "/images/**", "/admin/**")
                         .permitAll()
-                        .requestMatchers("/admin/**").hasRole("ADMIN")
+                        // .requestMatchers("/admin/**").hasRole("ADMIN")
                         // ham hasRole se tu dong cos "ROLE_"
                         .anyRequest().authenticated())
                 .sessionManagement((sessionManagement) -> sessionManagement

@@ -21,18 +21,49 @@
                     rel="stylesheet" />
                 <link href="https://demos.creative-tim.com/argon-dashboard-pro/assets/css/nucleo-svg.css"
                     rel="stylesheet" />
-                <!-- Font Awesome Icons -->
-                <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
+
                 <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
                 <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
                 <!-- CSS Files -->
                 <link href="/css/dashboard.css" rel="stylesheet" />
+                <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
+                <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
+
+
                 <style>
+                    /* General improvements */
+                    .navbar {
+                        background-color: #f8f9fa !important;
+                        padding: 10px 20px;
+                    }
+
+                    .navbar a {
+                        color: #333;
+                        text-decoration: none;
+                        font-size: 18px;
+                        margin-right: 15px;
+                    }
+
+                    .navbar a:hover {
+                        color: #007bff;
+                    }
+
+                    .dropdown-menu {
+                        min-width: 250px;
+                    }
+
+                    .dropdown-menu img {
+                        width: 100px;
+                        height: 100px;
+                        border-radius: 50%;
+                    }
+
+                    /* Satisfaction stats */
                     .satisfaction-stats {
-                        width: 300px;
-                        margin: 50px auto;
+                        max-width: 400px;
+                        margin: 20px auto;
                         text-align: center;
-                        font-family: sans-serif;
+                        font-family: 'Open Sans', sans-serif;
                     }
 
                     .stats {
@@ -43,8 +74,9 @@
 
                     .satisfied,
                     .dissatisfied {
-                        padding: 20px;
-                        border-radius: 5px;
+                        padding: 15px;
+                        border-radius: 8px;
+                        text-align: center;
                     }
 
                     .satisfied {
@@ -58,9 +90,50 @@
                     }
 
                     .stats span {
-                        font-size: 2em;
+                        font-size: 1.8em;
                         font-weight: bold;
                         display: block;
+                    }
+
+                    /* Responsive adjustments */
+                    @media (max-width: 768px) {
+                        .navbar a {
+                            font-size: 16px;
+                        }
+
+                        .satisfaction-stats {
+                            width: 100%;
+                            padding: 10px;
+                        }
+
+                        .stats {
+                            flex-direction: column;
+                        }
+
+                        .satisfied,
+                        .dissatisfied {
+                            width: 100%;
+                            margin-bottom: 10px;
+                        }
+                    }
+
+                    @media (max-width: 576px) {
+                        .navbar a {
+                            font-size: 14px;
+                        }
+
+                        .dropdown-menu {
+                            min-width: 200px;
+                        }
+
+                        .dropdown-menu img {
+                            width: 80px;
+                            height: 80px;
+                        }
+
+                        .stats span {
+                            font-size: 1.5em;
+                        }
                     }
                 </style>
             </head>
@@ -252,18 +325,31 @@
                 <script src="/js/bootstrap.min.js"></script>
                 <script src="/js/dashboard.js"></script>
                 <script>
-                    // Dữ liệu mô phỏng
-                    const satisfiedCount = 150;
-                    const dissatisfiedCount = 30;
+                    document.addEventListener("DOMContentLoaded", function () {
+                        // Simulated data
+                        const satisfiedCount = 150;
+                        const dissatisfiedCount = 30;
 
-                    // Hiển thị số liệu
-                    document.getElementById('satisfied-count').textContent = satisfiedCount;
-                    document.getElementById('dissatisfied-count').textContent = dissatisfiedCount;
+                        // Get DOM elements
+                        const satisfiedElement = document.getElementById('satisfied-count');
+                        const dissatisfiedElement = document.getElementById('dissatisfied-count');
+                        const satisfactionPercentageElement = document.getElementById('satisfaction-percentage');
 
-                    // Tính toán và hiển thị tỷ lệ
-                    const totalCount = satisfiedCount + dissatisfiedCount;
-                    const satisfactionPercentage = (satisfiedCount / totalCount * 100).toFixed(1);
-                    document.getElementById('satisfaction-percentage').textContent = satisfactionPercentage;
+                        if (satisfiedElement && dissatisfiedElement && satisfactionPercentageElement) {
+                            // Display data
+                            satisfiedElement.textContent = satisfiedCount;
+                            dissatisfiedElement.textContent = dissatisfiedCount;
+
+                            // Calculate and display satisfaction percentage
+                            const totalCount = satisfiedCount + dissatisfiedCount;
+                            const satisfactionPercentage = totalCount > 0
+                                ? ((satisfiedCount / totalCount) * 100).toFixed(1)
+                                : 0;
+                            satisfactionPercentageElement.textContent = satisfactionPercentage;
+                        } else {
+                            console.error("One or more satisfaction stats elements are missing.");
+                        }
+                    });
                 </script>
             </body>
 

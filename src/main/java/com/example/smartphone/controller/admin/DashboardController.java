@@ -3,7 +3,6 @@ package com.example.smartphone.controller.admin;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.smartphone.service.UserService;
 
@@ -24,4 +23,8 @@ public class DashboardController {
         return "admin/dashboard/show-dashboard";
     }
 
+    @GetMapping("/admin/order-history")
+    public String getOrderHistory(Model model) {
+        return "admin/order/order-history";
+    }
 }
