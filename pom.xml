@@ -6,7 +6,7 @@
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
 		<version>3.4.2</version>
-		<relativePath/> <!-- lookup parent from repository -->
+		<relativePath/> 
 	</parent>
 	<groupId>com.example</groupId>
 	<artifactId>smartphone</artifactId>
@@ -28,6 +28,7 @@
 	</scm>
 	<properties>
 		<java.version>17</java.version>
+		 <hibernate.version>6.4.2.Final</hibernate.version>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -93,34 +94,60 @@
 <groupId>org.springframework.session</groupId>
 <artifactId>spring-session-jdbc</artifactId>
 </dependency>
+<dependency>
+    <groupId>org.hibernate.orm</groupId>
+    <artifactId>hibernate-jpamodelgen</artifactId>
+    <version>${hibernate.version}</version>
+    <scope>provided</scope>
+</dependency>
+
+
 	</dependencies>
 
 	<build>
 		<plugins>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-compiler-plugin</artifactId>
-				<configuration>
-					<annotationProcessorPaths>
-						<path>
-							<groupId>org.projectlombok</groupId>
-							<artifactId>lombok</artifactId>
-						</path>
-					</annotationProcessorPaths>
-				</configuration>
-			</plugin>
-			<plugin>
-				<groupId>org.springframework.boot</groupId>
-				<artifactId>spring-boot-maven-plugin</artifactId>
-				<configuration>
-					<excludes>
-						<exclude>
-							<groupId>org.projectlombok</groupId>
-							<artifactId>lombok</artifactId>
-						</exclude>
-					</excludes>
-				</configuration>
-			</plugin>
+		<plugin>
+            <groupId>org.codehaus.mojo</groupId>
+            <artifactId>build-helper-maven-plugin</artifactId>
+            <version>3.5.0</version>
+            <executions>
+                <execution>
+                    <id>add-apt-source</id>
+                    <phase>generate-sources</phase>
+                    <goals>
+                        <goal>add-source</goal>
+                    </goals>
+                    <configuration>
+                        <sources>
+                            <source>${project.build.directory}/generated-sources/apt</source>
+                        </sources>
+                    </configuration>
+                </execution>
+            </executions>
+        </plugin>
+	 <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-compiler-plugin</artifactId>
+            <version>3.11.0</version>
+            <configuration>
+                <source>17</source> <!-- Thay bằng Java version của bạn -->
+                <target>17</target>
+                <annotationProcessorPaths>
+    <!-- Dùng cho Hibernate 6.x -->
+    <path>
+        <groupId>org.hibernate.orm</groupId>
+        <artifactId>hibernate-jpamodelgen</artifactId>
+        <version>${hibernate.version}</version>
+    </path>
+    <path>
+        <groupId>org.projectlombok</groupId>
+        <artifactId>lombok</artifactId>
+        <version>1.18.32</version>
+    </path>
+</annotationProcessorPaths>
+
+            </configuration>
+        </plugin>
 		</plugins>
 	</build>
 
