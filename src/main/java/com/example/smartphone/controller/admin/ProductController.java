@@ -1,7 +1,12 @@
 package com.example.smartphone.controller.admin;
 
 import java.io.IOException;
+import java.util.List;
+import java.util.Optional;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -30,8 +35,27 @@ public class ProductController {
     }
 
     @GetMapping("/admin/product")
-    public String getProduct(Model model) {
-        model.addAttribute("products", this.productService.handleAllProduct());
+    public String getProduct(Model model, @RequestParam("page") Optional<String> pageOptional) {
+        // set pageSize
+        int page;
+        if(pageOptional.isPresent()){
+            try{
+                int x = Integer.parseInt(pageOptional.get());
+            }catch(Exception e){
+                e.printStackTrace();
+            }
+            page = Integer.parseInt(pageOptional.get());
+        }
+        else{
+            page = 1;
+        }
+
+       Pageable pageable = PageRequest.of(page - 1, 10);
+       Page<Product> pg = this.productService.handleAllProduct(pageable);
+       List<Product> lsPr = pg.getContent();
+       model.addAttribute("products", lsPr);
+       model.addAttribute("curentPage", lsPr);
+       model.addAttribute("totalPages", pg.getTotalPages());
         return "admin/product/show-product";
     }
 

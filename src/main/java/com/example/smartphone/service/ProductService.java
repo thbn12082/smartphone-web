@@ -4,6 +4,8 @@ import java.util.List;
 import java.util.Optional;
 
 import org.aspectj.weaver.ast.Or;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Service;
 
@@ -46,8 +48,8 @@ public class ProductService {
         this.productRepository.save(product);
     }
 
-    public List<Product> handleAllProduct() {
-        return this.productRepository.findAll();
+    public Page<Product> handleAllProduct(Pageable pageable) {
+        return this.productRepository.findAll(pageable);
     }
 
     public Product handleProductById(long id) {

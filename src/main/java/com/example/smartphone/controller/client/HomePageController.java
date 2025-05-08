@@ -2,6 +2,9 @@ package com.example.smartphone.controller.client;
 
 import java.util.List;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -43,7 +46,9 @@ public class HomePageController {
 
     @GetMapping("/")
     public String getHomePage(Model model) {
-        List<Product> products = this.productService.handleAllProduct();
+        Pageable page = PageRequest.of(0, 10);
+        Page<Product> pg = this.productService.handleAllProduct(page);
+        List<Product> products = pg.getContent();
         model.addAttribute("products", products);
         System.out.println(products);
         return "client/home-page";
