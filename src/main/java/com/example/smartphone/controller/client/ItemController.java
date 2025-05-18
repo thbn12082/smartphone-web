@@ -1,7 +1,15 @@
 package com.example.smartphone.controller.client;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
+
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,7 +20,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import com.example.smartphone.domain.Cart;
 import com.example.smartphone.domain.CartDetail;
 import com.example.smartphone.domain.Product;
+import com.example.smartphone.domain.Product_;
 import com.example.smartphone.domain.User;
+import com.example.smartphone.domain.DTO.ProductCriterialDTO;
 import com.example.smartphone.repository.CartDetailRepository;
 import com.example.smartphone.service.ProductService;
 
@@ -87,6 +97,51 @@ public class ItemController {
         }
         model.addAttribute("totalPrice", totalPrice);
         return "client/cart/checkout";
+    }
+
+    @GetMapping("/products")
+    public String getProducts(Model model, ProductCriterialDTO productCriterialDTO, HttpServletRequest request) {
+        //handle pagination
+        int page = 1;
+        try{
+            if( productCriterialDTO.getPageOptional().isPresent()){
+                page = Integer.parseInt(productCriterialDTO.getPageOptional().get());
+            }
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        Pageable pageable = PageRequest.of(page - 1, 12);
+        if(productCriterialDTO.getSort() != null && productCriterialDTO.getSort().isPresent()){
+            String sort = productCriterialDTO.getSort().get();
+            if(sort.equals("gia-tang-dan")){
+                 pageable = PageRequest.of(page - 1, 12, Sort.by(Product_.PRICE).ascending());
+            }
+            else if(sort.equals("gia-giam-dan")){
+                 pageable = PageRequest.of(page - 1, 12, Sort.by(Product_.PRICE).descending());
+            }else{
+                 pageable = PageRequest.of(page - 1, 12);
+            }
+        }
+        String qs = request.getQueryString();
+        if(qs != null && !qs.isEmpty()){
+            qs = qs.replace("page" + page, "");
+        }
+        Page<Product> pg = this.productService.handleAllProductWithSpec(pageable, productCriterialDTO);
+        List<Product> products = pg.getContent().size() == 0 ? new ArrayList<Product>() : pg.getContent();
+
+        model.addAttribute("qs", qs);
+        model.addAttribute("products", products);
+        model.addAttribute("currentPage", page);
+        int totalPages;
+        if(pg.getTotalPages() == 0){
+            totalPages = 1;
+        }
+        else{
+            totalPages = pg.getTotalPages();
+        }
+        model.addAttribute("totalPages", totalPages);
+
+        return "client/all-product";
     }
 
     @PostMapping("/place-order")

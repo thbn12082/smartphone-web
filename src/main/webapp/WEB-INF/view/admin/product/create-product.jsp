@@ -147,7 +147,9 @@
                                                                 id="factory">
                                                                 <form:option value="Apple">Apple</form:option>
                                                                 <form:option value="Samsung">Samsung</form:option>
-
+                                                                <form:option value="Xiaomi">Xiaomi</form:option>
+                                                                <form:option value="Oppo">Oppo</form:option>
+                                                                <form:option value="Huawei">Huawei</form:option>
                                                             </form:select>
                                                         </div>
                                                     </div>
@@ -157,6 +159,7 @@
                                                             <form:select class="form-select" path="target" id="target">
                                                                 <form:option value="Gaming">Gaming</form:option>
                                                                 <form:option value="Work">Work</form:option>
+                                                                <form:option value="Study">Study</form:option>
                                                             </form:select>
                                                         </div>
                                                     </div>

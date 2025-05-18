@@ -52,7 +52,7 @@
                             <div class="col-md-3"></div>
                             <div class="col-md-3"></div>
                             <div class="col-md-6">
-                                <table class="table table-hover">
+                                <table class="table table-hover" style="margin-top: 70px;">
                                     <thead>
                                         <tr>
                                             <th scope="col" style="color: antiquewhite;">ID</th>
@@ -84,42 +84,47 @@
 
                                     </tbody>
                                 </table>
+                                <!-- Sửa phần pagination -->
                                 <nav aria-label="Page navigation example">
                                     <ul class="pagination justify-content-center">
-                                        <li class="page-item">
-                                            <a class="{1 eq currentPage ? 'disabled page-link' : 'page-link'}" href="/admin/product?page=${currentPage - 1}" aria-label="Previous">
+
+                                        <li class="page-item ${currentPage == 1 ? 'disabled' : ''}">
+                                            <a class="page-link" href="/admin/product?page=${currentPage - 1}"
+                                                aria-label="Previous" ${currentPage==1
+                                                ? 'tabindex="-1" aria-disabled="true"' : '' }>
                                                 <span aria-hidden="true">&laquo;</span>
                                                 <span class="sr-only">Previous</span>
                                             </a>
                                         </li>
 
 
-
-                                        <c:forEach begin="0" end="${totalPages - 1}" varStatus="loop">
-                                            <li class="page-item">
-                                                <a class="page-link${(loop.index + 1) == currentPage ? ' active' : ''}"
-                                                    href="/admin/product?page=${loop.index + 1}">
-                                                    ${loop.index + 1}
-                                                </a>
-                                            </li>
-                                        </c:forEach>
-
-
+                                        <c:if test="${totalPages > 0}">
+                                            <c:forEach begin="1" end="${totalPages}" varStatus="loop">
+                                                <li class="page-item ${loop.index == currentPage ? 'active' : ''}">
+                                                    <a class="page-link" href="/admin/product?page=${loop.index}">
+                                                        ${loop.index}
+                                                    </a>
+                                                </li>
+                                            </c:forEach>
+                                        </c:if>
 
 
-                                        <li class="page-item">
-                                            <a class="{totalPages eq currentPage ? 'disabled page-link' : 'page-link'}" href="/admin/product?page=${currentPage + 1}" aria-label="Next">
+                                        <li class="page-item ${currentPage == totalPages ? 'disabled' : ''}">
+                                            <a class="page-link" href="/admin/product?page=${currentPage + 1}"
+                                                aria-label="Next" ${currentPage==totalPages
+                                                ? 'tabindex="-1" aria-disabled="true"' : '' }>
                                                 <span aria-hidden="true">&raquo;</span>
                                                 <span class="sr-only">Next</span>
                                             </a>
                                         </li>
                                     </ul>
                                 </nav>
+
                             </div>
                             <div class="col-md-3"></div>
                         </div>
 
-                    </div>
+
                 </main>
 
 
@@ -127,6 +132,7 @@
 
                 <script src="/js/bootstrap.min.js"></script>
                 <script src="/js/dashboard.js"></script>
+                <script src="/js/main.js"></script>
             </body>
 
             </html>

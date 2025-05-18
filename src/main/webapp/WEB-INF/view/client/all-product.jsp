@@ -28,6 +28,7 @@
                     rel="stylesheet">
                 <link href="https://fonts.googleapis.com/css2?family=Jacques+Francois+Shadow&display=swap"
                     rel="stylesheet">
+
                 <style>
                     .rating-box {
                         background-color: #fff9c4;
@@ -159,6 +160,21 @@
                         font-weight: 400;
                         font-style: normal;
                     }
+
+                    .card-img-top {
+                        width: 100%;
+                        /* Đảm bảo ảnh chiếm toàn bộ chiều rộng thẻ cha */
+                        height: 300px;
+                        /* Đặt chiều cao mong muốn (điều chỉnh theo nhu cầu) */
+                        object-fit: cover;
+                        /* Cắt ảnh để lấp đầy vùng chứa, giữ nguyên tỷ lệ khung hình */
+                    }
+
+                    .card-text {
+                        max-height: 50px;
+                        /* Ví dụ: giới hạn chiều cao tối đa là 50px (điều chỉnh theo nhu cầu) */
+                        overflow: hidden;
+                    }
                 </style>
             </head>
 
@@ -192,323 +208,465 @@
                     </a>
                 </div>
                 <div class="container my-4">
-                    <h2 class="section-heading text-center mb-4">Tất cả sản phẩm </h2>
-                    <div class="row">
-                        <div class="col-sm-6 col-md-4 col-lg-3 mb-4">
-                            <div class="card">
-                                <img src="https://cdn.viettelstore.vn/Images/Product/ProductImage/70698293.jpeg"
-                                    class="card-img-top img-fluid" alt="Xiaomi Redmi Note 14">
-                                <div class="card-body">
-                                    <h5 class="card-title">Xiaomi Redmi Note </h5>
-                                    <p class="card-text">8GB/128GB</p>
-                                    <p class="text-primary fw-bold">5.490.000₫</p>
-                                    <p class="text-muted">Quà 200.000₫</p>
+                    <div class="row g-4 fruite">
+                        <div class="col-12 col-md-4">
+                            <div class="row g-4">
+                                <div class="col-12" id="factoryFilter">
+                                    <div class="mb-2"><b>Hãng sản xuất</b></div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="checkbox" id="factory-1" value="Apple">
+                                        <label class="form-check-label" for="factory-1">Apple</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="checkbox" id="factory-2" value="SamSung">
+                                        <label class="form-check-label" for="factory-2">Samsung</label>
+                                    </div>
+
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="checkbox" id="factory-3" value="Xiaomi">
+                                        <label class="form-check-label" for="factory-3">Xiaomi</label>
+                                    </div>
+
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="checkbox" id="factory-4" value="Oppo">
+                                        <label class="form-check-label" for="factory-4">Oppo</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="checkbox" id="factory-5" value="Huawei">
+                                        <label class="form-check-label" for="factory-5">Huawei</label>
+                                    </div>
+
+
                                 </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-6 col-md-4 col-lg-3 mb-4">
-                            <div class="card">
-                                <img src="https://cdn.tgdd.vn/Products/Images/42/305658/iphone-15-pro-max-blue-thumbnew-600x600.jpg"
-                                    class="card-img-top img-fluid" alt="iPhone 15 Pro Max">
-                                <div class="card-body">
-                                    <h5 class="card-title">iPhone 15 Pro Max</h5>
-                                    <p class="card-text">8GB/128GB</p>
-                                    <p class="card-text">32.890.000₫</p>
-                                    <p class="text-muted">Quà 1.000.000₫</p>
+                                <div class="col-12" id="targetFilter">
+                                    <div class="mb-2"><b>Mục đích sử dụng</b></div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="checkbox" id="target-1" value="GAMING">
+                                        <label class="form-check-label" for="target-1">Gaming</label>
+                                    </div>
+
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="checkbox" id="target-2" value="Work">
+                                        <label class="form-check-label" for="target-2">Work</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="checkbox" id="target-3" value="Study">
+                                        <label class="form-check-label" for="target-3">Study</label>
+                                    </div>
+                                    <!-- <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="checkbox" id="target-4" value="MONG-NHE">
+                                        <label class="form-check-label" for="target-4">Mỏng nhẹ</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="checkbox" id="target-5"
+                                            value="DOANH-NHAN">
+                                        <label class="form-check-label" for="target-5">Doanh nhân</label>
+                                    </div> -->
+
+
                                 </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-6 col-md-4 col-lg-3 mb-4">
-                            <div class="card">
-                                <img src="https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/1/5/15_2_7_2_5.jpg"
-                                    class="card-img-top img-fluid" alt="iPhone 13">
-                                <div class="card-body">
-                                    <h5 class="card-title">iPhone 13</h5>
-                                    <p class="card-text">8GB/128GB</p>
-                                    <p class="card-text">12.850.000₫</p>
-                                    <p class="text-muted">Quà 500.000₫</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-6 col-md-4 col-lg-3 mb-4">
-                            <div class="card">
-                                <img src="https://didongthongminh.vn/images/products/2025/02/08/original/A60_5g.jpg"
-                                    class="card-img-top img-fluid" alt="OPPO A60">
-                                <div class="card-body">
-                                    <h5 class="card-title">OPPO A60 </h5>
-                                    <p class="card-text">8GB/128GB</p>
-                                    <p class="card-text">5.490.000₫</p>
-                                    <p class="text-muted">Quà 200.000₫</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-sm-6 col-md-4 col-lg-3 mb-4">
-                            <div class="card">
-                                <img src="https://cdn2.cellphones.com.vn/insecure/rs:fill:0:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/_/s/_sm-a536_04._device_design_m_1_2.jpg"
-                                    class="card-img-top img-fluid" alt="Xiaomi Redmi Note 14">
-                                <div class="card-body">
-                                    <h5 class="card-title">Samsung A50</h5>
-                                    <p class="card-text">8GB/128GB</p>
-                                    <p class="text-primary fw-bold">5.490.000₫</p>
-                                    <p class="text-muted">Quà 200.000₫</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-6 col-md-4 col-lg-3 mb-4">
-                            <div class="card">
-                                <img src="https://cdn2.cellphones.com.vn/x/media/catalog/product/s/s/ss-s24-ultra-xam-222.png"
-                                    class="card-img-top img-fluid" alt="iPhone 15 Pro Max">
-                                <div class="card-body">
-                                    <h5 class="card-title">Samsung S24 Ultra</h5>
-                                    <p class="card-text">8GB/128GB</p>
-                                    <p class="card-text">32.890.000₫</p>
-                                    <p class="text-muted">Quà 1.000.000₫</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-6 col-md-4 col-lg-3 mb-4">
-                            <a href="/test2" style="text-decoration: none;">
-                                <div class="card">
-                                    <img src="https://clickbuy.com.vn/uploads/pro/iphone-16-8975-lthx-300x300-217852.jpg"
-                                        class="card-img-top img-fluid" alt="iPhone 13">
-                                    <div class="card-body">
-                                        <h5 class="card-title" style="color: black;">iPhone 13</h5>
-                                        <p class="card-text">8GB/128GB</p>
-                                        <p class="card-text">12.850.000₫</p>
-                                        <p class="text-muted">Quà 500.000₫</p>
+                                <div class="col-12" id="priceFilter">
+                                    <div class="mb-2"><b>Mức giá</b></div>
+
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="checkbox" id="price-2"
+                                            value="duoi-10-trieu">
+                                        <label class="form-check-label" for="price-2">Dưới 10 triệu</label>
+                                    </div>
+
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="checkbox" id="price-3"
+                                            value="10-15-trieu">
+                                        <label class="form-check-label" for="price-3">Từ 10 - 15
+                                            triệu</label>
+                                    </div>
+
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="checkbox" id="price-4"
+                                            value="15-20-trieu">
+                                        <label class="form-check-label" for="price-4">Từ 15 - 20
+                                            triệu</label>
+                                    </div>
+
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="checkbox" id="price-5"
+                                            value="tren-20-trieu">
+                                        <label class="form-check-label" for="price-5">Trên 20 triệu</label>
                                     </div>
                                 </div>
-                            </a>
+                                <div class="col-12">
+                                    <div class="mb-2"><b>Sắp xếp</b></div>
 
-                        </div>
-                        <div class="col-sm-6 col-md-4 col-lg-3 mb-4">
-                            <div class="card">
-                                <img src="https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/d/i/dien-thoai-xiaomi-redmi-note-14_2__2.png"
-                                    class="card-img-top img-fluid" alt="OPPO A60">
-                                <div class="card-body">
-                                    <h5 class="card-title">OPPO A60 </h5>
-                                    <p class="card-text">8GB/128GB</p>
-                                    <p class="card-text">5.490.000₫</p>
-                                    <p class="text-muted">Quà 200.000₫</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-sm-6 col-md-4 col-lg-3 mb-4">
-                            <div class="card">
-                                <img src="https://cdn.viettelstore.vn/Images/Product/ProductImage/70698293.jpeg"
-                                    class="card-img-top img-fluid" alt="Xiaomi Redmi Note 14">
-                                <div class="card-body">
-                                    <h5 class="card-title">Xiaomi Redmi Note </h5>
-                                    <p class="card-text">8GB/128GB</p>
-                                    <p class="text-primary fw-bold">5.490.000₫</p>
-                                    <p class="text-muted">Quà 200.000₫</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-6 col-md-4 col-lg-3 mb-4">
-                            <div class="card">
-                                <img src="https://cdn.tgdd.vn/Products/Images/42/305658/iphone-15-pro-max-blue-thumbnew-600x600.jpg"
-                                    class="card-img-top img-fluid" alt="iPhone 15 Pro Max">
-                                <div class="card-body">
-                                    <h5 class="card-title">iPhone 15 Pro Max</h5>
-                                    <p class="card-text">8GB/128GB</p>
-                                    <p class="card-text">32.890.000₫</p>
-                                    <p class="text-muted">Quà 1.000.000₫</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-6 col-md-4 col-lg-3 mb-4">
-                            <div class="card">
-                                <img src="https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/1/5/15_2_7_2_5.jpg"
-                                    class="card-img-top img-fluid" alt="iPhone 13">
-                                <div class="card-body">
-                                    <h5 class="card-title">iPhone 13</h5>
-                                    <p class="card-text">8GB/128GB</p>
-                                    <p class="card-text">12.850.000₫</p>
-                                    <p class="text-muted">Quà 500.000₫</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-6 col-md-4 col-lg-3 mb-4">
-                            <div class="card">
-                                <img src="https://didongthongminh.vn/images/products/2025/02/08/original/A60_5g.jpg"
-                                    class="card-img-top img-fluid" alt="OPPO A60">
-                                <div class="card-body">
-                                    <h5 class="card-title">OPPO A60 </h5>
-                                    <p class="card-text">8GB/128GB</p>
-                                    <p class="card-text">5.490.000₫</p>
-                                    <p class="text-muted">Quà 200.000₫</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-sm-6 col-md-4 col-lg-3 mb-4">
-                            <div class="card">
-                                <img src="https://cdn2.cellphones.com.vn/insecure/rs:fill:0:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/_/s/_sm-a536_04._device_design_m_1_2.jpg"
-                                    class="card-img-top img-fluid" alt="Xiaomi Redmi Note 14">
-                                <div class="card-body">
-                                    <h5 class="card-title">Samsung A50</h5>
-                                    <p class="card-text">8GB/128GB</p>
-                                    <p class="text-primary fw-bold">5.490.000₫</p>
-                                    <p class="text-muted">Quà 200.000₫</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-6 col-md-4 col-lg-3 mb-4">
-                            <div class="card">
-                                <img src="https://cdn2.cellphones.com.vn/x/media/catalog/product/s/s/ss-s24-ultra-xam-222.png"
-                                    class="card-img-top img-fluid" alt="iPhone 15 Pro Max">
-                                <div class="card-body">
-                                    <h5 class="card-title">Samsung S24 Ultra</h5>
-                                    <p class="card-text">8GB/128GB</p>
-                                    <p class="card-text">32.890.000₫</p>
-                                    <p class="text-muted">Quà 1.000.000₫</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-6 col-md-4 col-lg-3 mb-4">
-                            <div class="card">
-                                <img src="https://clickbuy.com.vn/uploads/pro/iphone-16-8975-lthx-300x300-217852.jpg"
-                                    class="card-img-top img-fluid" alt="iPhone 13">
-                                <div class="card-body">
-                                    <h5 class="card-title">iPhone 13</h5>
-                                    <p class="card-text">8GB/128GB</p>
-                                    <p class="card-text">12.850.000₫</p>
-                                    <p class="text-muted">Quà 500.000₫</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-6 col-md-4 col-lg-3 mb-4">
-                            <div class="card">
-                                <img src="https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/d/i/dien-thoai-xiaomi-redmi-note-14_2__2.png"
-                                    class="card-img-top img-fluid" alt="OPPO A60">
-                                <div class="card-body">
-                                    <h5 class="card-title">OPPO A60 </h5>
-                                    <p class="card-text">8GB/128GB</p>
-                                    <p class="card-text">5.490.000₫</p>
-                                    <p class="text-muted">Quà 200.000₫</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-sm-6 col-md-4 col-lg-3 mb-4">
-                            <div class="card">
-                                <img src="https://cdn.viettelstore.vn/Images/Product/ProductImage/70698293.jpeg"
-                                    class="card-img-top img-fluid" alt="Xiaomi Redmi Note 14">
-                                <div class="card-body">
-                                    <h5 class="card-title">Xiaomi Redmi Note </h5>
-                                    <p class="card-text">8GB/128GB</p>
-                                    <p class="text-primary fw-bold">5.490.000₫</p>
-                                    <p class="text-muted">Quà 200.000₫</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-6 col-md-4 col-lg-3 mb-4">
-                            <div class="card">
-                                <img src="https://cdn.tgdd.vn/Products/Images/42/305658/iphone-15-pro-max-blue-thumbnew-600x600.jpg"
-                                    class="card-img-top img-fluid" alt="iPhone 15 Pro Max">
-                                <div class="card-body">
-                                    <h5 class="card-title">iPhone 15 Pro Max</h5>
-                                    <p class="card-text">8GB/128GB</p>
-                                    <p class="card-text">32.890.000₫</p>
-                                    <p class="text-muted">Quà 1.000.000₫</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-6 col-md-4 col-lg-3 mb-4">
-                            <div class="card">
-                                <img src="https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/1/5/15_2_7_2_5.jpg"
-                                    class="card-img-top img-fluid" alt="iPhone 13">
-                                <div class="card-body">
-                                    <h5 class="card-title">iPhone 13</h5>
-                                    <p class="card-text">8GB/128GB</p>
-                                    <p class="card-text">12.850.000₫</p>
-                                    <p class="text-muted">Quà 500.000₫</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-6 col-md-4 col-lg-3 mb-4">
-                            <div class="card">
-                                <img src="https://didongthongminh.vn/images/products/2025/02/08/original/A60_5g.jpg"
-                                    class="card-img-top img-fluid" alt="OPPO A60">
-                                <div class="card-body">
-                                    <h5 class="card-title">OPPO A60 </h5>
-                                    <p class="card-text">8GB/128GB</p>
-                                    <p class="card-text">5.490.000₫</p>
-                                    <p class="text-muted">Quà 200.000₫</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-sm-6 col-md-4 col-lg-3 mb-4">
-                            <div class="card">
-                                <img src="https://cdn2.cellphones.com.vn/insecure/rs:fill:0:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/_/s/_sm-a536_04._device_design_m_1_2.jpg"
-                                    class="card-img-top img-fluid" alt="Xiaomi Redmi Note 14">
-                                <div class="card-body">
-                                    <h5 class="card-title">Samsung A50</h5>
-                                    <p class="card-text">8GB/128GB</p>
-                                    <p class="text-primary fw-bold">5.490.000₫</p>
-                                    <p class="text-muted">Quà 200.000₫</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-6 col-md-4 col-lg-3 mb-4">
-                            <div class="card">
-                                <img src="https://cdn2.cellphones.com.vn/x/media/catalog/product/s/s/ss-s24-ultra-xam-222.png"
-                                    class="card-img-top img-fluid" alt="iPhone 15 Pro Max">
-                                <div class="card-body">
-                                    <h5 class="card-title">Samsung S24 Ultra</h5>
-                                    <p class="card-text">8GB/128GB</p>
-                                    <p class="card-text">32.890.000₫</p>
-                                    <p class="text-muted">Quà 1.000.000₫</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-6 col-md-4 col-lg-3 mb-4">
-                            <div class="card">
-                                <img src="https://clickbuy.com.vn/uploads/pro/iphone-16-8975-lthx-300x300-217852.jpg"
-                                    class="card-img-top img-fluid" alt="iPhone 13">
-                                <div class="card-body">
-                                    <h5 class="card-title">iPhone 13</h5>
-                                    <p class="card-text">8GB/128GB</p>
-                                    <p class="card-text">12.850.000₫</p>
-                                    <p class="text-muted">Quà 500.000₫</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-6 col-md-4 col-lg-3 mb-4">
-                            <div class="card">
-                                <img src="https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/d/i/dien-thoai-xiaomi-redmi-note-14_2__2.png"
-                                    class="card-img-top img-fluid" alt="OPPO A60">
-                                <div class="card-body">
-                                    <h5 class="card-title">OPPO A60 </h5>
-                                    <p class="card-text">8GB/128GB</p>
-                                    <p class="card-text">5.490.000₫</p>
-                                    <p class="text-muted">Quà 200.000₫</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="d-flex justify-content-center my-4">
-                        <button type="button" class="btn btn-outline-secondary">Xem thêm</button>
-                    </div>
-                </div>
-                <jsp:include page="./layout/experience.jsp" />
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" id="sort-1" value="gia-tang-dan"
+                                            name="radio-sort">
+                                        <label class="form-check-label" for="sort-1">Giá tăng dần</label>
+                                    </div>
 
-                <!-- Footer -->
-                <jsp:include page="layout/footer.jsp" />
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" id="sort-2" value="gia-giam-dan"
+                                            name="radio-sort">
+                                        <label class="form-check-label" for="sort-2">Giá giảm dần</label>
+                                    </div>
 
-                <!-- Bootstrap core JS -->
-                <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-                <!-- Core theme JS -->
-                <script src="/client/js/homepage.js"></script>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" id="sort-3" checked
+                                            value="gia-nothing" name="radio-sort">
+                                        <label class="form-check-label" for="sort-3">Không sắp xếp</label>
+                                    </div>
+
+                                </div>
+                                <div class="col-12">
+                                    <button
+                                        class="btn border-secondary rounded-pill px-4 py-3 text-primary text-uppercase mb-4"
+                                        id="btnFilter">
+                                        Lọc Sản Phẩm
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-8 text-center">
+                            <div class="row g-4">
+                                <c:if test="${totalPages ==  0}">
+                                    <div>Không tìm thấy sản phẩm</div>
+                                </c:if>
+                                <h2 class="section-heading check text-center mb-4">Tất cả sản phẩm</h2>
+                                <div class="row">
+                                    <c:if test="${not empty products}">
+                                        <c:forEach var="product" items="${products}">
+                                            <div class="col-sm-6 col-md-4 col-lg-3 mb-4">
+                                                <div class="card">
+                                                    <img src="/images/product/${product.image}"
+                                                        class="card-img-top img-fluid" alt="${product.name}">
+                                                    <div class="card-body">
+                                                        <a href="/product/${product.id}"
+                                                            style="text-decoration: none; color: black;">
+                                                            <h4 class="card-title"
+                                                                style="font-size: 15px; text-align: center;">
+                                                                ${product.name}
+                                                            </h4>
+                                                        </a>
+
+                                                        <p class="text-muted"
+                                                            style="font-size: 13px;text-align: center;">
+                                                            ${product.shortDesc}
+                                                        </p>
+                                                        <div class="d-flex flex-lg-wrap justify-content-center">
+                                                            <p class="text-primary fw-bold mb-3"
+                                                                style="font-size: 15px;text-align: center; width: 100%;">
+                                                                <fmt:formatNumber type="number"
+                                                                    value="${product.price}" />
+                                                                ₫
+                                                            </p>
+
+                                                            <form action="/add-product-to-cart/${product.id}"
+                                                                method="post">
+                                                                <input type="hidden" name="${_csrf.parameterName}"
+                                                                    value="${_csrf.token}" />
+                                                                <button
+                                                                    class="mx-auto btn border border-secondary rounded-pill px-3 "
+                                                                    style="color: gray;">
+                                                                    <i class="fa fa-shopping-bag me-2 "></i>
+                                                                    Add to cart
+                                                                </button>
+                                                            </form>
+
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </c:forEach>
+                                        <nav aria-label="Page navigation example">
+                                            <ul class="pagination justify-content-center">
+
+                                                <li class="page-item ${currentPage == 1 ? 'disabled' : ''}">
+                                                    <a class="page-link" href="/products?page=${currentPage - 1}${qs}"
+                                                        aria-label="Previous" ${currentPage==1
+                                                        ? 'tabindex="-1" aria-disabled="true"' : '' }>
+                                                        <span aria-hidden="true">&laquo;</span>
+                                                        <span class="sr-only">Previous</span>
+                                                    </a>
+                                                </li>
+
+
+                                                <c:if test="${totalPages > 0}">
+                                                    <c:forEach begin="1" end="${totalPages}" varStatus="loop">
+                                                        <li
+                                                            class="page-item ${loop.index == currentPage ? 'active' : ''}">
+                                                            <a class="page-link" href="/products?page=${loop.index}${qs}">
+                                                                ${loop.index}
+                                                            </a>
+                                                        </li>
+                                                    </c:forEach>
+                                                </c:if>
+
+
+                                                <li class="page-item ${currentPage == totalPages ? 'disabled' : ''}">
+                                                    <a class="page-link" href="/products?page=${currentPage + 1}${qs}"
+                                                        aria-label="Next" ${currentPage==totalPages
+                                                        ? 'tabindex="-1" aria-disabled="true"' : '' }>
+                                                        <span aria-hidden="true">&raquo;</span>
+                                                        <span class="sr-only">Next</span>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </nav>
+                                    </c:if>
+                                    <c:if test="${empty products}">
+                                        <p>Không có sản phẩm nào.</p>
+                                    </c:if>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- <jsp:include page="./layout/experience.jsp" /> -->
+
+                    <!-- Footer -->
+                    <jsp:include page="layout/footer.jsp" />
+
+                    <!-- Bootstrap core JS -->
+                    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+                    <!-- Core theme JS -->
+                    <!-- <script src="/client/js/homepage.js"></script> -->
+
+                    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+                    <script>
+                        $(document).ready(function () {
+                            "use strict";
+
+                            // Code xử lý nút tăng/giảm số lượng trong giỏ hàng (nếu có)
+                            $('.quantity button').on('click', function () {
+                                let change = 0;
+                                var button = $(this);
+                                var oldValue = button.parent().parent().find('input').val();
+                                if (button.hasClass('btn-plus')) {
+                                    var newVal = parseFloat(oldValue) + 1;
+                                    change = 1;
+                                } else {
+                                    if (oldValue > 1) {
+                                        var newVal = parseFloat(oldValue) - 1;
+                                        change = -1;
+                                    } else {
+                                        newVal = 1;
+                                    }
+                                }
+                                const input = button.parent().parent().find('input');
+                                input.val(newVal);
+
+                                const index = input.attr("data-cart-detail-index")
+                                const el = document.getElementById(`cartDetails${index}.quantity`);
+                                $(el).val(newVal);
+
+                                const price = input.attr("data-cart-detail-price");
+                                const id = input.attr("data-cart-detail-id");
+
+                                const priceElement = $(`p[data-cart-detail-id='${id}']`);
+                                if (priceElement) {
+                                    const newPrice = +price * newVal;
+                                    priceElement.text(formatCurrency(newPrice.toFixed(2)) + " đ");
+                                }
+
+                                const totalPriceElement = $(`p[data-cart-total-price]`);
+                                if (totalPriceElement && totalPriceElement.length) {
+                                    const currentTotal = totalPriceElement.first().attr("data-cart-total-price");
+                                    let newTotal = +currentTotal;
+                                    if (change === 0) {
+                                        newTotal = +currentTotal;
+                                    } else {
+                                        newTotal = change * (+price) + (+currentTotal);
+                                    }
+                                    change = 0;
+                                    totalPriceElement?.each(function (index, element) {
+                                        $(totalPriceElement[index]).text(formatCurrency(newTotal.toFixed(2)) + " đ");
+                                        $(totalPriceElement[index]).attr("data-cart-total-price", newTotal);
+                                    });
+                                }
+                            });
+
+                            function formatCurrency(value) {
+                                const formatter = new Intl.NumberFormat('vi-VN', {
+                                    style: 'decimal',
+                                    minimumFractionDigits: 0,
+                                });
+                                let formatted = formatter.format(value);
+                                formatted = formatted.replace(/\./g, ',');
+                                return formatted;
+                            }
+
+                            // Xử lý sự kiện click nút lọc sản phẩm
+                            $('#btnFilter').click(function (event) {
+                                event.preventDefault();
+
+                                let factoryArr = [];
+                                let targetArr = [];
+                                let priceArr = [];
+
+                                $("#factoryFilter .form-check-input:checked").each(function () {
+                                    factoryArr.push($(this).val());
+                                });
+
+                                $("#targetFilter .form-check-input:checked").each(function () {
+                                    targetArr.push($(this).val());
+                                });
+
+                                $("#priceFilter .form-check-input:checked").each(function () {
+                                    priceArr.push($(this).val());
+                                });
+
+                                let sortValue = $('input[name="radio-sort"]:checked').val();
+
+                                const currentUrl = new URL(window.location.href);
+                                const searchParams = currentUrl.searchParams;
+
+                                searchParams.set('page', '1');
+
+                                // Sắp xếp: Chỉ set nếu có giá trị, ngược lại xóa
+                                if (sortValue) {
+                                    searchParams.set('sort', sortValue);
+                                } else {
+                                    searchParams.delete('sort');
+                                }
+
+                                // Factory: Xóa tham số cũ, chỉ set nếu có giá trị, ngược lại xóa
+                                searchParams.delete('factory');
+                                if (factoryArr.length > 0) {
+                                    searchParams.set('factory', factoryArr.join(','));
+                                }
+
+                                // Target: Xóa tham số cũ, chỉ set nếu có giá trị, ngược lại xóa
+                                searchParams.delete('target');
+                                if (targetArr.length > 0) {
+                                    searchParams.set('target', targetArr.join(','));
+                                }
+
+                                // Price: Xóa tham số cũ, chỉ set nếu có giá trị, ngược lại xóa
+                                searchParams.delete('price');
+                                if (priceArr.length > 0) {
+                                    searchParams.set('price', priceArr.join(','));
+                                }
+
+                                window.location.href = currentUrl.toString();
+                            });
+
+                            // Xử lý tự động chọn checkbox/radio sau khi trang tải dựa trên URL params
+                            const params = new URLSearchParams(window.location.search);
+
+                            if (params.has('factory')) {
+                                const factories = params.get('factory').split(',');
+                                factories.forEach(factory => {
+                                    $(`#factoryFilter .form-check-input[value="${factory}"]`).prop('checked', true);
+                                });
+                            }
+
+                            if (params.has('target')) {
+                                const targets = params.get('target').split(',');
+                                targets.forEach(target => {
+                                    $(`#targetFilter .form-check-input[value="${target}"]`).prop('checked', true);
+                                });
+                            }
+
+                            if (params.has('price')) {
+                                const prices = params.get('price').split(',');
+                                prices.forEach(price => {
+                                    $(`#priceFilter .form-check-input[value="${price}"]`).prop('checked', true);
+                                });
+                            }
+
+                            if (params.has('sort')) {
+                                const sort = params.get('sort');
+                                $(`input[type="radio"][name="radio-sort"][value="${sort}"]`).prop('checked', true);
+                            }
+
+                            // Xử lý thêm vào giỏ hàng (AJAX)
+                            $('.btnAddToCartHomepage').click(function (event) {
+                                event.preventDefault();
+                                if (!isLogin()) {
+                                    $.toast({
+                                        heading: 'Lỗi thao tác',
+                                        text: 'Bạn cần đăng nhập tài khoản',
+                                        position: 'top-right',
+                                        icon: 'error'
+                                    })
+                                    return;
+                                }
+
+                                const productId = $(this).attr('data-product-id');
+                                const token = $("meta[name='_csrf']").attr("content");
+                                const header = $("meta[name='_csrf_header']").attr("content");
+
+                                $.ajax({
+                                    url: `${window.location.origin}/api/add-product-to-cart`,
+                                    beforeSend: function (xhr) {
+                                        xhr.setRequestHeader(header, token);
+                                    },
+                                    type: "POST",
+                                    data: JSON.stringify({ quantity: 1, productId: productId }),
+                                    contentType: "application/json",
+                                    success: function (response) {
+                                        const sum = +response;
+                                        $("#sumCart").text(sum)
+                                        $.toast({
+                                            heading: 'Giỏ hàng',
+                                            text: 'Thêm sản phẩm vào giỏ hàng thành công',
+                                            position: 'top-right',
+                                        })
+                                    },
+                                    error: function (response) {
+                                        alert("có lỗi xảy ra, check code đi ba :v")
+                                        console.log("error: ", response);
+                                    }
+                                });
+                            });
+
+                            $('.btnAddToCartDetail').click(function (event) {
+                                event.preventDefault();
+                                if (!isLogin()) {
+                                    $.toast({
+                                        heading: 'Lỗi thao tác',
+                                        text: 'Bạn cần đăng nhập tài khoản',
+                                        position: 'top-right',
+                                        icon: 'error'
+                                    })
+                                    return;
+                                }
+
+                                const productId = $(this).attr('data-product-id');
+                                const token = $("meta[name='_csrf']").attr("content");
+                                const header = $("meta[name='_csrf_header']").attr("content");
+                                const quantity = $("#cartDetails0\\.quantity").val(); // Chú ý escape dấu chấm nếu id có dạng này
+                                $.ajax({
+                                    url: `${window.location.origin}/api/add-product-to-cart`,
+                                    beforeSend: function (xhr) {
+                                        xhr.setRequestHeader(header, token);
+                                    },
+                                    type: "POST",
+                                    data: JSON.stringify({ quantity: quantity, productId: productId }),
+                                    contentType: "application/json",
+                                    success: function (response) {
+                                        const sum = +response;
+                                        $("#sumCart").text(sum)
+                                        $.toast({
+                                            heading: 'Giỏ hàng',
+                                            text: 'Thêm sản phẩm vào giỏ hàng thành công',
+                                            position: 'top-right',
+                                        })
+                                    },
+                                    error: function (response) {
+                                        alert("có lỗi xảy ra, check code đi ba :v")
+                                        console.log("error: ", response);
+                                    }
+                                });
+                            });
+
+                            function isLogin() {
+                                const navElement = $("#navbarCollapse");
+                                const childLogin = navElement.find('a.a-login');
+                                return childLogin.length <= 0; // Sửa: nếu không tìm thấy a.a-login (length = 0) nghĩa là đã login
+                            }
+
+                        });
+                    </script>
             </body>
 
             </html>

@@ -6,7 +6,7 @@
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
 		<version>3.4.2</version>
-		<relativePath/> 
+		<relativePath/>
 	</parent>
 	<groupId>com.example</groupId>
 	<artifactId>smartphone</artifactId>
@@ -14,12 +14,6 @@
 	<name>smartphone</name>
 	<description>smartphone web </description>
 	<url/>
-	<licenses>
-		<license/>
-	</licenses>
-	<developers>
-		<developer/>
-	</developers>
 	<scm>
 		<connection/>
 		<developerConnection/>
@@ -47,10 +41,7 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
-		<dependency>
-			<groupId>org.springframework.session</groupId>
-			<artifactId>spring-session-core</artifactId>
-		</dependency>
+		
 
 		<dependency>
 			<groupId>org.springframework.boot</groupId>

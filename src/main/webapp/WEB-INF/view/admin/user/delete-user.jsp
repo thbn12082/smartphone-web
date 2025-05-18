@@ -34,13 +34,14 @@
                         <div class="row">
                             <div class="col-xl-3"></div>
                             <div class="col-xl-6">
-                                <h1 style="text-align: center; color: antiquewhite;">Delete user ${userId}</h1>
+                                <h1 style="text-align: center; color: antiquewhite; margin-top: 100px;">Delete user
+                                    ${userId}</h1>
 
                                 <div class="col-xl-3"></div>
                             </div>
                             <div class="row">
                                 <div class="col-xl-3"></div>
-                                <div class="col-xl-6">
+                                <div class="col-xl-6" style="margin-top: 200px;">
                                     <div class="box"
                                         style="padding: 20px; background-color: #3ae69c;width: 100%; border-radius: 20px; margin-bottom: 30px;">
                                         Are you sure

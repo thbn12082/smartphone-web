@@ -38,24 +38,29 @@ public class ProductController {
     public String getProduct(Model model, @RequestParam("page") Optional<String> pageOptional) {
         // set pageSize
         int page;
-        if(pageOptional.isPresent()){
-            try{
+        if (pageOptional.isPresent()) {
+            try {
                 int x = Integer.parseInt(pageOptional.get());
-            }catch(Exception e){
+            } catch (Exception e) {
                 e.printStackTrace();
             }
             page = Integer.parseInt(pageOptional.get());
-        }
-        else{
+        } else {
             page = 1;
         }
 
-       Pageable pageable = PageRequest.of(page - 1, 10);
-       Page<Product> pg = this.productService.handleAllProduct(pageable);
-       List<Product> lsPr = pg.getContent();
-       model.addAttribute("products", lsPr);
-       model.addAttribute("curentPage", lsPr);
-       model.addAttribute("totalPages", pg.getTotalPages());
+        Pageable pageable = PageRequest.of(page - 1, 1);
+        Page<Product> pg = this.productService.handleAllProduct(pageable);
+        List<Product> lsPr = pg.getContent();
+        model.addAttribute("products", lsPr);
+        model.addAttribute("currentPage", page);
+        int totalPages;
+        if (pg.getTotalPages() == 0) {
+            totalPages = 1;
+        } else {
+            totalPages = pg.getTotalPages();
+        }
+        model.addAttribute("totalPages", totalPages);
         return "admin/product/show-product";
     }
 

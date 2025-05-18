@@ -65,44 +65,55 @@
                 </style>
             </head>
 
-            <body class="sb-nav-fixed">
 
-                <div id="layoutSidenav">
-                    <jsp:include page="../layout/sidebar.jsp" />
-                    <div id="layoutSidenav_content">
-                        <main>
-                            <div class="container-fluid px-4">
+            <body class="g-sidenav-show   bg-gray-100">
+                <div class="min-height-300 bg-dark position-absolute w-100"></div>
+                <jsp:include page="../layout/sidebar.jsp" />
+                <div id="layoutSidenav_content">
+                    <main>
+                        <div class="container-fluid px-4">
 
-                                <div class=" mt-5">
-                                    <div class="row">
-                                        <div class="col-12 mx-auto">
-                                            <div class="d-flex justify-content-between">
-                                                <h3>Delete the order with id = ${id}</h3>
-                                            </div>
-
-                                            <hr />
-                                            <div class="alert alert-danger">
-                                                Are you sure to delete this order ?
-                                            </div>
-                                            <form:form method="post" action="/admin/order/delete"
-                                                modelAttribute="newOrder">
-                                                <div class="mb-3" style="display: none;">
-                                                    <label class="form-label">Id:</label>
-                                                    <form:input value="${id}" type="text" class="form-control"
-                                                        path="id" />
-                                                </div>
-                                                <button class="btn btn-danger">Confirm</button>
-                                            </form:form>
-
+                            <div class="mt-5">
+                                <div class="row">
+                                    <div class="col-12 mx-auto">
+                                        <div class="d-flex">
+                                            <h3 style="color: antiquewhite; margin-top: 50px; justify-content: center;">
+                                                Table Orders</h3>
                                         </div>
 
+                                        <hr />
+
+
+                                        <div class=" mt-5">
+                                            <div class="row">
+                                                <div class="col-12 mx-auto">
+                                                    <div class="d-flex justify-content-between">
+                                                        <h3>Delete the order with id = ${id}</h3>
+                                                    </div>
+
+                                                    <hr />
+                                                    <div class="alert alert-danger">
+                                                        Are you sure to delete this order ?
+                                                    </div>
+                                                    <form:form method="post" action="/admin/order/delete"
+                                                        modelAttribute="newOrder">
+                                                        <div class="mb-3" style="display: none;">
+                                                            <label class="form-label">Id:</label>
+                                                            <form:input value="${id}" type="text" class="form-control"
+                                                                path="id" />
+                                                        </div>
+                                                        <button class="btn btn-danger">Confirm</button>
+                                                    </form:form>
+
+                                                </div>
+
+                                            </div>
+
+                                        </div>
                                     </div>
+                    </main>
 
-                                </div>
-                            </div>
-                        </main>
-
-                    </div>
+                </div>
                 </div>
 
 

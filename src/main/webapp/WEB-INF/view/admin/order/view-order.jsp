@@ -69,100 +69,100 @@
                     </style>
                 </head>
 
-                <body class="sb-nav-fixed">
 
-                    <div id="layoutSidenav">
-                        <jsp:include page="../layout/sidebar.jsp" />
-                        <div id="layoutSidenav_content">
-                            <main>
-                                <div class="container-fluid px-4">
+                <body class="g-sidenav-show   bg-gray-100">
+                    <div class="min-height-300 bg-dark position-absolute w-100"></div>
+                    <jsp:include page="../layout/sidebar.jsp" />
+                    <div id="layoutSidenav_content">
+                        <main>
+                            <div class="container-fluid px-4">
 
-                                    <div class="mt-5">
-                                        <div class="row">
-                                            <div class="col-12 mx-auto">
-                                                <div class="d-flex justify-content-between">
-                                                    <h3>Order detail with id = ${id}</h3>
-                                                </div>
-
-                                                <hr />
-
-                                                <div class="table-responsive">
-                                                    <table class="table">
-                                                        <thead>
-                                                            <tr>
-                                                                <th scope="col">Sản phẩm</th>
-                                                                <th scope="col">Tên</th>
-                                                                <th scope="col">Giá cả</th>
-                                                                <th scope="col">Số lượng</th>
-                                                                <th scope="col">Thành tiền</th>
-                                                            </tr>
-                                                        </thead>
-                                                        <tbody>
-                                                            <c:if test="${ empty orderDetails}">
-                                                                <tr>
-                                                                    <td colspan="6">
-                                                                        Không có sản phẩm trong giỏ hàng
-                                                                    </td>
-                                                                </tr>
-                                                            </c:if>
-                                                            <c:forEach var="orderDetail" items="${orderDetails}">
-
-                                                                <tr>
-                                                                    <th scope="row">
-                                                                        <div class="d-flex align-items-center">
-                                                                            <img src="/images/product/${orderDetail.product.image}"
-                                                                                class="img-fluid me-5 rounded-circle"
-                                                                                style="width: 80px; height: 80px;"
-                                                                                alt="">
-                                                                        </div>
-                                                                    </th>
-                                                                    <td>
-                                                                        <p class="mb-0 mt-4">
-                                                                            <a href="/product/${orderDetail.product.id}"
-                                                                                target="_blank">
-                                                                                ${orderDetail.product.name}
-                                                                            </a>
-                                                                        </p>
-                                                                    </td>
-                                                                    <td>
-                                                                        <p class="mb-0 mt-4">
-                                                                            <fmt:formatNumber type="number"
-                                                                                value="${orderDetail.price}" /> đ
-                                                                        </p>
-                                                                    </td>
-                                                                    <td>
-                                                                        <div class="input-group quantity mt-4"
-                                                                            style="width: 100px;">
-                                                                            <input type="text"
-                                                                                class="form-control form-control-sm text-center border-0"
-                                                                                value="${orderDetail.quantity}">
-                                                                        </div>
-                                                                    </td>
-                                                                    <td>
-                                                                        <p class="mb-0 mt-4"
-                                                                            data-cart-detail-id="${orderDetail.id}">
-                                                                            <fmt:formatNumber type="number"
-                                                                                value="${orderDetail.price * orderDetail.quantity}" />
-                                                                            đ
-                                                                        </p>
-                                                                    </td>
-                                                                </tr>
-                                                            </c:forEach>
-
-                                                        </tbody>
-                                                    </table>
-                                                </div>
-                                                <a href="/admin/order" class="btn btn-success mt-3">Back</a>
-
+                                <div class="mt-5">
+                                    <div class="row">
+                                        <div class="col-12 mx-auto">
+                                            <div class="d-flex">
+                                                <h3
+                                                    style="color: antiquewhite; margin-top: 50px; justify-content: center;">
+                                                    Orders Detail </h3>
                                             </div>
 
+                                            <hr />
+                                            <table class=" table table-bordered table-hover" style="margin-top: 150px;">
+                                                <thead>
+
+                                                    <tr>
+                                                        <th scope="col">Sản phẩm</th>
+                                                        <th scope="col">Tên</th>
+                                                        <th scope="col">Giá cả</th>
+                                                        <th scope="col">Số lượng</th>
+                                                        <th scope="col">Thành tiền</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <c:if test="${ empty orderDetails}">
+                                                        <tr>
+                                                            <td colspan="6">
+                                                                Không có sản phẩm trong giỏ hàng
+                                                            </td>
+                                                        </tr>
+                                                    </c:if>
+                                                    <c:forEach var="orderDetail" items="${orderDetails}">
+
+                                                        <tr>
+                                                            <th scope="row">
+                                                                <div class="d-flex align-items-center">
+                                                                    <img src="/images/product/${orderDetail.product.image}"
+                                                                        class="img-fluid me-5 rounded-circle"
+                                                                        style="width: 80px; height: 80px;" alt="">
+                                                                </div>
+                                                            </th>
+                                                            <td>
+                                                                <p class="mb-0 mt-4">
+                                                                    <a href="/product/${orderDetail.product.id}"
+                                                                        target="_blank">
+                                                                        ${orderDetail.product.name}
+                                                                    </a>
+                                                                </p>
+                                                            </td>
+                                                            <td>
+                                                                <p class="mb-0 mt-4">
+                                                                    <fmt:formatNumber type="number"
+                                                                        value="${orderDetail.price}" /> đ
+                                                                </p>
+                                                            </td>
+                                                            <td>
+                                                                <div class="input-group quantity mt-4"
+                                                                    style="width: 100px;">
+                                                                    <input type="text"
+                                                                        class="form-control form-control-sm text-center border-0"
+                                                                        value="${orderDetail.quantity}">
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <p class="mb-0 mt-4"
+                                                                    data-cart-detail-id="${orderDetail.id}">
+                                                                    <fmt:formatNumber type="number"
+                                                                        value="${orderDetail.price * orderDetail.quantity}" />
+                                                                    đ
+                                                                </p>
+                                                            </td>
+                                                        </tr>
+                                                    </c:forEach>
+
+                                                </tbody>
+                                            </table>
                                         </div>
+                                        <a href="/admin/order" class="btn btn-success mt-3">Back</a>
 
                                     </div>
-                                </div>
-                            </main>
 
-                        </div>
+                                </div>
+
+                            </div>
+                    </div>
+                    </main>
+
+                    </div>
                     </div>
 
 

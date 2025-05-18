@@ -65,64 +65,102 @@
                 </style>
             </head>
 
-            <body class="sb-nav-fixed">
-                <div id="layoutSidenav">
-                    <jsp:include page="../layout/sidebar.jsp" />
-                    <div id="layoutSidenav_content">
-                        <main>
-                            <div class="container-fluid px-4">
+            <body class="g-sidenav-show   bg-gray-100">
+                <div class="min-height-300 bg-dark position-absolute w-100"></div>
+                <jsp:include page="../layout/sidebar.jsp" />
+                <div id="layoutSidenav_content">
+                    <main>
+                        <div class="container-fluid px-4">
 
-                                <div class="mt-5">
-                                    <div class="row">
-                                        <div class="col-12 mx-auto">
-                                            <div class="d-flex">
-                                                <h3>Table Orders</h3>
-                                            </div>
-
-                                            <hr />
-                                            <table class=" table table-bordered table-hover">
-                                                <thead>
-                                                    <tr>
-                                                        <th>ID</th>
-                                                        <th>Total Price</th>
-                                                        <th>User</th>
-                                                        <th>Status</th>
-                                                        <th>Action</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    <c:forEach var="order" items="${orders}">
-                                                        <tr>
-                                                            <th>${order.id}</th>
-                                                            <td>
-                                                                <fmt:formatNumber type="number"
-                                                                    value="${order.totalPrice}" /> đ
-                                                            </td>
-                                                            <td>${order.user.fullName}</td>
-                                                            <td>${order.status}</td>
-                                                            <td>
-                                                                <a href="/admin/order/${order.id}"
-                                                                    class="btn btn-success">View</a>
-                                                                <a href="/admin/order/update/${order.id}"
-                                                                    class="btn btn-warning  mx-2">Update</a>
-                                                                <a href="/admin/order/delete/${order.id}"
-                                                                    class="btn btn-danger">Delete</a>
-                                                            </td>
-                                                        </tr>
-
-                                                    </c:forEach>
-
-                                                </tbody>
-
+                            <div class="mt-5">
+                                <div class="row">
+                                    <div class="col-12 mx-auto">
+                                        <div class="d-flex">
+                                            <h3 style="color: antiquewhite; margin-top: 50px; justify-content: center;">
+                                                Table Orders</h3>
                                         </div>
+
+                                        <hr />
+                                        <table class=" table table-bordered table-hover" style="margin-top: 150px;">
+                                            <thead>
+                                                <tr>
+                                                    <th>ID</th>
+                                                    <th>Total Price</th>
+                                                    <th>User</th>
+                                                    <th>Status</th>
+                                                    <th>Action</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <c:forEach var="order" items="${orders}">
+                                                    <tr>
+                                                        <th>${order.id}</th>
+                                                        <td>
+                                                            <fmt:formatNumber type="number"
+                                                                value="${order.totalPrice}" /> đ
+                                                        </td>
+                                                        <td>${order.user.fullName}</td>
+                                                        <td>${order.status}</td>
+                                                        <td>
+                                                            <a href="/admin/order/${order.id}"
+                                                                class="btn btn-success">View</a>
+                                                            <a href="/admin/order/update/${order.id}"
+                                                                class="btn btn-warning  mx-2">Update</a>
+                                                            <a href="/admin/order/delete/${order.id}"
+                                                                class="btn btn-danger">Delete</a>
+                                                        </td>
+                                                    </tr>
+
+                                                </c:forEach>
+
+                                            </tbody>
+                                        </table>
+                                        <nav aria-label="Page navigation example">
+                                            <ul class="pagination justify-content-center">
+
+                                                <li class="page-item ${currentPage == 1 ? 'disabled' : ''}">
+                                                    <a class="page-link" href="/admin/order?page=${currentPage - 1}"
+                                                        aria-label="Previous" ${currentPage==1
+                                                        ? 'tabindex="-1" aria-disabled="true"' : '' }>
+                                                        <span aria-hidden="true">&laquo;</span>
+                                                        <span class="sr-only">Previous</span>
+                                                    </a>
+                                                </li>
+
+
+                                                <c:if test="${totalPages > 0}">
+                                                    <c:forEach begin="1" end="${totalPages}" varStatus="loop">
+                                                        <li
+                                                            class="page-item ${loop.index == currentPage ? 'active' : ''}">
+                                                            <a class="page-link" href="/admin/order?page=${loop.index}">
+                                                                ${loop.index}
+                                                            </a>
+                                                        </li>
+                                                    </c:forEach>
+                                                </c:if>
+
+
+                                                <li class="page-item ${currentPage == totalPages ? 'disabled' : ''}">
+                                                    <a class="page-link" href="/admin/order?page=${currentPage + 1}"
+                                                        aria-label="Next" ${currentPage==totalPages
+                                                        ? 'tabindex="-1" aria-disabled="true"' : '' }>
+                                                        <span aria-hidden="true">&raquo;</span>
+                                                        <span class="sr-only">Next</span>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </nav>
+
 
                                     </div>
 
                                 </div>
-                            </div>
-                        </main>
 
-                    </div>
+                            </div>
+                        </div>
+                    </main>
+
+                </div>
                 </div>
 
 

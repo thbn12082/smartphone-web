@@ -3,6 +3,7 @@ package com.example.smartphone.service;
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 
 import com.example.smartphone.domain.Order;
@@ -23,10 +24,6 @@ public class OrderService {
         this.orderRepository = orderRepository;
     }
 
-    // public Page<Order> fetchAllOrders(Pageable page) {
-    // return this.orderRepository.findAll(page);
-    // }
-
     public Optional<Order> fetchOrderById(long id) {
         return this.orderRepository.findById(id);
     }
@@ -45,8 +42,8 @@ public class OrderService {
         this.orderRepository.deleteById(id);
     }
 
-    public List<Order> fetchAllOrders() {
-        return this.orderRepository.findAll();
+    public Page<Order> fetchAllOrders(org.springframework.data.domain.Pageable pageable) {
+        return this.orderRepository.findAll(pageable);
     }
 
     public void updateOrder(Order order) {

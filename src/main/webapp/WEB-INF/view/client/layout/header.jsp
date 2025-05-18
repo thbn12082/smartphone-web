@@ -11,9 +11,8 @@
                                 <p style="color: black; font-size: 30px;">Smartphone shop</p>
                             </a>
                             <c:if test="${not empty pageContext.request.userPrincipal}">
-                                <a href="/test" style="text-decoration: none;color: black; font-size: 19px;"> Tat ca
-                                    san
-                                    pham</a>
+                                <a href="/products" style="text-decoration: none;color: black; font-size: 19px;">All
+                                    Products</a>
                                 <div style="display: flex;">
                                     <div>
                                         <p

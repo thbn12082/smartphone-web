@@ -2,7 +2,10 @@ package com.example.smartphone.controller.admin;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Optional;
 
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -64,9 +67,27 @@ public class UserController {
     }
 
     @GetMapping("/admin/user")
-    public String getAllUser(Model model) {
-        List<User> users = this.userService.findAllUsers();
+    public String getAllUser(Model model, @RequestParam("page") Optional<String> pageOptional) {
+        int page = 1;
+        try{
+            Integer.parseInt(pageOptional.get());
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        if(pageOptional.isPresent()){
+                page = Integer.parseInt(pageOptional.get());
+        }
+Pageable pageable = PageRequest.of(page - 1, 1);
+        List<User> users = this.userService.findAllUsers(pageable).getContent();
         model.addAttribute("users", users);
+        model.addAttribute("currentPage", page);
+        int totalPages;
+        if(this.userService.findAllUsers(pageable).getTotalPages() == 0){
+            totalPages = 1;
+        }else{
+            totalPages = this.userService.findAllUsers(pageable).getTotalPages();
+        }
+        model.addAttribute("totalPages", totalPages);
         return "admin/user/table-user";
     }
 

@@ -51,7 +51,7 @@
                             <div class="container">
                                 <div class="row">
                                     <div class="col-xl-3"></div>
-                                    <div class="col-xl-6">
+                                    <div class="col-xl-6" style="margin-top: 50px;">
                                         <form:form action="/admin/product/create" method="post"
                                             modelAttribute="newProduct" enctype="multipart/form-data">
 
@@ -128,7 +128,10 @@
                                                         <label for="factory" class="form-label">Factory:</label>
                                                         <form:select class="form-select" path="factory" id="factory">
                                                             <form:option value="Apple">Apple</form:option>
-                                                            <form:option value="Samsung">Samsung</form:option>
+                                                                <form:option value="Samsung">Samsung</form:option>
+                                                                <form:option value="Xiaomi">Xiaomi</form:option>
+                                                                <form:option value="Oppo">Oppo</form:option>
+                                                                <form:option value="Huawei">Huawei</form:option>
 
                                                         </form:select>
                                                     </div>
@@ -139,6 +142,7 @@
                                                         <form:select class="form-select" path="target" id="target">
                                                             <form:option value="Gaming">Gaming</form:option>
                                                             <form:option value="Work">Work</form:option>
+                                                            <form:option value="Study">Study</form:option>
                                                         </form:select>
                                                     </div>
                                                 </div>

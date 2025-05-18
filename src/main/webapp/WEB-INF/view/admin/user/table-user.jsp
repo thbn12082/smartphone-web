@@ -48,7 +48,7 @@
                             <div class="col-md-3"></div>
                             <div class="col-md-3"></div>
                             <div class="col-md-6">
-                                <table class="table table-hover">
+                                <table class="table table-hover" style="margin-top: 70px;">
                                     <thead>
                                         <tr>
                                             <th scope="col" style="color: antiquewhite;">ID</th>
@@ -77,6 +77,42 @@
 
                                     </tbody>
                                 </table>
+
+                                <nav aria-label="Page navigation example">
+                                    <ul class="pagination justify-content-center">
+
+                                        <li class="page-item ${currentPage == 1 ? 'disabled' : ''}">
+                                            <a class="page-link" href="/admin/user?page=${currentPage - 1}"
+                                                aria-label="Previous" ${currentPage==1
+                                                ? 'tabindex="-1" aria-disabled="true"' : '' }>
+                                                <span aria-hidden="true">&laquo;</span>
+                                                <span class="sr-only">Previous</span>
+                                            </a>
+                                        </li>
+
+
+                                        <c:if test="${totalPages > 0}">
+                                            <c:forEach begin="1" end="${totalPages}" varStatus="loop">
+                                                <li class="page-item ${loop.index == currentPage ? 'active' : ''}">
+                                                    <a class="page-link" href="/admin/user?page=${loop.index}">
+                                                        ${loop.index}
+                                                    </a>
+                                                </li>
+                                            </c:forEach>
+                                        </c:if>
+
+
+                                        <li class="page-item ${currentPage == totalPages ? 'disabled' : ''}">
+                                            <a class="page-link" href="/admin/user?page=${currentPage + 1}"
+                                                aria-label="Next" ${currentPage==totalPages
+                                                ? 'tabindex="-1" aria-disabled="true"' : '' }>
+                                                <span aria-hidden="true">&raquo;</span>
+                                                <span class="sr-only">Next</span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </nav>
+
                             </div>
                             <div class="col-md-3"></div>
                         </div>

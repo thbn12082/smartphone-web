@@ -72,9 +72,9 @@ public class SecurityConfiguration {
                         .permitAll()
                         .requestMatchers("/", "/register", "/product/**", "/login", "/client/**", "/css/**", "/js/**",
                                 "/img/**", "/register",
-                                "/images/**", "/admin/**")
+                                "/images/**")
                         .permitAll()
-                        // .requestMatchers("/admin/**").hasRole("ADMIN")
+                        .requestMatchers("/admin/**").hasRole("ADMIN")
                         // ham hasRole se tu dong cos "ROLE_"
                         .anyRequest().authenticated())
                 .sessionManagement((sessionManagement) -> sessionManagement

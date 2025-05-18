@@ -142,7 +142,7 @@
                 <div class="min-height-300 bg-dark position-absolute w-100"></div>
                 <jsp:include page="../layout/sidebar.jsp" />
                 <div class="container-fluid py-4">
-                    <div class="row">
+                    <div class="row" style="margin-top: 94px;">
 
 
                         <div class="col-xl-4 col-sm-6 mb-xl-0 mb-4"> <a href="/admin/user">
@@ -235,7 +235,7 @@
 
 
                     </div>
-                    <div class="row mt-4">
+                    <!-- <div class="row mt-4">
                         <div class="col-lg-7 mb-lg-0 mb-4">
                             <div class="card z-index-2 h-100">
                                 <div class="card-header pb-0 pt-3 bg-transparent">
@@ -317,7 +317,7 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
                 </main>
                 </div>
