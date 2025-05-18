@@ -194,8 +194,8 @@
                                 <h2 style="margin-left: 5px; font-size: 56px;" class="my-element"> Smartphoneshop</h2>
                             </div>
                         </div>
-                        <a class="BannerTheme_sliderItem__0Yheb BannerTheme_fadeIn__f2GRS" href="/test2" target="_blank"
-                            rel="dofollow" draggable="false">
+                        <a class="BannerTheme_sliderItem__0Yheb BannerTheme_fadeIn__f2GRS" href="/products"
+                            target="_blank" rel="dofollow" draggable="false">
                             <div class="bg-[length:100%_auto] bg-[center_top] bg-no-repeat BannerTheme_sliderBg__lb4oh"
                                 style="background-color:#F3F4F6 !important">
                                 <div class="overlap-container">
@@ -261,94 +261,7 @@
                                 </c:if>
                             </div>
                         </div>
-                        <!-- Featured Products -->
-                        <div class="container-fluid py-5">
-                            <div class="container">
-                                <h1 class="check text-center mb-4">Bài viết nên đọc</h1>
-                                <!-- Portfolio Grid -->
-                                <section class="page-section bg-light" id="portfolio">
-                                    <div class="container">
-                                        <div id="carouselId" class="carousel slide" data-bs-ride="carousel">
-                                            <div class="carousel-inner">
-                                                <a href="/test5" style="text-decoration: none;">
-                                                    <div class="carousel-item active">
-                                                        <img src="https://image.dienthoaivui.com.vn/x,webp,q90/https://dashboard.dienthoaivui.com.vn/uploads/dashboard/editor_upload/sac-du-phong-gia-re-duoi-100k-11.jpg"
-                                                            class="img-fluid w-100 rounded" alt="First slide">
-                                                        <div class="card-content">
-                                                            <div style="display: flex; justify-content: space-evenly;">
-                                                                <h3 style="color: lightblue;">Sạc đầy năng lượng kết nối
-                                                                    không
-                                                                    ngừng
-                                                                </h3>
 
-                                                            </div>
-
-
-                                                            <p>Sạc dự phòng là một món phụ kiện không thể thiếu cho
-                                                                những ai
-                                                                sử
-                                                                dụng
-                                                                điện thoại thông minh thường
-                                                                xuyên. Sạc dự phòng giúp người dùng không còn phải lo
-                                                                lắng
-                                                                về
-                                                                pin
-                                                                bất ngờ hết khi đang di chuyển,
-                                                                công tác hay đi du lịch. Tuy nhiên, với thị trường đa
-                                                                dạng
-                                                                như
-                                                                hiện
-                                                                nay, việc lựa chọn được một sản
-                                                                phẩm sạc dự phòng tốt không phải là điều dễ dàng.</p>
-                                                        </div>
-                                                    </div>
-                                                </a>
-
-                                                <a href="#" style="text-decoration: none;">
-                                                    <div class="carousel-item">
-                                                        <img src="https://www.digitaltrends.com/wp-content/uploads/2020/09/gopro-hero9-black-review-dm-6.jpg?p=1"
-                                                            class="img-fluid w-100 rounded" alt="Second slide">
-                                                        <div class="card-content">
-                                                            <div style="display: flex; justify-content: space-evenly;">
-                                                                <h3 style="color: lightblue;">Gói trọn mùa Xuân trong
-                                                                    từng
-                                                                    thước
-                                                                    phim</h3>
-
-                                                            </div>
-
-
-                                                            <p>Vào mùa Tết, các combo khuyến mại cũng được nhiều nhãn
-                                                                hàng
-                                                                tung
-                                                                ra
-                                                                thị trường với mức giá hấp dẫn để
-                                                                đẩy thêm nhiều sản phẩm cuối năm. Mức giá hy được áp
-                                                                dụng
-                                                                chỉ từ
-                                                                99k, 199k, 299k,... đây là những
-                                                                mức giá hấp dẫn, nhanh tay kẻo hết.</p>
-                                                        </div>
-                                                    </div>
-                                                </a>
-
-                                            </div>
-                                            <button class="carousel-control-prev" type="button"
-                                                data-bs-target="#carouselId" data-bs-slide="prev">
-                                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                                <span class="visually-hidden">Previous</span>
-                                            </button>
-                                            <button class="carousel-control-next" type="button"
-                                                data-bs-target="#carouselId" data-bs-slide="next">
-                                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                                <span class="visually-hidden">Next</span>
-                                            </button>
-                                        </div>
-                                    </div>
-                                </section>
-
-                            </div>
-                        </div>
                         <!-- About -->
                         <section class="page-section" id="about">
                             <div class="container">

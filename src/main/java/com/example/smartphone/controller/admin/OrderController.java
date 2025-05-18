@@ -30,18 +30,18 @@ public class OrderController {
     public String getDashboard(Model model, @RequestParam("page") Optional<String> pageOptional) {
         int page = 1;
         try {
-        if (pageOptional.isPresent()) {
-        // convert from String to int
-        page = Integer.parseInt(pageOptional.get());
-        } else {
-        // page = 1
-        }
+            if (pageOptional.isPresent()) {
+                // convert from String to int
+                page = Integer.parseInt(pageOptional.get());
+            } else {
+                // page = 1
+            }
         } catch (Exception e) {
-        // page = 1
-        // TODO: handle exception
+            // page = 1
+            // TODO: handle exception
         }
 
-        Pageable pageable = PageRequest.of(page - 1, 1);
+        Pageable pageable = PageRequest.of(page - 1, 2);
         Page<Order> ordersPage = this.orderService.fetchAllOrders(pageable);
         List<Order> orders = ordersPage.getContent();
         // List<Order> orders = this.orderService.fetchAllOrders();
@@ -70,7 +70,7 @@ public class OrderController {
     @PostMapping("/admin/order/delete")
     public String postDeleteOrder(@ModelAttribute("newOrder") Order order) {
         this.orderService.deleteOrderById(order.getId());
-        return "redirect:/admin/show-order";
+        return "redirect:/admin/order";
     }
 
     @GetMapping("/admin/order/update/{id}")

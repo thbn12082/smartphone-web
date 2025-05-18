@@ -2,6 +2,7 @@
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
         <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
             <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+            
 
                 <!DOCTYPE html>
                 <html lang="en">
@@ -54,7 +55,8 @@
                                     <div class="row">
                                         <div class="col-xl-3"></div>
                                         <div class="col-xl-6">
-                                            <h1 style="text-align: center; color:antiquewhite ;">Create a product</h1>
+                                            <h1 style="text-align: center; color:antiquewhite ;margin-bottom: 50px;">
+                                                Create a product</h1>
                                             <hr>
                                             <br>
                                             <div class="col-xl-3"></div>
@@ -197,6 +199,73 @@
 
                     <script src="/js/bootstrap.min.js"></script>
                     <script src="/js/dashboard.js"></script>
+                    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+                    <script>
+                        $(document).ready(function () {
+                            "use strict";
+
+
+                            $('.quantity button').on('click', function () {
+                                let change = 0;
+                                var button = $(this);
+                                var oldValue = button.parent().parent().find('input').val();
+                                if (button.hasClass('btn-plus')) {
+                                    var newVal = parseFloat(oldValue) + 1;
+                                    change = 1;
+                                } else {
+                                    if (oldValue > 1) {
+                                        var newVal = parseFloat(oldValue) - 1;
+                                        change = -1;
+                                    } else {
+                                        newVal = 1;
+                                    }
+                                }
+                                const input = button.parent().parent().find('input');
+                                input.val(newVal);
+
+                                const index = input.attr("data-cart-detail-index")
+                                const el = document.getElementById(`cartDetails${index}.quantity`);
+                                $(el).val(newVal);
+
+                                const price = input.attr("data-cart-detail-price");
+                                const id = input.attr("data-cart-detail-id");
+
+                                const priceElement = $(`p[data-cart-detail-id='${id}']`);
+                                if (priceElement) {
+                                    const newPrice = +price * newVal;
+                                    priceElement.text(formatCurrency(newPrice.toFixed(2)) + " đ");
+                                }
+
+                                const totalPriceElement = $(`p[data-cart-total-price]`);
+                                if (totalPriceElement && totalPriceElement.length) {
+                                    const currentTotal = totalPriceElement.first().attr("data-cart-total-price");
+                                    let newTotal = +currentTotal;
+                                    if (change === 0) {
+                                        newTotal = +currentTotal;
+                                    } else {
+                                        newTotal = change * (+price) + (+currentTotal);
+                                    }
+                                    change = 0;
+                                    totalPriceElement?.each(function (index, element) {
+                                        $(totalPriceElement[index]).text(formatCurrency(newTotal.toFixed(2)) + " đ");
+                                        $(totalPriceElement[index]).attr("data-cart-total-price", newTotal);
+                                    });
+                                }
+                            });
+
+                            function formatCurrency(value) {
+                                const formatter = new Intl.NumberFormat('vi-VN', {
+                                    style: 'decimal',
+                                    minimumFractionDigits: 0,
+                                });
+                                let formatted = formatter.format(value);
+                                formatted = formatted.replace(/\./g, ',');
+                                return formatted;
+                            }
+
+
+                        });
+                    </script>
 
 
 

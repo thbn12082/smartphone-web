@@ -69,22 +69,22 @@ public class UserController {
     @GetMapping("/admin/user")
     public String getAllUser(Model model, @RequestParam("page") Optional<String> pageOptional) {
         int page = 1;
-        try{
+        try {
             Integer.parseInt(pageOptional.get());
-        }catch(Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
-        if(pageOptional.isPresent()){
-                page = Integer.parseInt(pageOptional.get());
+        if (pageOptional.isPresent()) {
+            page = Integer.parseInt(pageOptional.get());
         }
-Pageable pageable = PageRequest.of(page - 1, 1);
+        Pageable pageable = PageRequest.of(page - 1, 2);
         List<User> users = this.userService.findAllUsers(pageable).getContent();
         model.addAttribute("users", users);
         model.addAttribute("currentPage", page);
         int totalPages;
-        if(this.userService.findAllUsers(pageable).getTotalPages() == 0){
+        if (this.userService.findAllUsers(pageable).getTotalPages() == 0) {
             totalPages = 1;
-        }else{
+        } else {
             totalPages = this.userService.findAllUsers(pageable).getTotalPages();
         }
         model.addAttribute("totalPages", totalPages);

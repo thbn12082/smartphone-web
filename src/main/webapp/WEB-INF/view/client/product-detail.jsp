@@ -464,35 +464,20 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <a href="/test6" style="text-decoration: none;">
-                                                    <button class="add-to-cart" style="margin-top: 12%;width: 100%;">Add
-                                                        to
-                                                        cart</button>
-                                                </a>
+                                                <form action="/add-product-to-cart/${product.id}" method="post">
+                                                    <input type="hidden" name="${_csrf.parameterName}"
+                                                        value="${_csrf.token}" />
+                                                    <button
+                                                        class="mx-auto btn border border-secondary rounded-pill px-3 "
+                                                        style="color: gray;">
+                                                        <i class="fa fa-shopping-bag me-2 "></i>
+                                                        Add to cart
+                                                    </button>
+                                                </form>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-3">
-                                        <div class="category-sidebar">
-                                            <h3 class="category-sidebar-heading">Categories</h3>
-                                            <ul class="category-sidebar-list">
-                                                <c:if test="${not empty categories}">
-                                                    <c:forEach var="category" items="${categories}">
-                                                        <li class="category-sidebar-item">
-                                                            <a href="/products?categoryId=${category.categoryId}">
-                                                                ${category.categoryName}
-                                                                <span
-                                                                    class="category-count">(${category.productCount})</span>
-                                                            </a>
-                                                        </li>
-                                                    </c:forEach>
-                                                </c:if>
-                                                <c:if test="${empty categories}">
-                                                    <li class="category-sidebar-item">Không có danh mục nào.</li>
-                                                </c:if>
-                                            </ul>
-                                        </div>
-                                    </div>
+
                                 </div>
                             </div>
 
@@ -513,63 +498,56 @@
                             <div class="container">
                                 <h1 class="check mb-4">Sản phẩm liên quan</h1>
                                 <div class="row">
-                                    <div class="col-sm-6 col-md-4 col-lg-3 mb-4">
-                                        <div class="card h-100">
-                                            <img src="https://cdn.viettelstore.vn/Images/Product/ProductImage/70698293.jpeg"
-                                                class="card-img-top img-fluid" alt="Xiaomi Redmi Note 14">
-                                            <div class="card-body">
-                                                <h5 class="card-title">Xiaomi Redmi Note</h5>
-                                                <p class="card-text">8GB/128GB</p>
-                                                <p class="text-primary fw-bold">5.490.000₫</p>
-                                                <p class="text-muted">Quà 200.000₫</p>
+                                    <c:forEach var="product" items="${products}">
+                                        <div class="col-sm-6 col-md-4 col-lg-3 mb-4">
+                                            <div class="card">
+                                                <img src="/images/product/${product.image}"
+                                                    class="card-img-top img-fluid" alt="Xiaomi Redmi Note 14">
+                                                <div class="card-body">
+                                                    <a href="/product/${product.id}"
+                                                        style="text-decoration: none; color: black;">
+                                                        <h4 class="card-title"
+                                                            style="font-size: 15px; text-align: center;">
+                                                            ${product.name}
+                                                        </h4>
+                                                    </a>
+
+                                                    <p class="text-muted" style="font-size: 13px;text-align: center;">
+                                                        ${product.shortDesc}
+                                                    </p>
+                                                    <div class="d-flex flex-lg-wrap justify-content-center">
+                                                        <p class="text-primary fw-bold mb-3"
+                                                            style="font-size: 15px;text-align: center; width: 100%;">
+                                                            <fmt:formatNumber type="number" value="${product.price}" />
+                                                            ₫
+                                                        </p>
+
+                                                        <form action="/add-product-to-cart/${product.id}" method="post">
+                                                            <input type="hidden" name="${_csrf.parameterName}"
+                                                                value="${_csrf.token}" />
+                                                            <button
+                                                                class="mx-auto btn border border-secondary rounded-pill px-3 "
+                                                                style="color: gray;">
+                                                                <i class="fa fa-shopping-bag me-2 "></i>
+                                                                Add to cart
+                                                            </button>
+                                                        </form>
+
+                                                    </div>
+
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="col-sm-6 col-md-4 col-lg-3 mb-4">
-                                        <div class="card h-100">
-                                            <img src="https://cdn.tgdd.vn/Products/Images/42/305658/iphone-15-pro-max-blue-thumbnew-600x600.jpg"
-                                                class="card-img-top img-fluid" alt="iPhone 15 Pro Max">
-                                            <div class="card-body">
-                                                <h5 class="card-title">iPhone 15 Pro Max</h5>
-                                                <p class="card-text">8GB/128GB</p>
-                                                <p class="card-text">32.890.000₫</p>
-                                                <p class="text-muted">Quà 1.000.000₫</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-6 col-md-4 col-lg-3 mb-4">
-                                        <div class="card h-100">
-                                            <img src="https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/1/5/15_2_7_2_5.jpg"
-                                                class="card-img-top img-fluid" alt="iPhone 13">
-                                            <div class="card-body">
-                                                <h5 class="card-title">iPhone 13</h5>
-                                                <p class="card-text">8GB/128GB</p>
-                                                <p class="card-text">12.850.000₫</p>
-                                                <p class="text-muted">Quà 500.000₫</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-6 col-md-4 col-lg-3 mb-4">
-                                        <div class="card h-100">
-                                            <img src="https://didongthongminh.vn/images/products/2025/02/08/original/A60_5g.jpg"
-                                                class="card-img-top img-fluid" alt="OPPO A60">
-                                            <div class="card-body">
-                                                <h5 class="card-title">OPPO A60</h5>
-                                                <p class="card-text">8GB/128GB</p>
-                                                <p class="card-text">5.490.000₫</p>
-                                                <p class="text-muted">Quà 200.000₫</p>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    </c:forEach>
+
+
                                 </div>
                             </div>
                         </div>
                     </div>
                     </div>
 
-                    <div style="margin-top: 10px; margin-bottom: 10px;">
-                        <jsp:include page="./layout/experience.jsp" />
-                    </div>
+
 
                     <jsp:include page="layout/footer.jsp" />
 

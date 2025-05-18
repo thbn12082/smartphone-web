@@ -47,6 +47,10 @@ public class ItemController {
     public String getMethodName(@PathVariable Long id, Model model) {
         Product product = this.productService.handleProductById(id);
         model.addAttribute("product", product);
+        Pageable page = PageRequest.of(0, 4);
+        Page<Product> pg = this.productService.handleAllProduct(page);
+        List<Product> products = pg.getContent();
+        model.addAttribute("products", products);
         return "client/product-detail";
     }
 
@@ -100,46 +104,42 @@ public class ItemController {
     }
 
     @GetMapping("/products")
-    public String getProducts(Model model, ProductCriterialDTO productCriterialDTO, HttpServletRequest request) {
-        //handle pagination
-        int page = 1;
-        try{
-            if( productCriterialDTO.getPageOptional().isPresent()){
-                page = Integer.parseInt(productCriterialDTO.getPageOptional().get());
-            }
-        }catch(Exception e){
-            e.printStackTrace();
-        }
+    public String getProducts(
+            Model model,
+            @RequestParam(value = "page", required = false, defaultValue = "1") int page,
+            ProductCriterialDTO productCriterialDTO,
+            HttpServletRequest request) {
+
         Pageable pageable = PageRequest.of(page - 1, 12);
-        if(productCriterialDTO.getSort() != null && productCriterialDTO.getSort().isPresent()){
-            String sort = productCriterialDTO.getSort().get();
-            if(sort.equals("gia-tang-dan")){
-                 pageable = PageRequest.of(page - 1, 12, Sort.by(Product_.PRICE).ascending());
-            }
-            else if(sort.equals("gia-giam-dan")){
-                 pageable = PageRequest.of(page - 1, 12, Sort.by(Product_.PRICE).descending());
-            }else{
-                 pageable = PageRequest.of(page - 1, 12);
+
+        if (productCriterialDTO.getSort() != null && !productCriterialDTO.getSort().isEmpty()) {
+            String sort = productCriterialDTO.getSort();
+            if (sort.equals("gia-tang-dan")) {
+                pageable = PageRequest.of(page - 1, 12, Sort.by(Product_.PRICE).ascending());
+            } else if (sort.equals("gia-giam-dan")) {
+                pageable = PageRequest.of(page - 1, 12, Sort.by(Product_.PRICE).descending());
+            } else {
+                pageable = PageRequest.of(page - 1, 12);
             }
         }
+
         String qs = request.getQueryString();
-        if(qs != null && !qs.isEmpty()){
-            qs = qs.replace("page" + page, "");
+        if (qs != null && !qs.isEmpty()) {
+            qs = qs.replaceAll("(&|\\?)?page=\\d+", "");
+            if (!qs.isEmpty() && !qs.startsWith("&")) {
+                qs = "&" + qs;
+            }
+        } else {
+            qs = "";
         }
+
         Page<Product> pg = this.productService.handleAllProductWithSpec(pageable, productCriterialDTO);
-        List<Product> products = pg.getContent().size() == 0 ? new ArrayList<Product>() : pg.getContent();
+        List<Product> products = pg.getContent();
 
         model.addAttribute("qs", qs);
         model.addAttribute("products", products);
         model.addAttribute("currentPage", page);
-        int totalPages;
-        if(pg.getTotalPages() == 0){
-            totalPages = 1;
-        }
-        else{
-            totalPages = pg.getTotalPages();
-        }
-        model.addAttribute("totalPages", totalPages);
+        model.addAttribute("totalPages", pg.getTotalPages() == 0 ? 1 : pg.getTotalPages());
 
         return "client/all-product";
     }

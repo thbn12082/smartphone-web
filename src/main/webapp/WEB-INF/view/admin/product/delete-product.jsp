@@ -4,6 +4,7 @@
             <!DOCTYPE html>
             <html lang="en">
 
+
             <head>
                 <meta charset="utf-8" />
                 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -21,164 +22,100 @@
                     rel="stylesheet" />
                 <link href="https://demos.creative-tim.com/argon-dashboard-pro/assets/css/nucleo-svg.css"
                     rel="stylesheet" />
-                <!-- Font Awesome Icons -->
-                <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
+
+                <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
+                <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
                 <!-- CSS Files -->
                 <link href="/css/dashboard.css" rel="stylesheet" />
+                <style>
+                    .satisfaction-stats {
+                        width: 300px;
+                        margin: 50px auto;
+                        text-align: center;
+                        font-family: sans-serif;
+                    }
+
+                    .stats {
+                        display: flex;
+                        justify-content: space-around;
+                        margin-bottom: 20px;
+                    }
+
+                    .satisfied,
+                    .dissatisfied {
+                        padding: 20px;
+                        border-radius: 5px;
+                    }
+
+                    .satisfied {
+                        background-color: #e6f7e6;
+                        color: #27ae60;
+                    }
+
+                    .dissatisfied {
+                        background-color: #ffe6e6;
+                        color: #e74c3c;
+                    }
+
+                    .stats span {
+                        font-size: 2em;
+                        font-weight: bold;
+                        display: block;
+                    }
+                </style>
+            </head>
+
 
             <body class="g-sidenav-show   bg-gray-100">
                 <div class="min-height-300 bg-dark position-absolute w-100"></div>
                 <jsp:include page="../layout/sidebar.jsp" />
-                <main>
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-xl-3"></div>
-                            <div class="col-xl-6">
-                                <h1 style="text-align: center; color: antiquewhite;">Delete product ${productId}</h1>
+                <div id="layoutSidenav_content">
+                    <main>
+                        <div class="container-fluid px-4">
 
-                                <div class="col-xl-3"></div>
-                            </div>
-                            <div class="row">
-                                <div class="col-xl-3"></div>
-                                <div class="col-xl-6">
-                                    <div class="box"
-                                        style="padding: 20px; background-color: #3ae69c;width: 100%; border-radius: 20px; margin-bottom: 30px;">
-                                        Are you sure
-                                        to delete this product?</div>
-                                    <div class="inner" style="display: flex; justify-content: space-between;">
-                                        <form:form action="/admin/product/delete/${productId}" method="post">
-                                            <button class="btn btn-danger">Delete</button>
-                                        </form:form>
-                                        <a href="/admin/product"><button class="btn btn-success">Back</button></a>
+                            <div class="mt-5">
+                                <div class="row">
+                                    <div class="col-12 mx-auto">
+                                        <div class="d-flex">
+                                            <h3 style="color: antiquewhite; justify-content: center;">
+                                                Table Products</h3>
+                                        </div>
+
+                                        <hr />
+
+
+                                        <div class=" mt-5">
+                                            <div class="row">
+                                                <div class="col-12 mx-auto">
+                                                    <div class="d-flex justify-content-between">
+                                                        <h3 style="color: bisque;">Delete product with id = ${id}</h3>
+                                                    </div>
+
+                                                    <hr />
+
+                                                    <div class="alert alert-danger">
+                                                        Are you sure to delete this product?
+                                                    </div>
+                                                    <form:form method="post" action="/admin/product/delete"
+                                                        modelAttribute="id">
+                                                        <input type="hidden" name="id" value="${id}" />
+                                                        <button class="btn btn-danger">Confirm</button>
+                                                    </form:form>
+
+
+
+                                                </div>
+
+                                            </div>
+
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="col-xl-3"></div>
-                            </div>
-                            <div class="row">
-                                <div class="col-xl-3"></div>
-                                <div class="col-xl-6">
-                                    <form:form action="/admin/product/create" method="post" modelAttribute="newProduct"
-                                        enctype="multipart/form-data">
+                    </main>
 
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <c:set var="errorName">
-                                                        <form:errors path="name" cssClass="invalid-feedback" />
-                                                    </c:set>
-                                                    <label for="name" type="text" class="form-label">Name:</label>
-                                                    <form:input type="text"
-                                                        class="form-control ${not empty errorName ? 'is-invalid' : ''}"
-                                                        id="name" path="name" />
-                                                    ${errorName}
-                                                </div>
-                                            </div>
+                </div>
+                </div>
 
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <c:set var="errorPrice">
-                                                        <form:errors path="price" cssClass="invalid-feedback" />
-                                                    </c:set>
-                                                    <label for="price" class="form-label ">Price:</label>
-                                                    <form:input type="number"
-                                                        class="form-control ${not empty errorPrice ? 'is-invalid':''}"
-                                                        id="price" path="price" />
-                                                    ${errorPrice}
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group">
-                                            <c:set var="errorDetailDesc">
-                                                <form:errors path="detailDesc" cssClass="invalid-feedback" />
-                                            </c:set>
-                                            <label for="exampleFormControlTextarea1">Detail description:</label>
-                                            <form:textarea type="text"
-                                                class="form-control ${not empty errorDetailDesc ? 'is-invalid': ''}"
-                                                id="detailDesc" rows="3" path="detailDesc" />
-                                            ${errorDetailDesc}
-                                        </div>
-
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <c:set var="errorShortDesc">
-                                                        <form:errors path="shortDesc" cssClass="invalid-feedback" />
-                                                    </c:set>
-                                                    <label for="shortDesc" class="form-label">Short
-                                                        description:</label>
-                                                    <form:input type="text"
-                                                        class="form-control ${not empty errorShortDesc ? 'is-invalid' : ''}"
-                                                        id="shortDesc" path="shortDesc" />
-                                                    ${errorShortDesc}
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <c:set var="errorQuantity">
-                                                        <form:errors path="quantity" cssClass="invalid-feedback" />
-                                                    </c:set>
-                                                    <label for="quantity1" class="form-label ">Quantity:</label>
-                                                    <form:input type="number"
-                                                        class="form-control ${not empty errorQuantity ? 'is-invalid': ''}"
-                                                        id="quantity1" path="quantity" />
-                                                    ${errorQuantity}
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <label for="factory" class="form-label">Factory:</label>
-                                                    <form:select class="form-select" path="factory" id="factory">
-                                                        <form:option value="Apple">Apple</form:option>
-                                                        <form:option value="Samsung">Samsung</form:option>
-
-                                                    </form:select>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <label for="target" class="form-label">Target:</label>
-                                                    <form:select class="form-select" path="target" id="target">
-                                                        <form:option value="Gaming">Gaming</form:option>
-                                                        <form:option value="Work">Work</form:option>
-                                                    </form:select>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group">
-                                            <label for="avatarFile" class="form-label">Image:</label>
-                                            <input class="form-control" type="file" id="avatarFile"
-                                                accept=".png, .jpg, .jpeg" name="thebinhFile" />
-                                        </div>
-
-                                        <br>
-                                        <img style="max-height: 250px; display: none;" alt="avatar preview"
-                                            id="avatarPreview" />
-                                        <br>
-
-                                        <div class="d-flex justify-content-between">
-                                            <button type="submit" class="btn btn-primary">Create</button>
-                                            <a href="/admin/product" class="btn btn-success">Back</a>
-                                        </div>
-                                    </form:form>
-
-                                </div>
-                                <div class="col-xl-3"></div>
-                            </div>
-                        </div>
-
-                    </div>
-                </main>
-
-
-                <script src="/js/bootstrap.min.js"></script>
-                <script src="/js/dashboard.js"></script>
 
             </body>
-
 
             </html>

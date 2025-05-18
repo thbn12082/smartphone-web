@@ -25,14 +25,20 @@ public class ProductSpecs {
         //less than or equal to
     }
     public static Specification<Product> factoryNameEqual(String name){
-        return (root, query, builder) -> builder.equal(root.get(Product_.NAME), name);
-       // eaual
+        return (root, query, builder) -> builder.equal(root.get(Product_.FACTORY), name);
+       // equal
+    }
+    public static Specification<Product> targetEqual(String name){
+        return (root, query, builder) -> builder.equal(root.get(Product_.TARGET), name);
+       // equal
     }
     public static Specification<Product> factoryNameIn(List<String> factory){
-        return (root, query, builder) -> builder.in(root.get(Product_.TARGET)).value(factory);
+        return (root, query, builder) -> builder.in(root.get(Product_.FACTORY)).value(factory);
         //in
     }
-
+    public static Specification<Product> targetIn(List<String> targets){
+    return (root, query, builder) -> root.get(Product_.TARGET).in(targets);
+}
     public static Specification<Product> matchPrice(double min, double max){
         // return (root, query, builder) -> builder.and(builder.ge(root.get(Product_.PRICE), min),
         //                                 builder.le(root.get(Product_.PRICE), max));

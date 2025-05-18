@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.example.smartphone.domain.Order;
 import com.example.smartphone.domain.Product;
 import com.example.smartphone.service.ProductService;
 import com.example.smartphone.service.UploadService;
@@ -49,7 +50,7 @@ public class ProductController {
             page = 1;
         }
 
-        Pageable pageable = PageRequest.of(page - 1, 1);
+        Pageable pageable = PageRequest.of(page - 1, 20);
         Page<Product> pg = this.productService.handleAllProduct(pageable);
         List<Product> lsPr = pg.getContent();
         model.addAttribute("products", lsPr);
@@ -98,18 +99,19 @@ public class ProductController {
 
     @PostMapping("/admin/product/update/{id}")
     public String postUpdateProduct(@ModelAttribute("newProduct") Product product, @PathVariable Long id) {
-
-        return "";
+        this.productService.handleSaveProduct(product);
+        return "redirect:/admin/product";
     }
 
     @GetMapping("/admin/product/delete/{id}")
     public String getDeleteProduct(Model model, @PathVariable Long id) {
-        model.addAttribute("productId", id);
+        model.addAttribute("id", id);
+        model.addAttribute("newProduct", new Product());
         return "admin/product/delete-product";
     }
 
-    @PostMapping("/admin/product/delete/{id}")
-    public String postDeleteProduct(@PathVariable Long id) {
+    @PostMapping("/admin/product/delete")
+    public String postDeleteProduct(@RequestParam("id") Long id) {
         this.productService.handleDelProduct(id);
         return "redirect:/admin/product";
     }
