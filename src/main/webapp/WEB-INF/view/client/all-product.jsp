@@ -330,93 +330,108 @@
                                 <c:if test="${totalPages ==  0}">
                                     <div>Không tìm thấy sản phẩm</div>
                                 </c:if>
-                                <h2 class="section-heading check text-center mb-4">Tất cả sản phẩm</h2>
                                 <div class="row">
-                                    <c:if test="${not empty products}">
-                                        <c:forEach var="product" items="${products}">
-                                            <div class="col-sm-6 col-md-4 col-lg-3 mb-4">
-                                                <div class="card">
-                                                    <img src="/images/product/${product.image}"
-                                                        class="card-img-top img-fluid" alt="${product.name}">
-                                                    <div class="card-body">
-                                                        <a href="/product/${product.id}"
-                                                            style="text-decoration: none; color: black;">
-                                                            <h4 class="card-title"
-                                                                style="font-size: 15px; text-align: center;">
-                                                                ${product.name}
-                                                            </h4>
-                                                        </a>
+                                    <div class="col-12 d-flex justify-content-end align-items-center mb-2">
+                                        <label for="pageSizeSelect" class="me-2">Số sản phẩm/trang:</label>
+                                        <select id="pageSizeSelect" class="form-select w-auto"
+                                            style="display:inline-block;">
+                                            <option value="8" ${param.size=='8' ? 'selected' : '' }>8</option>
+                                            <option value="12" ${param.size=='12' ? 'selected' : '' }>12</option>
+                                            <option value="16" ${param.size=='16' ? 'selected' : '' }>16</option>
+                                            <option value="20" ${param.size=='20' ? 'selected' : '' }>20</option>
+                                        </select>
+                                    </div>
+                                    <h2 class="section-heading check text-center mb-4">Tất cả sản phẩm</h2>
+                                    <div class="row">
+                                        <c:if test="${not empty products}">
+                                            <c:forEach var="product" items="${products}">
+                                                <div class="col-sm-6 col-md-4 col-lg-3 mb-4">
+                                                    <div class="card">
+                                                        <img src="/images/product/${product.image}"
+                                                            class="card-img-top img-fluid" alt="${product.name}">
+                                                        <div class="card-body">
+                                                            <a href="/product/${product.id}"
+                                                                style="text-decoration: none; color: black;">
+                                                                <h4 class="card-title"
+                                                                    style="font-size: 15px; text-align: center;">
+                                                                    ${product.name}
+                                                                </h4>
+                                                            </a>
 
-                                                        <p class="text-muted"
-                                                            style="font-size: 13px;text-align: center;">
-                                                            ${product.shortDesc}
-                                                        </p>
-                                                        <div class="d-flex flex-lg-wrap justify-content-center">
-                                                            <p class="text-primary fw-bold mb-3"
-                                                                style="font-size: 15px;text-align: center; width: 100%;">
-                                                                <fmt:formatNumber type="number"
-                                                                    value="${product.price}" />
-                                                                ₫
+                                                            <p class="text-muted"
+                                                                style="font-size: 13px;text-align: center;">
+                                                                ${product.shortDesc}
                                                             </p>
+                                                            <div class="d-flex flex-lg-wrap justify-content-center">
+                                                                <p class="text-primary fw-bold mb-3"
+                                                                    style="font-size: 15px;text-align: center; width: 100%;">
+                                                                    <fmt:formatNumber type="number"
+                                                                        value="${product.price}" />
+                                                                    ₫
+                                                                </p>
 
-                                                            <form action="/add-product-to-cart/${product.id}"
-                                                                method="post">
-                                                                <input type="hidden" name="${_csrf.parameterName}"
-                                                                    value="${_csrf.token}" />
-                                                                <button
-                                                                    class="mx-auto btn border border-secondary rounded-pill px-3 "
-                                                                    style="color: gray;">
-                                                                    <i class="fa fa-shopping-bag me-2 "></i>
-                                                                    Add to cart
-                                                                </button>
-                                                            </form>
+                                                                <form action="/add-product-to-cart/${product.id}"
+                                                                    method="post">
+                                                                    <input type="hidden" name="${_csrf.parameterName}"
+                                                                        value="${_csrf.token}" />
+                                                                    <button
+                                                                        class="mx-auto btn border border-secondary rounded-pill px-3 "
+                                                                        style="color: gray;">
+                                                                        <i class="fa fa-shopping-bag me-2 "></i>
+                                                                        Add to cart
+                                                                    </button>
+                                                                </form>
+
+                                                            </div>
 
                                                         </div>
-
                                                     </div>
                                                 </div>
-                                            </div>
-                                        </c:forEach>
-                                        <nav aria-label="Page navigation example">
-                                            <ul class="pagination justify-content-center">
+                                            </c:forEach>
+                                            <nav aria-label="Page navigation example">
+                                                <ul class="pagination justify-content-center">
 
-                                                <li class="page-item ${currentPage == 1 ? 'disabled' : ''}">
-                                                    <a class="page-link" href="/products?page=${currentPage - 1}${qs}"
-                                                        aria-label="Previous" ${currentPage==1
-                                                        ? 'tabindex="-1" aria-disabled="true"' : '' }>
-                                                        <span aria-hidden="true">&laquo;</span>
-                                                        <span class="sr-only">Previous</span>
-                                                    </a>
-                                                </li>
-
-
-                                                <c:if test="${totalPages > 0}">
-                                                    <c:forEach begin="1" end="${totalPages}" varStatus="loop">
-                                                        <li
-                                                            class="page-item ${loop.index == currentPage ? 'active' : ''}">
-                                                            <a class="page-link"
-                                                                href="/products?page=${loop.index}${qs}">
-                                                                ${loop.index}
-                                                            </a>
-                                                        </li>
-                                                    </c:forEach>
-                                                </c:if>
+                                                    <li class="page-item ${currentPage == 1 ? 'disabled' : ''}">
+                                                        <a class="page-link"
+                                                            href="/products?page=${currentPage - 1}${qs}"
+                                                            aria-label="Previous" ${currentPage==1
+                                                            ? 'tabindex="-1" aria-disabled="true"' : '' }>
+                                                            <span aria-hidden="true">&laquo;</span>
+                                                            <span class="sr-only">Previous</span>
+                                                        </a>
+                                                    </li>
 
 
-                                                <li class="page-item ${currentPage == totalPages ? 'disabled' : ''}">
-                                                    <a class="page-link" href="/products?page=${currentPage + 1}${qs}"
-                                                        aria-label="Next" ${currentPage==totalPages
-                                                        ? 'tabindex="-1" aria-disabled="true"' : '' }>
-                                                        <span aria-hidden="true">&raquo;</span>
-                                                        <span class="sr-only">Next</span>
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                        </nav>
-                                    </c:if>
-                                    <c:if test="${empty products}">
-                                        <p>Không có sản phẩm nào.</p>
-                                    </c:if>
+                                                    <c:if test="${totalPages > 0}">
+                                                        <c:forEach begin="1" end="${totalPages}" varStatus="loop">
+                                                            <li
+                                                                class="page-item ${loop.index == currentPage ? 'active' : ''}">
+                                                                <a class="page-link"
+                                                                    href="/products?page=${loop.index}${qs}">
+                                                                    ${loop.index}
+                                                                </a>
+                                                            </li>
+                                                        </c:forEach>
+                                                    </c:if>
+
+
+                                                    <li
+                                                        class="page-item ${currentPage == totalPages ? 'disabled' : ''}">
+                                                        <a class="page-link"
+                                                            href="/products?page=${currentPage + 1}${qs}"
+                                                            aria-label="Next" ${currentPage==totalPages
+                                                            ? 'tabindex="-1" aria-disabled="true"' : '' }>
+                                                            <span aria-hidden="true">&raquo;</span>
+                                                            <span class="sr-only">Next</span>
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                            </nav>
+                                        </c:if>
+                                        <c:if test="${empty products}">
+                                            <p>Không có sản phẩm nào.</p>
+                                        </c:if>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -548,6 +563,15 @@
                             }
 
                             window.location.href = currentUrl.toString();
+                        });
+
+                        // Xử lý thay đổi số sản phẩm trên mỗi trang
+                        $('#pageSizeSelect').change(function () {
+                            const size = $(this).val();
+                            const url = new URL(window.location.href);
+                            url.searchParams.set('size', size);
+                            url.searchParams.set('page', '1'); // Reset về trang 1 khi đổi size
+                            window.location.href = url.toString();
                         });
 
                         // Xử lý tự động chọn checkbox/radio sau khi trang tải dựa trên URL params

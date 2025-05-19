@@ -74,7 +74,6 @@ public class ProductService {
                 otherCart.setUser(user);
                 otherCart.setSum(0);
                 cart = this.cartRepository.save(otherCart);
-                session.setAttribute("sum", 0);
             }
             Product product = this.productRepository.findById(productId);
             if (product != null) {
@@ -86,16 +85,15 @@ public class ProductService {
                     cartDetail.setPrice(product.getPrice());
                     cartDetail.setQuantity(1);
                     this.cartDetailRepository.save(cartDetail);
-                    long s = cart.getSum() + 1;
-                    cart.setSum(s);
+                    cart.setSum(cart.getSum() + 1);
                     this.cartRepository.save(cart);
-                    session.setAttribute("sum", s);
                 } else {
                     old.setQuantity(old.getQuantity() + 1);
                     this.cartDetailRepository.save(old);
                 }
             }
-
+            // Cập nhật lại session từ DB
+            updateCartSumInSession(user, session);
         }
     }
 
@@ -122,13 +120,21 @@ public class ProductService {
                 double min = 0, max = 0;
                 switch (p) {
                     case "duoi-10-trieu":
-                        min = 0; max = 10000000; break;
+                        min = 0;
+                        max = 10000000;
+                        break;
                     case "10-15-trieu":
-                        min = 10000000; max = 15000000; break;
+                        min = 10000000;
+                        max = 15000000;
+                        break;
                     case "15-20-trieu":
-                        min = 15000000; max = 20000000; break;
+                        min = 15000000;
+                        max = 20000000;
+                        break;
                     case "tren-20-trieu":
-                        min = 20000000; max = 200000000; break;
+                        min = 20000000;
+                        max = 200000000;
+                        break;
                 }
                 if (min < max) {
                     Specification<Product> rangeSpec = ProductSpecs.matchPrice(min, max);
@@ -148,53 +154,27 @@ public class ProductService {
         return this.productRepository.findAll(combinedSpec, pageable);
     }
 
-    public Page<Product> fetchProductWithSpec(Pageable pageable, List<String> price) {
-        Specification<Product> combinedSpec = Specification.where(null);
-        for (String p : price) {
-            double min = 0, max = 0;
-            switch (p) {
-                case "duoi-10-trieu":
-                    min = 0;
-                    max = 10000000;
-
-                case "10-toi-15-trieu":
-                    min = 10000000;
-                    max = 15000000;
-                    break;
-                case "15-toi-20-trieu":
-                    min = 15000000;
-                    max = 20000000;
-                    break;
-                case "tren-20-trieu":
-                    min = 20000000;
-                    max = 200000000;
-                    break;
-            }
-            if (min != 0 && max != 0) {
-                Specification<Product> rangeSpec = ProductSpecs.matchPrice(min, max);
-                combinedSpec = combinedSpec.or(rangeSpec);
-            }
-        }
-        return this.productRepository.findAll(combinedSpec, pageable);
-    }
-
-    public void handleRemoveCartDetail(long id, HttpSession session) {
+    public void handleRemoveCartDetail(long id, HttpSession session, User user) {
         Optional<CartDetail> cartDetailOptional = this.cartDetailRepository.findById(id);
         if (cartDetailOptional.isPresent()) {
             CartDetail cartDetail = cartDetailOptional.get();
             Cart currentCart = cartDetail.getCart();
-            this.cartRepository.deleteById(id);
-            if (currentCart.getSum() > 1) {
-                long s = currentCart.getSum() - 1;
+
+            // Xóa CartDetail
+            this.cartDetailRepository.deleteById(id);
+
+            // Kiểm tra còn CartDetail nào trong Cart không
+            long s = currentCart.getSum() - 1;
+            if (s > 0) {
                 currentCart.setSum(s);
                 this.cartRepository.save(currentCart);
-                session.setAttribute("sum", s);
             } else {
+                // Nếu không còn sản phẩm nào thì xóa luôn Cart
                 this.cartRepository.deleteById(currentCart.getId());
-                session.setAttribute("sum", 0);
             }
+            // Luôn cập nhật lại session từ DB
+            updateCartSumInSession(user, session);
         }
-
     }
 
     public void handleUpdateCartBeforeCheckout(List<CartDetail> cartDetails) {
@@ -241,9 +221,18 @@ public class ProductService {
             for (CartDetail cartDetail : cartDetails) {
                 this.cartDetailRepository.deleteById(cartDetail.getId());
             }
-            this.cartDetailRepository.deleteById(cart.getId());
-            session.setAttribute("sum", 0);
+            this.cartRepository.deleteById(cart.getId());
+            // Cập nhật lại session từ DB
+            updateCartSumInSession(user, session);
         }
+    }
 
+    private void updateCartSumInSession(User user, HttpSession session) {
+        Cart cart = this.cartRepository.findByUser(user);
+        long sum = 0;
+        if (cart != null && cart.getCartDetails() != null) {
+            sum = cart.getCartDetails().size();
+        }
+        session.setAttribute("sum", sum);
     }
 }

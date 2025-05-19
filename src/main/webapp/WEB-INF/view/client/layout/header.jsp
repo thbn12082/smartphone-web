@@ -5,7 +5,7 @@
                 <%@ page session="true" %>
                     <!-- <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav"> -->
                     <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav"
-                        style="background-color: whitesmoke;">
+                        style="background-color: whitesmoke; margin-bottom: 20px;">
                         <div class="container">
                             <a href="/" style="text-decoration: none;">
                                 <p style="color: black; font-size: 30px;">Smartphone shop</p>
@@ -44,7 +44,7 @@
                                                     <c:out value="${sessionScope.fullName}" />
                                                 </div>
                                             </li>
-                                            <li><a class="dropdown-item" href="#">Quản lý tài khoản</a></li>
+                                            <!-- <li><a class="dropdown-item" href="#">Quản lý tài khoản</a></li> -->
                                             <li><a class="dropdown-item" href="/order-history">Lịch sử mua hàng</a></li>
                                             <li>
                                                 <hr class="dropdown-divider">

@@ -185,7 +185,7 @@
                     <jsp:include page="layout/header.jsp" />
 
                     <!-- Masthead -->
-                    <div class="BannerTheme_sliderWrap__csOTb " style="margin-top: 15vh;">
+                    <div class="BannerTheme_sliderWrap__csOTb " style="margin-top: 20vh;">
                         <div class="container">
                             <h1>Smartphoneshop</h1>
                             <div style="display: flex;">
@@ -295,7 +295,7 @@
                                             <a href="/test1">
                                                 <button class="btn btn-dark me-2">Tìm hiểu thêm</button>
                                             </a>
-                                            <a href="/test"><button class="btn btn-light">Mua sắm ngay</button></a>
+                                            <a href="/products"><button class="btn btn-light">Mua sắm ngay</button></a>
 
                                         </div>
                                     </div>
@@ -307,7 +307,7 @@
                             </div>
                         </section>
                     </div>
-                    <jsp:include page="./layout/experience.jsp" />
+
 
                     <!-- Footer -->
 

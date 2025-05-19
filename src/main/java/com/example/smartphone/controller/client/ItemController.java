@@ -84,7 +84,12 @@ public class ItemController {
     public String postMethodName(@PathVariable long id, HttpServletRequest request) {
         HttpSession session = request.getSession(false);
         long cartDetailId = id;
-        this.productService.handleRemoveCartDetail(cartDetailId, session);
+        // Lấy user từ session
+        long userId = (long) session.getAttribute("id");
+        User user = new User();
+        user.setId(userId);
+        // Truyền user vào service
+        this.productService.handleRemoveCartDetail(cartDetailId, session, user);
         return "redirect:/cart";
     }
 
@@ -107,19 +112,20 @@ public class ItemController {
     public String getProducts(
             Model model,
             @RequestParam(value = "page", required = false, defaultValue = "1") int page,
+            @RequestParam(value = "size", required = false, defaultValue = "12") int size, // Thêm dòng này
             ProductCriterialDTO productCriterialDTO,
             HttpServletRequest request) {
 
-        Pageable pageable = PageRequest.of(page - 1, 12);
+        Pageable pageable = PageRequest.of(page - 1, size); // Sử dụng size
 
         if (productCriterialDTO.getSort() != null && !productCriterialDTO.getSort().isEmpty()) {
             String sort = productCriterialDTO.getSort();
             if (sort.equals("gia-tang-dan")) {
-                pageable = PageRequest.of(page - 1, 12, Sort.by(Product_.PRICE).ascending());
+                pageable = PageRequest.of(page - 1, size, Sort.by(Product_.PRICE).ascending());
             } else if (sort.equals("gia-giam-dan")) {
-                pageable = PageRequest.of(page - 1, 12, Sort.by(Product_.PRICE).descending());
+                pageable = PageRequest.of(page - 1, size, Sort.by(Product_.PRICE).descending());
             } else {
-                pageable = PageRequest.of(page - 1, 12);
+                pageable = PageRequest.of(page - 1, size);
             }
         }
 
