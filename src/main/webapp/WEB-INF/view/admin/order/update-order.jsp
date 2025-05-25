@@ -10,11 +10,9 @@
                 <head>
                     <meta charset="utf-8" />
                     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+                    <title>TheBinh - Update Order</title>
                     <link rel="apple-touch-icon" sizes="76x76" href="img/apple-icon.png">
                     <link rel="icon" type="image/png" href="img/favicon.png">
-                    <title>
-                        TheBinh
-                    </title>
                     <link rel="stylesheet"
                         href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
                     <!--     Fonts and icons     -->
@@ -32,39 +30,65 @@
                     <!-- CSS Files -->
                     <link href="/css/dashboard.css" rel="stylesheet" />
                     <style>
-                        .satisfaction-stats {
-                            width: 300px;
-                            margin: 50px auto;
+                        body {
+                            background: linear-gradient(135deg, #232526, #414345);
+                            font-family: 'Open Sans', sans-serif;
+                            color: #f8f9fa;
+                            margin: 0;
+                            padding: 0;
+                            margin-left: 150px;
+                        }
+
+                        .container-fluid {
+                            padding: 2rem;
+                        }
+
+                        .card {
+                            background: rgba(0, 0, 0, 0.7);
+                            border-radius: 10px;
+                            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+                            padding: 2rem;
+                            margin-top: 2rem;
+                        }
+
+                        h3 {
                             text-align: center;
-                            font-family: sans-serif;
+                            color: #ffdd57;
+                            margin-bottom: 1rem;
                         }
 
-                        .stats {
-                            display: flex;
-                            justify-content: space-around;
-                            margin-bottom: 20px;
+                        hr {
+                            border-top: 1px solid #f8f9fa;
+                            margin: 1rem 0 2rem;
                         }
 
-                        .satisfied,
-                        .dissatisfied {
-                            padding: 20px;
-                            border-radius: 5px;
-                        }
-
-                        .satisfied {
-                            background-color: #e6f7e6;
-                            color: #27ae60;
-                        }
-
-                        .dissatisfied {
-                            background-color: #ffe6e6;
-                            color: #e74c3c;
-                        }
-
-                        .stats span {
-                            font-size: 2em;
+                        .form-label {
                             font-weight: bold;
-                            display: block;
+                            margin-bottom: 0.5rem;
+                        }
+
+                        .btn {
+                            border-radius: 8px;
+                            transition: all 0.25s ease;
+                            padding: 0.5rem 1.2rem;
+                        }
+
+                        .btn:hover,
+                        .btn:focus {
+                            transform: scale(1.02);
+                        }
+
+                        .btn-warning {
+                            background-color: #ffc107;
+                            border: none;
+                            color: #23272b;
+                        }
+
+                        @media (max-width: 576px) {
+                            .mb-3.col-12.col-md-6 {
+                                flex: 0 0 100%;
+                                max-width: 100%;
+                            }
                         }
                     </style>
                 </head>
@@ -78,34 +102,30 @@
                             <main>
                                 <div class="container-fluid px-4">
 
-                                    <div class=" mt-5">
-                                        <div class="row">
-                                            <div class="col-md-6 col-12 mx-auto">
-                                                <h3>Update a order</h3>
+                                    <div class="row justify-content-center">
+                                        <div class="col-md-8 col-12">
+                                            <div class="card">
+                                                <h3>Update Order</h3>
                                                 <hr />
-                                                <form:form method="post" action="/admin/order/update" class="row"
-                                                    modelAttribute="newOrder">
-
-
+                                                <form:form method="post" action="/admin/order/update"
+                                                    modelAttribute="newOrder" class="row g-3">
                                                     <div class="mb-3" style="display: none;">
                                                         <label class="form-label">Id:</label>
                                                         <form:input type="text" class="form-control" path="id" />
                                                     </div>
                                                     <div class="mb-3">
-                                                        <label>Order id = ${newOrder.id} </label>
-                                                        &nbsp; &nbsp; &nbsp; &nbsp;
+                                                        <label class="form-label">Order id = ${newOrder.id}</label>
+                                                        &nbsp;&nbsp;
                                                         <label class="form-label">Price:
                                                             <fmt:formatNumber type="number"
                                                                 value="${newOrder.totalPrice}" /> đ
                                                         </label>
                                                     </div>
-
                                                     <div class="mb-3 col-12 col-md-6">
                                                         <label class="form-label">User:</label>
                                                         <form:input type="text" class="form-control" disabled="true"
                                                             path="user.fullName" />
                                                     </div>
-
                                                     <div class="mb-3 col-12 col-md-6">
                                                         <label class="form-label">Status:</label>
                                                         <form:select class="form-select" path="status">
@@ -115,15 +135,12 @@
                                                             <form:option value="CANCEL">CANCEL</form:option>
                                                         </form:select>
                                                     </div>
-                                                    <div class="col-12 mb-5">
+                                                    <div class="col-12 text-center mb-3">
                                                         <button type="submit" class="btn btn-warning">Update</button>
                                                     </div>
                                                 </form:form>
-
                                             </div>
-
                                         </div>
-
                                     </div>
                                 </div>
                             </main>

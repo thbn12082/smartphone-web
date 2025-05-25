@@ -202,6 +202,14 @@ public class ProductService {
         order.setReceiverPhone(receiverPhone);
         order.setStatus("PENDING");
         order = this.orderRepository.save(order);
+
+        System.out.println("====================================================");
+        System.out.println("Order ID: " + order.getId());
+        System.out.println("Order Receiver Name: " + order.getRecriverName());
+        System.out.println("Order Receiver Address: " + order.getReceiverAddress());
+        System.out.println("Order Receiver Phone: " + order.getReceiverPhone());
+        System.out.println("Order Status: " + order.getStatus());
+        System.out.println("====================================================");
         Cart cart = this.cartRepository.findByUser(user);
         if (cart != null) {
             List<CartDetail> cartDetails = cart.getCartDetails();
@@ -214,6 +222,17 @@ public class ProductService {
                 orderDetail.setQuantity(cartDetail.getQuantity());
                 sum += cartDetail.getPrice() * cartDetail.getQuantity();
                 this.orderDetailRepository.save(orderDetail);
+
+
+                System.out.println("====================================================");
+                System.out.println("OrderDetail ID: " + orderDetail.getId());
+                System.out.println("OrderDetail Product ID: " + orderDetail.getProduct().getId());
+                System.out.println("OrderDetail Product Name: " + orderDetail.getProduct().getName());
+                System.out.println("OrderDetail Product Price: " + orderDetail.getPrice());
+                System.out.println("OrderDetail Product Quantity: " + orderDetail.getQuantity());
+                System.out.println("OrderDetail Product Total Price: "
+                        + (orderDetail.getPrice() * orderDetail.getQuantity()));
+                System.out.println("====================================================");
             }
             order.setTotalPrice(sum);
             this.orderRepository.save(order);

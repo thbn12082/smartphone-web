@@ -10,7 +10,6 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -19,7 +18,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.example.smartphone.domain.User;
-import com.example.smartphone.repository.RoleRepository;
 import com.example.smartphone.service.RoleService;
 import com.example.smartphone.service.UploadService;
 import com.example.smartphone.service.UserService;
@@ -63,6 +61,20 @@ public class UserController {
         } else {
             System.out.println("User đã tồn tại");
         }
+
+        // In ra các trường cụ thể thay vì gọi user.toString()
+        System.out.println("---------------------------------------------------------");
+        System.out.println("Address: " + user.getAddress());
+        System.out.println("Avatar: " + user.getAvatar());
+        System.out.println("Email: " + user.getEmail());
+        System.out.println("FullName: " + user.getFullName());
+        System.out.println("Password: " + user.getPassword());
+        System.out.println("Phone: " + user.getPhone());
+        System.out.println("Role (Name): " + user.getRole().getName());
+        System.out.println("Role (Id): " + user.getRole().getId());
+        System.out.println("Role (Desc): " + user.getRole().getDescription());
+        System.out.println("---------------------------------------------------------");
+
         return "redirect:/admin/user";
     }
 
@@ -70,24 +82,33 @@ public class UserController {
     public String getAllUser(Model model, @RequestParam("page") Optional<String> pageOptional) {
         int page = 1;
         try {
-            Integer.parseInt(pageOptional.get());
+            if (pageOptional.isPresent()) {
+                page = Integer.parseInt(pageOptional.get());
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }
-        if (pageOptional.isPresent()) {
-            page = Integer.parseInt(pageOptional.get());
-        }
-        Pageable pageable = PageRequest.of(page - 1, 2);
+        Pageable pageable = PageRequest.of(page - 1, 10);
         List<User> users = this.userService.findAllUsers(pageable).getContent();
         model.addAttribute("users", users);
         model.addAttribute("currentPage", page);
-        int totalPages;
-        if (this.userService.findAllUsers(pageable).getTotalPages() == 0) {
-            totalPages = 1;
-        } else {
-            totalPages = this.userService.findAllUsers(pageable).getTotalPages();
+        int totalPages = this.userService.findAllUsers(pageable).getTotalPages();
+        model.addAttribute("totalPages", totalPages == 0 ? 1 : totalPages);
+
+        System.out.println("---------------------------------------------------------");
+        System.out.println("Total Pages: " + this.userService.findAllUsers(pageable).getTotalPages());
+        System.out.println("Total Elements: " + this.userService.findAllUsers(pageable).getTotalElements());
+        System.out.println("Page Size: " + this.userService.findAllUsers(pageable).getSize());
+        System.out.println("Page Number: " + this.userService.findAllUsers(pageable).getNumber());
+        for (User u : users) {
+            System.out.println("Email: " + u.getEmail());
+            System.out.println("FullName: " + u.getFullName());
+            System.out.println("Phone: " + u.getPhone());
+            // In ra role theo trường cụ thể
+            System.out.println("Role (Name): " + u.getRole().getName());
         }
-        model.addAttribute("totalPages", totalPages);
+        System.out.println("---------------------------------------------------------");
+
         return "admin/user/table-user";
     }
 
@@ -95,7 +116,15 @@ public class UserController {
     public String getViewUser(Model model, @PathVariable Long id) {
         model.addAttribute("userId", id);
         User user = this.userService.handleUserById(id);
-        System.out.println(user.getAvatar());
+        // In ra các trường một cách cụ thể
+        System.out.println("---------------------------------------------------------");
+        System.out.println("Address: " + user.getAddress());
+        System.out.println("Avatar: " + user.getAvatar());
+        System.out.println("Email: " + user.getEmail());
+        System.out.println("FullName: " + user.getFullName());
+        System.out.println("Phone: " + user.getPhone());
+        System.out.println("Role Name: " + user.getRole().getName());
+        System.out.println("---------------------------------------------------------");
         model.addAttribute("user", user);
         return "admin/user/user-detail";
     }
@@ -103,6 +132,9 @@ public class UserController {
     @GetMapping("/admin/user/update/{id}")
     public String getUpdateUser(Model model, @PathVariable Long id) {
         model.addAttribute("idUser", id);
+        System.out.println("---------------------------------------------------------");
+        System.out.println("current id: " + id);
+        System.out.println("---------------------------------------------------------");
         model.addAttribute("updateUser", new User());
         return "admin/user/update-user";
     }
@@ -116,6 +148,13 @@ public class UserController {
             user.setFullName(updateUser.getFullName());
             user.setAddress(updateUser.getAddress());
             this.userService.handleSaveUser(user);
+            System.out.println("---------------------------------------------------------");
+            System.out.println("Email: " + user.getEmail());
+            System.out.println("FullName: " + user.getFullName());
+            System.out.println("Phone: " + user.getPhone());
+            System.out.println("Address: " + user.getAddress());
+            System.out.println("Role Name: " + user.getRole().getName());
+            System.out.println("---------------------------------------------------------");
         }
         return "redirect:/admin/user";
     }
@@ -131,5 +170,4 @@ public class UserController {
         this.userService.handleDelUser(id);
         return "redirect:/admin/user";
     }
-
 }

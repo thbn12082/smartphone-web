@@ -27,10 +27,94 @@
                 <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
                 <!-- CSS Files -->
                 <link href="/css/dashboard.css" rel="stylesheet" />
+                <style>
+                    body {
+                        background: linear-gradient(135deg, #232526, #414345);
+                        font-family: 'Open Sans', sans-serif;
+                        color: #f8f9fa;
+                        margin: 0;
+                        padding: 0;
+                    }
+
+                    .content {
+                        padding: 2rem;
+                    }
+
+                    .inner-content {
+                        margin-top: 50px;
+                        max-width: 800px;
+                        margin-left: auto;
+                        margin-right: auto;
+                        background: rgba(0, 0, 0, 0.6);
+                        padding: 2rem;
+                        border-radius: 10px;
+                        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+                    }
+
+                    h1 {
+                        text-align: center;
+                        color: #FFDD57;
+                        margin-bottom: 1rem;
+                    }
+
+                    hr {
+                        border-top: 1px solid #f8f9fa;
+                        margin-bottom: 1.5rem;
+                    }
+
+                    .form-group label {
+                        font-weight: bold;
+                        color: #f8f9fa;
+                    }
+
+                    .form-control,
+                    .form-select {
+                        border-radius: 8px;
+                        background: #353a40;
+                        border: 1px solid #555;
+                        color: #f8f9fa;
+                    }
+
+                    .form-control::placeholder {
+                        color: #ccc;
+                    }
+
+                    .btn {
+                        border-radius: 8px;
+                        transition: all 0.25s ease;
+                        padding: 0.5rem 1rem;
+                    }
+
+                    .btn:hover,
+                    .btn:focus {
+                        transform: scale(1.02);
+                    }
+
+                    .btn-warning {
+                        background-color: #ffc107;
+                        border: none;
+                        color: #23272b;
+                    }
+
+                    .btn-success {
+                        background-color: #198754;
+                        border: none;
+                        color: #fff;
+                    }
+
+                    .btn-success:hover,
+                    .btn-warning:hover {
+                        opacity: 0.9;
+                    }
+
+                    a.btn {
+                        text-decoration: none;
+                    }
+                </style>
             </head>
 
-            <body class="g-sidenav-show   bg-gray-100">
-                <div class="min-height-200 bg-dark position-absolute w-100"></div>
+            <body>
+
                 <jsp:include page="../layout/sidebar.jsp" />
                 <main>
                     <div class="content">
@@ -80,8 +164,7 @@
 
                                             <div style="display: flex; justify-content: space-between;">
                                                 <button type="submit" class="btn btn-warning">Update</button>
-                                                <a href="/admin/user"><button class="btn btn-success">Back</button></a>
-
+                                                <a href="/admin/user"class="btn btn-success">Back</a>
                                             </div>
 
                                         </form:form>

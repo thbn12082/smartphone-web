@@ -1,5 +1,6 @@
 package com.example.smartphone.controller.client;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.data.domain.Page;
@@ -11,6 +12,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 
+import com.example.smartphone.domain.Cart;
+import com.example.smartphone.domain.CartDetail;
 import com.example.smartphone.domain.Order;
 import com.example.smartphone.domain.Product;
 import com.example.smartphone.domain.Role;
@@ -50,7 +53,21 @@ public class HomePageController {
         Page<Product> pg = this.productService.handleAllProduct(page);
         List<Product> products = pg.getContent();
         model.addAttribute("products", products);
-        System.out.println(products);
+        System.out.println("===================================================");
+        System.out.println("pageSize: " + pg.getSize());
+        for (Product product : products) {
+            System.out.println(product.getName());
+            System.out.println(product.getPrice());
+            System.out.println(product.getImage());
+            System.out.println(product.getDetailDesc());
+            System.out.println(product.getShortDesc());
+            System.out.println(product.getQuantity());
+            System.out.println(product.getSold());
+            System.out.println(product.getId());
+            System.out.println("---------------------------------------------------------");
+
+        }
+        System.out.println("===================================================");
         return "client/home-page";
     }
 
@@ -83,6 +100,7 @@ public class HomePageController {
         User user = this.userService.RegisterDTOtoUser(registerDTO);
         user.setRole(this.userService.handleRoleByName("USER"));
         this.userService.handleSaveUser(user);
+
         return "redirect:/login";
     }
 
@@ -92,8 +110,25 @@ public class HomePageController {
         HttpSession session = request.getSession(false);
         long id = (long) session.getAttribute("id");
         currentUser.setId(id);
+        Cart cart = this.productService.fetchByUser(currentUser);
+        List<CartDetail> cartDetails = cart == null ? new ArrayList<>() : cart.getCartDetails();
         List<Order> orders = this.orderService.fetchOrderByUser(currentUser);
         model.addAttribute("orders", orders);
+
+        System.out.println("===================================================");
+        System.out.println("User ID: " + currentUser.getId());
+        for (Order order : orders) {
+            System.out.println("Order ID: " + order.getId());
+            System.out.println("Total Price: " + order.getTotalPrice());
+            System.out.println("Receiver Name: " + order.getRecriverName());
+            System.out.println("Receiver Address: " + order.getReceiverAddress());
+            System.out.println("Receiver Phone: " + order.getReceiverPhone());
+            System.out.println("Status: " + order.getStatus());
+            System.out.println("---------------------------------------------------------");
+
+        }
+        System.out.println("===================================================");
+
         return "client/cart/order-history";
     }
 

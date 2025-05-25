@@ -25,72 +25,72 @@
                 <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
                 <!-- CSS Files -->
                 <link href="/css/dashboard.css" rel="stylesheet" />
+            </head>
 
-            <body class="g-sidenav-show   bg-gray-100">
-                <div class="min-height-300 bg-dark position-absolute w-100"></div>
+            <body>
+
                 <jsp:include page="../layout/sidebar.jsp" />
                 <main>
-
-                    <div class="container-fluid">
-
-                        <div class="row">
-                            <div class="col-md-3"></div>
-                            <div class="col-md-6">
-                                <div class="inner-header"
-                                    style="display: flex; justify-content: space-between;margin-top: 94px;">
-                                    <h2 style="color: antiquewhite;">Manage users</h2>
-                                    <button type="button" class="btn btn-primary"
-                                        onclick="window.location.href='http://localhost:8080/admin/user/create'">Create
-                                        User</button>
+                    <div class="container" style="margin-top: 100px;">
+                        <div class="row justify-content-center">
+                            <div class="col-lg-10">
+                                <div class="d-flex justify-content-between align-items-center mb-4">
+                                    <h2 class="fw-bold text-light mb-0">Manage Users</h2>
+                                    <button type="button" class="btn btn-primary shadow"
+                                        onclick="window.location.href='http://localhost:8080/admin/user/create'">
+                                        <i class="bi bi-plus-circle me-1"></i> Create User
+                                    </button>
                                 </div>
-                                <hr>
-                            </div>
-                            <div class="col-md-3"></div>
-                            <div class="col-md-3"></div>
-                            <div class="col-md-6">
-                                <table class="table table-hover" style="margin-top: 70px;">
-                                    <thead>
-                                        <tr>
-                                            <th scope="col" style="color: antiquewhite;">ID</th>
-                                            <th scope="col" style="color: antiquewhite;">Email</th>
-                                            <th scope="col" style="color: antiquewhite;">Full Name</th>
-                                            <th scope="col" style="color: antiquewhite;">Role</th>
-                                            <th scope="col" style="color: antiquewhite;padding-left: 104px;">Action</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <c:forEach var="user" items="${users}">
-                                            <tr>
-                                                <th scope="row">${user.id}</th>
-                                                <td>${user.email}</td>
-                                                <td>${user.fullName}</td>
-                                                <td>${user.role.name}</td>
-                                                <td>
-                                                    <a href="/admin/user/${user.id}" class="btn btn-success">View</a>
-                                                    <a href="/admin/user/update/${user.id}"
-                                                        class="btn btn-warning">Update</a>
-                                                    <a href="/admin/user/delete/${user.id}"
-                                                        class="btn btn-danger">Delete</a>
-                                                </td>
-                                            </tr>
-                                        </c:forEach>
-
-                                    </tbody>
-                                </table>
-
-                                <nav aria-label="Page navigation example">
+                                <div class="card shadow-lg border-0">
+                                    <div class="card-body p-0">
+                                        <table class="table table-hover align-middle mb-0">
+                                            <thead class="table-dark">
+                                                <tr>
+                                                    <th scope="col" class="text-center">ID</th>
+                                                    <th scope="col" class="text-center">Email</th>
+                                                    <th scope="col" class="text-center">Full Name</th>
+                                                    <th scope="col" class="text-center">Role</th>
+                                                    <th scope="col" class="text-center">Action</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <c:forEach var="user" items="${users}">
+                                                    <tr>
+                                                        <th scope="row" class="text-center">${user.id}</th>
+                                                        <td class="text-center">${user.email}</td>
+                                                        <td class="text-center">${user.fullName}</td>
+                                                        <td class="text-center">${user.role.name}</td>
+                                                        <td class="text-center">
+                                                            <a href="/admin/user/${user.id}"
+                                                                class="btn btn-success btn-sm me-1" title="View">
+                                                                <i class="bi bi-eye"></i>
+                                                            </a>
+                                                            <a href="/admin/user/update/${user.id}"
+                                                                class="btn btn-warning btn-sm me-1" title="Update">
+                                                                <i class="bi bi-pencil-square"></i>
+                                                            </a>
+                                                            <a href="/admin/user/delete/${user.id}"
+                                                                class="btn btn-danger btn-sm" title="Delete"
+                                                                onclick="return confirm('Are you sure you want to delete this user?');">
+                                                                <i class="bi bi-trash"></i>
+                                                            </a>
+                                                        </td>
+                                                    </tr>
+                                                </c:forEach>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                                <!-- Pagination -->
+                                <nav aria-label="Page navigation" class="mt-4">
                                     <ul class="pagination justify-content-center">
-
                                         <li class="page-item ${currentPage == 1 ? 'disabled' : ''}">
                                             <a class="page-link" href="/admin/user?page=${currentPage - 1}"
                                                 aria-label="Previous" ${currentPage==1
                                                 ? 'tabindex="-1" aria-disabled="true"' : '' }>
                                                 <span aria-hidden="true">&laquo;</span>
-                                                <span class="sr-only">Previous</span>
                                             </a>
                                         </li>
-
-
                                         <c:if test="${totalPages > 0}">
                                             <c:forEach begin="1" end="${totalPages}" varStatus="loop">
                                                 <li class="page-item ${loop.index == currentPage ? 'active' : ''}">
@@ -100,31 +100,143 @@
                                                 </li>
                                             </c:forEach>
                                         </c:if>
-
-
                                         <li class="page-item ${currentPage == totalPages ? 'disabled' : ''}">
                                             <a class="page-link" href="/admin/user?page=${currentPage + 1}"
                                                 aria-label="Next" ${currentPage==totalPages
                                                 ? 'tabindex="-1" aria-disabled="true"' : '' }>
                                                 <span aria-hidden="true">&raquo;</span>
-                                                <span class="sr-only">Next</span>
                                             </a>
                                         </li>
                                     </ul>
                                 </nav>
-
                             </div>
-                            <div class="col-md-3"></div>
                         </div>
-
                     </div>
                 </main>
 
+                <style>
+                    body {
+                        background: linear-gradient(135deg, #232526 0%, #414345 100%);
+                        min-height: 100vh;
+                        font-family: 'Open Sans', sans-serif;
+                    }
+
+                    .card {
+                        background: #23272b;
+                        border-radius: 18px;
+                        box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
+                        border: none;
+                    }
+
+                    .table {
+                        color: #fff;
+                        background: transparent;
+                    }
+
+                    .table thead th {
+                        border: none;
+                        font-size: 1.08rem;
+                        letter-spacing: 0.04em;
+                        background: #18191a !important;
+                        color: #f8f9fa;
+                        text-transform: uppercase;
+                    }
+
+                    .table tbody tr {
+                        transition: background 0.2s;
+                        border-bottom: 1px solid #343a40;
+                    }
+
+                    .table tbody tr:hover {
+                        background: #2d3238;
+                    }
+
+                    .btn {
+                        min-width: 36px;
+                        border-radius: 8px;
+                        font-size: 1rem;
+                        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+                        transition: background 0.2s, color 0.2s;
+                    }
+
+                    .btn-success {
+                        background: #198754;
+                        border: none;
+                    }
+
+                    .btn-warning {
+                        background: #ffc107;
+                        border: none;
+                        color: #23272b;
+                    }
+
+                    .btn-danger {
+                        background: #dc3545;
+                        border: none;
+                    }
+
+                    .btn-primary {
+                        background: #0d6efd;
+                        border: none;
+                    }
+
+                    .btn:hover,
+                    .btn:focus {
+                        opacity: 0.9;
+                        color: #fff;
+                    }
+
+                    .pagination .page-link {
+                        color: #343a40;
+                        border-radius: 8px !important;
+                        margin: 0 2px;
+                        background: #fff;
+                        border: none;
+                        box-shadow: 0 1px 4px rgba(0, 0, 0, 0.07);
+                        transition: background 0.2s, color 0.2s;
+                    }
+
+                    .pagination .active .page-link {
+                        background: #0d6efd;
+                        color: #fff;
+                        border: none;
+                        font-weight: bold;
+                    }
+
+                    .pagination .page-link:hover {
+                        background: #e9ecef;
+                        color: #0d6efd;
+                    }
+
+                    .container,
+                    main {
+                        margin-left: 150px;
+                        transition: margin-left 0.3s;
+                    }
+
+                    @media (max-width: 991px) {
+
+                        .container,
+                        main {
+                            margin-left: 0;
+                        }
+                    }
+
+                    h2.fw-bold {
+                        letter-spacing: 0.04em;
+                        color: #fff;
+                        text-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+                    }
+
+                    .btn-primary.shadow {
+                        box-shadow: 0 2px 8px rgba(13, 110, 253, 0.15) !important;
+                        font-weight: 600;
+                        letter-spacing: 0.02em;
+                    }
+                </style>
 
                 <script src="/js/bootstrap.min.js"></script>
                 <script src="/js/dashboard.js"></script>
-
             </body>
-
 
             </html>

@@ -2,7 +2,7 @@
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
         <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
             <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-            
+
 
                 <!DOCTYPE html>
                 <html lang="en">
@@ -25,10 +25,71 @@
                     <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
                     <link href="/css/dashboard.css" rel="stylesheet" />
                     <style>
-                        .error-message {
-                            color: red;
-                            font-size: 0.8em;
-                            /* Tùy chỉnh kích thước chữ */
+                        body {
+                            background: linear-gradient(135deg, #232526 0%, #414345 100%);
+                            font-family: 'Open Sans', sans-serif;
+                            color: #f8f9fa;
+                        }
+
+                        .content {
+                            margin-top: 70px;
+                        }
+
+                        .container {
+                            background: rgba(0, 0, 0, 0.5);
+                            padding: 2rem;
+                            border-radius: 10px;
+                            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+                            margin-bottom: 2rem;
+                            margin-left: 200px;
+                        }
+
+                        h1 {
+                            text-align: center;
+                            margin-bottom: 2rem;
+                            color: #FFDD57;
+                        }
+
+                        hr {
+                            border-top: 1px solid #f8f9fa;
+                        }
+
+                        .form-label {
+                            font-weight: bold;
+                        }
+
+                        .form-control,
+                        .form-select {
+                            border-radius: 8px;
+                            background: #353a40;
+                            border: 1px solid #555;
+                            color: #f8f9fa;
+                        }
+
+                        .invalid-feedback {
+                            color: #ff6b6b;
+                            font-size: 0.85em;
+                        }
+
+                        .btn {
+                            border-radius: 8px;
+                            transition: all 0.25s ease;
+                            padding: 0.5rem 1.2rem;
+                        }
+
+                        .btn:hover,
+                        .btn:focus {
+                            transform: scale(1.03);
+                        }
+
+                        .btn-primary {
+                            background-color: #1E90FF;
+                            border: none;
+                        }
+
+                        .btn-success {
+                            background-color: #28a745;
+                            border: none;
                         }
                     </style>
                     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
@@ -45,8 +106,8 @@
                     </script>
                 </head>
 
-                <body class="g-sidenav-show  bg-gray-100">
-                    <div class="min-height-200 bg-dark position-absolute w-100"></div>
+                <body>
+
                     <jsp:include page="../layout/sidebar.jsp" />
                     <main>
                         <div class="content">
@@ -55,7 +116,7 @@
                                     <div class="row">
                                         <div class="col-xl-3"></div>
                                         <div class="col-xl-6">
-                                            <h1 style="text-align: center; color:antiquewhite ;margin-bottom: 50px;">
+                                            <h1 style="text-align: center ;margin-bottom: 50px;">
                                                 Create a product</h1>
                                             <hr>
                                             <br>

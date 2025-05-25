@@ -8,11 +8,7 @@
             <head>
                 <meta charset="utf-8" />
                 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-                <link rel="apple-touch-icon" sizes="76x76" href="img/apple-icon.png">
-                <link rel="icon" type="image/png" href="img/favicon.png">
-                <title>
-                    TheBinh
-                </title>
+                <title>TheBinh - Delete Order</title>
                 <link rel="stylesheet"
                     href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
                 <!--     Fonts and icons     -->
@@ -28,89 +24,93 @@
                 <!-- CSS Files -->
                 <link href="/css/dashboard.css" rel="stylesheet" />
                 <style>
-                    .satisfaction-stats {
-                        width: 300px;
-                        margin: 50px auto;
+                    body {
+                        background: linear-gradient(135deg, #232526, #414345);
+                        font-family: 'Open Sans', sans-serif;
+                        color: #f8f9fa;
+                        margin: 0;
+                        padding: 0;
+                    }
+
+                    .container-fluid {
+                        padding: 2rem;
+                    }
+
+                    /* Header title style */
+                    .page-title {
                         text-align: center;
-                        font-family: sans-serif;
-                    }
-
-                    .stats {
-                        display: flex;
-                        justify-content: space-around;
+                        margin-top: 50px;
                         margin-bottom: 20px;
+                        color: antiquewhite;
+                        font-size: 2rem;
                     }
 
-                    .satisfied,
-                    .dissatisfied {
-                        padding: 20px;
-                        border-radius: 5px;
+                    /* Card style */
+                    .card {
+                        background: rgba(0, 0, 0, 0.7);
+                        border-radius: 10px;
+                        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+                        padding: 2rem;
+                        margin: 20px auto;
+                        max-width: 600px;
                     }
 
-                    .satisfied {
-                        background-color: #e6f7e6;
-                        color: #27ae60;
+                    .card h3 {
+                        color: #FFDD57;
+                        text-align: center;
+                        margin-bottom: 1rem;
                     }
 
-                    .dissatisfied {
-                        background-color: #ffe6e6;
-                        color: #e74c3c;
+                    hr {
+                        border-top: 1px solid #f8f9fa;
+                        margin-bottom: 1.5rem;
                     }
 
-                    .stats span {
-                        font-size: 2em;
-                        font-weight: bold;
+                    .alert {
+                        text-align: center;
+                        font-size: 1.1rem;
+                    }
+
+                    .btn-danger {
                         display: block;
+                        width: 100%;
+                        border-radius: 8px;
+                        padding: 10px 20px;
+                        font-size: 1rem;
+                        transition: transform 0.2s ease, background-color 0.2s ease;
+                    }
+
+                    .btn-danger:hover,
+                    .btn-danger:focus {
+                        background-color: #c0392b;
+                        transform: scale(1.02);
                     }
                 </style>
             </head>
 
 
-            <body class="g-sidenav-show   bg-gray-100">
-                <div class="min-height-300 bg-dark position-absolute w-100"></div>
+            <body>
+
                 <jsp:include page="../layout/sidebar.jsp" />
                 <div id="layoutSidenav_content">
                     <main>
-                        <div class="container-fluid px-4">
+                        <div class="container-fluid">
 
-                            <div class="mt-5">
-                                <div class="row">
-                                    <div class="col-12 mx-auto">
-                                        <div class="d-flex">
-                                            <h3 style="color: antiquewhite; margin-top: 50px; justify-content: center;">
-                                                Table Orders</h3>
-                                        </div>
-
-                                        <hr />
-
-
-                                        <div class=" mt-5">
-                                            <div class="row">
-                                                <div class="col-12 mx-auto">
-                                                    <div class="d-flex justify-content-between">
-                                                        <h3>Delete the order with id = ${id}</h3>
-                                                    </div>
-
-                                                    <hr />
-                                                    <div class="alert alert-danger">
-                                                        Are you sure to delete this order ?
-                                                    </div>
-                                                    <form:form method="post" action="/admin/order/delete"
-                                                        modelAttribute="newOrder">
-                                                        <div class="mb-3" style="display: none;">
-                                                            <label class="form-label">Id:</label>
-                                                            <form:input value="${id}" type="text" class="form-control"
-                                                                path="id" />
-                                                        </div>
-                                                        <button class="btn btn-danger">Confirm</button>
-                                                    </form:form>
-
-                                                </div>
-
-                                            </div>
-
-                                        </div>
+                            <div class="card">
+                                <h3>Delete Order with id = ${id}</h3>
+                                <hr />
+                                <div class="alert alert-danger">
+                                    Are you sure to delete this order?
+                                </div>
+                                <form:form method="post" action="/admin/order/delete" modelAttribute="newOrder">
+                                    <div class="mb-3" style="display: none;">
+                                        <label class="form-label">Id:</label>
+                                        <form:input value="${id}" type="text" class="form-control" path="id" />
                                     </div>
+                                    <button class="btn btn-danger" type="submit">Confirm</button>
+                                </form:form>
+                            </div>
+                        </div>
                     </main>
 
                 </div>

@@ -27,10 +27,70 @@
                 <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
                 <!-- CSS Files -->
                 <link href="/css/dashboard.css" rel="stylesheet" />
+                <style>
+                    body {
+                        background: linear-gradient(135deg, #232526 0%, #414345 100%);
+                        font-family: 'Open Sans', sans-serif;
+                        color: #f8f9fa;
+                    }
+
+                    .content {
+                        /* margin-top: 70px; */
+                    }
+
+                    .container {
+                        margin-left: 160px;
+                        background: rgba(0, 0, 0, 0.3);
+                        padding: 2rem;
+                        border-radius: 10px;
+                        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+                    }
+
+                    h1 {
+                        text-align: center;
+                        margin-bottom: 2rem;
+                        color: antiquewhite;
+                    }
+
+                    .form-group label {
+                        color: #f8f9fa;
+                    }
+
+                    .form-control,
+                    .form-select {
+                        border-radius: 8px;
+                        background: #343a40;
+                        border: 1px solid #555;
+                        color: #f8f9fa;
+                    }
+
+                    .invalid-feedback {
+                        color: #ff6b6b;
+                    }
+
+                    .btn {
+                        border-radius: 8px;
+                        transition: all 0.2s ease;
+                    }
+
+                    .btn:hover,
+                    .btn:focus {
+                        transform: scale(1.02);
+                    }
+
+                    .btn-primary {
+                        background-color: #0d6efd;
+                        border: none;
+                    }
+
+                    .btn-success {
+                        background-color: #198754;
+                        border: none;
+                    }
+                </style>
             </head>
 
-            <body class="g-sidenav-show   bg-gray-100">
-                <div class="min-height-200 bg-dark position-absolute w-100"></div>
+            <body>
                 <jsp:include page="../layout/sidebar.jsp" />
                 <main>
                     <div class="content">
@@ -128,10 +188,10 @@
                                                         <label for="factory" class="form-label">Factory:</label>
                                                         <form:select class="form-select" path="factory" id="factory">
                                                             <form:option value="Apple">Apple</form:option>
-                                                                <form:option value="Samsung">Samsung</form:option>
-                                                                <form:option value="Xiaomi">Xiaomi</form:option>
-                                                                <form:option value="Oppo">Oppo</form:option>
-                                                                <form:option value="Huawei">Huawei</form:option>
+                                                            <form:option value="Samsung">Samsung</form:option>
+                                                            <form:option value="Xiaomi">Xiaomi</form:option>
+                                                            <form:option value="Oppo">Oppo</form:option>
+                                                            <form:option value="Huawei">Huawei</form:option>
 
                                                         </form:select>
                                                     </div>

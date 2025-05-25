@@ -13,8 +13,6 @@ import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.Setter;
 
-@Getter
-@Setter
 @Entity
 @Table(name = "carts")
 public class Cart {
@@ -30,5 +28,44 @@ public class Cart {
 
     @OneToMany(mappedBy = "cart")
     List<CartDetail> cartDetails;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public long getSum() {
+        return sum;
+    }
+
+    public void setSum(long sum) {
+        this.sum = sum;
+    }
+
+    public List<CartDetail> getCartDetails() {
+        return cartDetails;
+    }
+
+    public void setCartDetails(List<CartDetail> cartDetails) {
+        this.cartDetails = cartDetails;
+    }
+
+    @Override
+    public String toString() {
+        return "Cart [id=" + id + ", user=" + user + ", sum=" + sum + ", cartDetails=" + cartDetails + "]";
+    }
+
+    
 
 }

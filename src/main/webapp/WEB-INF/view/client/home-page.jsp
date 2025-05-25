@@ -239,8 +239,10 @@
                                                         </p>
 
                                                         <form action="/add-product-to-cart/${product.id}" method="post">
+                                                            <input type="hidden" name="fromPage" value="/" />
                                                             <input type="hidden" name="${_csrf.parameterName}"
                                                                 value="${_csrf.token}" />
+
                                                             <button
                                                                 class="mx-auto btn border border-secondary rounded-pill px-3 "
                                                                 style="color: gray;">

@@ -51,29 +51,76 @@ public class ItemController {
         Page<Product> pg = this.productService.handleAllProduct(page);
         List<Product> products = pg.getContent();
         model.addAttribute("products", products);
+        System.out.println("===================================================");
+        System.out.println("productId: " + product.getId());
+        System.out.println("Product Name: " + product.getName());
+        System.out.println("Product Price: " + product.getPrice());
+        System.out.println("Product Image: " + product.getImage());
+        System.out.println("Product DetailDesc: " + product.getDetailDesc());
+        System.out.println("Product ShortDesc: " + product.getShortDesc());
+        System.out.println("Product Quantity: " + product.getQuantity());
+        System.out.println("Product Sold: " + product.getSold());
+        System.out.println("===================================================");
+        System.out.println(
+                "===================================================More Products===================================================");
+        System.out.println("Page Number: " + pg.getNumber());
+        System.out.println("Page Size: " + pg.getSize());
+        System.out.println("Total Pages: " + pg.getTotalPages());
+        System.out.println("Total Elements: " + pg.getTotalElements());
+        System.out.println("Current Page: " + pg.getNumber());
+        for (Product p : products) {
+            System.out.println("Product ID: " + p.getId());
+            System.out.println("Product Name: " + p.getName());
+            System.out.println("Product Price: " + p.getPrice());
+            System.out.println("Product Image: " + p.getImage());
+            System.out.println("Product DetailDesc: " + p.getDetailDesc());
+            System.out.println("Product ShortDesc: " + p.getShortDesc());
+            System.out.println("Product Quantity: " + p.getQuantity());
+            System.out.println("Product Sold: " + p.getSold());
+
+            System.out.println("===================================================");
+        }
+
         return "client/product-detail";
     }
 
     @PostMapping("/add-product-to-cart/{id}")
-    public String addProductToCart(@PathVariable long id, HttpServletRequest request) {
+    public String addProductToCart(
+            @PathVariable long id,
+            @RequestParam(value = "fromPage", required = false, defaultValue = "/") String fromPage,
+            HttpServletRequest request) {
         HttpSession session = request.getSession(false);
         String email = (String) session.getAttribute("email");
+        System.out.println("email: " + email);
         this.productService.handleAddProductToCart(email, id, session);
-        return "redirect:/";
+        // Redirect về đúng trang nguồn
+        return "redirect:" + fromPage;
     }
 
     @GetMapping("/cart")
     public String getCart(Model model, HttpServletRequest request) {
+        System.out.println("====================getCart====================");
         User currentUser = new User();
         HttpSession session = request.getSession(false);
         long id = (long) session.getAttribute("id");
         currentUser.setId(id);
+        System.out.println("currentUserId: " + currentUser.getId());
         Cart cart = this.productService.fetchByUser(currentUser);
+        System.out.println("cartId: " + cart.getId());
+
+        System.out.println("cartSum" + cart.getSum());
+
         List<CartDetail> cartDetails = cart == null ? new ArrayList<CartDetail>() : cart.getCartDetails();
+
         double totalPrice = 0;
         for (CartDetail cartDetail : cartDetails) {
             totalPrice += cartDetail.getProduct().getPrice() * cartDetail.getQuantity();
+            System.out.println("cartDetailId: " + cartDetail.getId());
+            System.out.println("cartQuantity: " + cartDetail.getQuantity());
+            System.out.println("cartDetailPrice: " + cartDetail.getProduct().getPrice());
+            System.out.println("=====================");
         }
+        System.out.println("=====================");
         model.addAttribute("cartDetails", cartDetails);
         model.addAttribute("totalPrice", totalPrice);
         model.addAttribute("cart", cart);
@@ -88,8 +135,16 @@ public class ItemController {
         long userId = (long) session.getAttribute("id");
         User user = new User();
         user.setId(userId);
-        // Truyền user vào service
+        // Xóa sản phẩm khỏi cart
         this.productService.handleRemoveCartDetail(cartDetailId, session, user);
+
+        // Kiểm tra lại cart của user
+        Cart cart = this.productService.fetchByUser(user);
+        if (cart == null || cart.getCartDetails() == null || cart.getCartDetails().isEmpty()) {
+            // Nếu không còn sản phẩm nào thì chuyển về /products
+            return "redirect:/products";
+        }
+        // Nếu vẫn còn sản phẩm thì quay lại /cart
         return "redirect:/cart";
     }
 
@@ -104,6 +159,9 @@ public class ItemController {
         for (CartDetail cartDetail : cartDetails) {
             totalPrice += cartDetail.getProduct().getPrice() * cartDetail.getQuantity();
         }
+        System.out.println("======================");
+        System.out.println("totalPrice: " + totalPrice);
+        System.out.println("======================");
         model.addAttribute("totalPrice", totalPrice);
         return "client/cart/checkout";
     }
@@ -117,9 +175,13 @@ public class ItemController {
             HttpServletRequest request) {
 
         Pageable pageable = PageRequest.of(page - 1, size); // Sử dụng size
+        System.out.println("===================================================");
+        System.out.println("page: " + page);
+        System.out.println("size: " + size);
 
         if (productCriterialDTO.getSort() != null && !productCriterialDTO.getSort().isEmpty()) {
             String sort = productCriterialDTO.getSort();
+            System.out.println("sort: " + sort);
             if (sort.equals("gia-tang-dan")) {
                 pageable = PageRequest.of(page - 1, size, Sort.by(Product_.PRICE).ascending());
             } else if (sort.equals("gia-giam-dan")) {
@@ -130,6 +192,14 @@ public class ItemController {
         }
 
         String qs = request.getQueryString();
+        System.out.println("qs: " + qs);
+        if (qs != null) {
+            List<String> x = Arrays.asList(qs.split("&"));
+            for (String s : x) {
+                System.out.println(s);
+            }
+        }
+
         if (qs != null && !qs.isEmpty()) {
             qs = qs.replaceAll("(&|\\?)?page=\\d+", "");
             if (!qs.isEmpty() && !qs.startsWith("&")) {
@@ -141,12 +211,22 @@ public class ItemController {
 
         Page<Product> pg = this.productService.handleAllProductWithSpec(pageable, productCriterialDTO);
         List<Product> products = pg.getContent();
+        for (Product p : products) {
+            System.out.println("Product ID: " + p.getId());
+            System.out.println("Product Name: " + p.getName());
+            System.out.println("Product Price: " + p.getPrice());
+            System.out.println("Product Image: " + p.getImage());
+            System.out.println("Product DetailDesc: " + p.getDetailDesc());
+            System.out.println("Product ShortDesc: " + p.getShortDesc());
+            System.out.println("Product Quantity: " + p.getQuantity());
+            System.out.println("Product Sold: " + p.getSold());
+        }
 
         model.addAttribute("qs", qs);
         model.addAttribute("products", products);
         model.addAttribute("currentPage", page);
         model.addAttribute("totalPages", pg.getTotalPages() == 0 ? 1 : pg.getTotalPages());
-
+        System.out.println("===================================================");
         return "client/all-product";
     }
 
@@ -159,6 +239,7 @@ public class ItemController {
         long id = (long) session.getAttribute("id");
         currentUser.setId(id);
         this.productService.handlePlaceOrder(currentUser, session, receiverName, receiverAddress, receiverPhone);
+
         return "redirect:/thanks";
     }
 

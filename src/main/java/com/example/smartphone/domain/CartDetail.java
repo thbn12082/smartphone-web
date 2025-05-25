@@ -14,8 +14,7 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
-@Getter
-@Setter
+
 @Entity
 @Table(name = "cart_details")
 public class CartDetail {
@@ -33,5 +32,53 @@ public class CartDetail {
     @ManyToOne
     @JoinColumn(name = "cart_id")
     private Cart cart;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public long getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(long quantity) {
+        this.quantity = quantity;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
+    }
+
+    public Product getProduct() {
+        return product;
+    }
+
+    public void setProduct(Product product) {
+        this.product = product;
+    }
+
+    public Cart getCart() {
+        return cart;
+    }
+
+    public void setCart(Cart cart) {
+        this.cart = cart;
+    }
+
+    @Override
+    public String toString() {
+        return "CartDetail [id=" + id + ", quantity=" + quantity + ", price=" + price + ", product=" + product
+                + ", cart=" + cart + "]";
+    }
+
+    
 
 }

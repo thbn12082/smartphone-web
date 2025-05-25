@@ -19,7 +19,11 @@ public class DashboardController {
         model.addAttribute("countUser", this.userService.countUser());
         model.addAttribute("countProduct", this.userService.countProduct());
         model.addAttribute("countOrder", this.userService.countOrder());
-
+        System.out.println("------------------------------------------------------------");
+        System.out.println("Count user: " + this.userService.countUser());
+        System.out.println("Count product: " + this.userService.countProduct());
+        System.out.println("Count order: " + this.userService.countOrder());
+        System.out.println("------------------------------------------------------------");
         return "admin/dashboard/show-dashboard";
     }
 

@@ -28,11 +28,30 @@
                 <!-- CSS Files -->
                 <link href="/css/dashboard.css" rel="stylesheet" />
                 <style>
+                    body {
+                        background: linear-gradient(135deg, #232526 0%, #414345 100%);
+                        font-family: 'Open Sans', sans-serif;
+                        color: #f8f9fa;
+                    }
+
+                    .container-fluid {
+                        padding: 2rem;
+                        margin-left: 270px;
+                    }
+
+                    h3 {
+                        text-align: center;
+                        margin-bottom: 1.5rem;
+                    }
+
+                    hr {
+                        border-top: 1px solid #f8f9fa;
+                    }
+
                     .satisfaction-stats {
                         width: 300px;
                         margin: 50px auto;
                         text-align: center;
-                        font-family: sans-serif;
                     }
 
                     .stats {
@@ -62,12 +81,37 @@
                         font-weight: bold;
                         display: block;
                     }
+
+                    .alert-danger {
+                        background-color: rgba(231, 76, 60, 0.15);
+                        border: 1px solid #e74c3c;
+                        padding: 1rem;
+                        border-radius: 8px;
+                        color: #e74c3c;
+                        font-weight: bold;
+                        text-align: center;
+                        margin-bottom: 1rem;
+                    }
+
+                    .btn-danger {
+                        background-color: #e74c3c;
+                        border: none;
+                        border-radius: 8px;
+                        padding: 0.5rem 1rem;
+                        transition: background 0.2s ease, transform 0.2s ease;
+                    }
+
+                    .btn-danger:hover,
+                    .btn-danger:focus {
+                        background-color: #c0392b;
+                        transform: scale(1.03);
+                    }
                 </style>
             </head>
 
 
-            <body class="g-sidenav-show   bg-gray-100">
-                <div class="min-height-300 bg-dark position-absolute w-100"></div>
+            <body>
+
                 <jsp:include page="../layout/sidebar.jsp" />
                 <div id="layoutSidenav_content">
                     <main>
@@ -93,7 +137,7 @@
 
                                                     <hr />
 
-                                                    <div class="alert alert-danger">
+                                                    <div style="color: sandybrown;">
                                                         Are you sure to delete this product?
                                                     </div>
                                                     <form:form method="post" action="/admin/product/delete"

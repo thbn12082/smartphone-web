@@ -25,59 +25,106 @@
                 <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
                 <!-- CSS Files -->
                 <link href="/css/dashboard.css" rel="stylesheet" />
+                <style>
+                    .product-detail-container {
+                        background: linear-gradient(135deg, #232526 0%, #414345 100%);
+                        padding: 2rem 1rem;
+                        min-height: 100vh;
+                    }
+
+                    h1.product-title {
+                        text-align: center;
+                        color: #f8f9fa;
+                        text-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+                        margin-bottom: 1rem;
+                    }
+
+                    .card {
+                        background: #23272b;
+                        border-radius: 18px;
+                        box-shadow: 0 8px 32px rgba(31, 38, 135, 0.15);
+                        border: none;
+                        margin-top: 1rem;
+                    }
+
+                    .card-header {
+                        background: #18191a;
+                        color: #f8f9fa;
+                        font-weight: 700;
+                        border-bottom: 1px solid #343a40;
+                    }
+
+                    .list-group-item {
+                        background: #23272b;
+                        color: #f8f9fa;
+                        border: none;
+                        border-bottom: 1px solid #343a40;
+                    }
+
+                    .product-img {
+                        display: block;
+                        width: 100%;
+                        height: auto;
+                        border-radius: 18px;
+                        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+                    }
+
+                    .btn-back {
+                        background-color: #0d6efd;
+                        border: none;
+                        color: #fff;
+                        border-radius: 8px;
+                        padding: 0.5rem 1rem;
+                        transition: background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+                        display: inline-block;
+                        margin-top: 1rem;
+                        text-align: center;
+                    }
+
+                    .btn-back:hover,
+                    .btn-back:focus {
+                        transform: scale(1.05);
+                        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+                    }
+                </style>
             </head>
 
-            <body class="g-sidenav-show   bg-gray-100">
-                <div class="min-height-150 bg-dark position-absolute w-100"></div>
-                <jsp:include page="../layout/sidebar.jsp" />
+            <!-- <body class="g-sidenav-show   bg-gray-100">
+                <div class="min-height-150 bg-dark position-absolute w-100"></div> -->
+            <jsp:include page="../layout/sidebar.jsp" />
 
-                <main>
 
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-xl-3"></div>
-                            <div class="col-xl-6">
-                                <h1 style="text-align: center; color: antiquewhite;">Product ${product.id} Detail </h1>
-                                <hr>
-                                <br>
-                                <div class="col-xl-3"></div>
-                            </div>
-                            <div class="row">
-                                <div class="col-xl-3"></div>
 
-                                <div class="col-xl-6" style="justify-items: center;margin-top: -2%;">
-                                    <img class="card-img-top" src="/images/product/${product.image}"
-                                        alt="Card image cap">
-                                    <div class="card" style="width: 80%; margin-top: 10px;">
-                                        <div class="card-header" style="font-weight: 700;">
-                                            Product Information
-                                        </div>
-                                        <ul class="list-group list-group-flush">
-                                            <li class="list-group-item">
-                                                <span style="font-weight: 700;">Id: </span>${product.id}
-                                            </li>
-                                            <li class="list-group-item"><span style="font-weight: 700;">Name:
-                                                </span>${product.name}</li>
-                                            <!-- <li class="list-group-item"><span style="font-weight: 700;">FullName:
-                                                </span>${user.fullName}</li>
-                                            <li class="list-group-item"><span style="font-weight: 700;">Address:
-                                                </span>${user.address}</li> -->
-                                        </ul>
-                                        <a href="/admin/product" class="btn btn-success"
-                                            style="border: solid 1px black;">Back</a>
-                                    </div>
+            <div class="product-detail-container">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xl-3"></div>
+                        <div class="col-xl-6">
+                            <h1 class="product-title">Product ${product.id} Detail</h1>
+                            <hr>
+                            <img class="product-img" src="/images/product/${product.image}" alt="Product image">
+                            <div class="card" style="width: 100%; margin-top: 10px;">
+                                <div class="card-header">
+                                    Product Information
                                 </div>
-
-                                <div class="col-xl-3"></div>
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item">
+                                        <span style="font-weight: 700;">Id: </span>${product.id}
+                                    </li>
+                                    <li class="list-group-item">
+                                        <span style="font-weight: 700;">Name: </span>${product.name}
+                                    </li>
+                                </ul>
+                                <a href="/admin/product" class="btn-back">Back</a>
                             </div>
                         </div>
-
+                        <div class="col-xl-3"></div>
                     </div>
-                </main>
+                </div>
+            </div>
 
-
-                <script src="/js/bootstrap.min.js"></script>
-                <script src="/js/dashboard.js"></script>
+            <script src="/js/bootstrap.min.js"></script>
+            <script src="/js/dashboard.js"></script>
             </body>
 
             </html>

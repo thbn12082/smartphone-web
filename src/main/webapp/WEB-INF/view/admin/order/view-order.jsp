@@ -10,162 +10,194 @@
                 <head>
                     <meta charset="utf-8" />
                     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-                    <link rel="apple-touch-icon" sizes="76x76" href="img/apple-icon.png">
-                    <link rel="icon" type="image/png" href="img/favicon.png">
                     <title>
-                        TheBinh
+                        TheBinh - Order Detail
                     </title>
                     <link rel="stylesheet"
                         href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-                    <!--     Fonts and icons     -->
                     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
-                    <!-- Nucleo Icons -->
                     <link href="https://demos.creative-tim.com/argon-dashboard-pro/assets/css/nucleo-icons.css"
                         rel="stylesheet" />
                     <link href="https://demos.creative-tim.com/argon-dashboard-pro/assets/css/nucleo-svg.css"
                         rel="stylesheet" />
-
-                    <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css"
-                        rel="stylesheet" />
-                    <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js"
-                        crossorigin="anonymous"></script>
-                    <!-- CSS Files -->
                     <link href="/css/dashboard.css" rel="stylesheet" />
                     <style>
-                        .satisfaction-stats {
-                            width: 300px;
-                            margin: 50px auto;
+                        body {
+                            background: #000;
+                            /* Đổi nền thành màu đen */
+                            font-family: 'Open Sans', sans-serif;
+                            color: #f8f9fa;
+                            margin: 0;
+                            padding: 0;
+                            margin-left: 270px;
+                        }
+
+                        .order-container {
+                            max-width: 1200px;
+                            margin: 60px auto 0 auto;
+                            padding: 24px;
+                        }
+
+                        h3.order-title {
                             text-align: center;
-                            font-family: sans-serif;
+                            color: #ffdd57;
+                            margin-bottom: 32px;
+                            font-size: 2.2rem;
+                            letter-spacing: 1px;
+                            font-weight: 700;
                         }
 
-                        .stats {
-                            display: flex;
-                            justify-content: space-around;
-                            margin-bottom: 20px;
+                        .order-table {
+                            background: #23233a;
+                            border-radius: 12px;
+                            overflow: hidden;
+                            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
+                            border: 1.5px solid #39395a;
                         }
 
-                        .satisfied,
-                        .dissatisfied {
-                            padding: 20px;
-                            border-radius: 5px;
+                        .order-table th,
+                        .order-table td {
+                            vertical-align: middle;
+                            text-align: center;
+                            padding: 18px 12px;
+                            border: 1px solid #39395a;
                         }
 
-                        .satisfied {
-                            background-color: #e6f7e6;
-                            color: #27ae60;
-                        }
-
-                        .dissatisfied {
-                            background-color: #ffe6e6;
-                            color: #e74c3c;
-                        }
-
-                        .stats span {
-                            font-size: 2em;
+                        .order-table th {
+                            background-color: #23233a;
+                            color: #ffdd57;
                             font-weight: bold;
+                            font-size: 1.08rem;
+                            border-bottom: 2.5px solid #ffdd57;
+                        }
+
+                        .order-table tbody tr:hover {
+                            background-color: #2e2e4d;
+                            transition: background 0.2s;
+                        }
+
+                        .square-img {
+                            width: 80px;
+                            height: 80px;
+                            object-fit: cover;
+                            border: 2.5px solid #ffdd57;
+                            border-radius: 10px;
                             display: block;
+                            margin: 0 auto;
+                            background: #232526;
+                            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+                        }
+
+                        .btn-success {
+                            display: inline-block;
+                            background-color: #198754;
+                            border: none;
+                            padding: 13px 38px;
+                            border-radius: 8px;
+                            color: #fff;
+                            text-decoration: none;
+                            transition: transform 0.2s, background-color 0.2s;
+                            font-size: 1.08rem;
+                            margin-top: 36px;
+                            font-weight: 600;
+                            letter-spacing: 1px;
+                        }
+
+                        .btn-success:hover,
+                        .btn-success:focus {
+                            background-color: #157347;
+                            transform: scale(1.06);
+                        }
+
+                        @media (max-width: 900px) {
+                            .order-container {
+                                padding: 8px;
+                            }
+
+                            body {
+                                margin-left: 0;
+                            }
+                        }
+
+                        @media (max-width: 600px) {
+
+                            .order-table th,
+                            .order-table td {
+                                padding: 10px 4px;
+                                font-size: 0.95rem;
+                            }
+
+                            .square-img {
+                                width: 56px;
+                                height: 56px;
+                            }
+
+                            h3.order-title {
+                                font-size: 1.2rem;
+                            }
                         }
                     </style>
                 </head>
 
 
-                <body class="g-sidenav-show   bg-gray-100">
-                    <div class="min-height-300 bg-dark position-absolute w-100"></div>
+                <body>
+
                     <jsp:include page="../layout/sidebar.jsp" />
                     <div id="layoutSidenav_content">
                         <main>
-                            <div class="container-fluid px-4">
-
-                                <div class="mt-5">
-                                    <div class="row">
-                                        <div class="col-12 mx-auto">
-                                            <div class="d-flex">
-                                                <h3
-                                                    style="color: antiquewhite; margin-top: 50px; justify-content: center;">
-                                                    Orders Detail </h3>
-                                            </div>
-
-                                            <hr />
-                                            <table class=" table table-bordered table-hover" style="margin-top: 150px;">
-                                                <thead>
-
-                                                    <tr>
-                                                        <th scope="col">Sản phẩm</th>
-                                                        <th scope="col">Tên</th>
-                                                        <th scope="col">Giá cả</th>
-                                                        <th scope="col">Số lượng</th>
-                                                        <th scope="col">Thành tiền</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    <c:if test="${ empty orderDetails}">
-                                                        <tr>
-                                                            <td colspan="6">
-                                                                Không có sản phẩm trong giỏ hàng
-                                                            </td>
-                                                        </tr>
-                                                    </c:if>
-                                                    <c:forEach var="orderDetail" items="${orderDetails}">
-
-                                                        <tr>
-                                                            <th scope="row">
-                                                                <div class="d-flex align-items-center">
-                                                                    <img src="/images/product/${orderDetail.product.image}"
-                                                                        class="img-fluid me-5 rounded-circle"
-                                                                        style="width: 80px; height: 80px;" alt="">
-                                                                </div>
-                                                            </th>
-                                                            <td>
-                                                                <p class="mb-0 mt-4">
-                                                                    <a href="/product/${orderDetail.product.id}"
-                                                                        target="_blank">
-                                                                        ${orderDetail.product.name}
-                                                                    </a>
-                                                                </p>
-                                                            </td>
-                                                            <td>
-                                                                <p class="mb-0 mt-4">
-                                                                    <fmt:formatNumber type="number"
-                                                                        value="${orderDetail.price}" /> đ
-                                                                </p>
-                                                            </td>
-                                                            <td>
-                                                                <div class="input-group quantity mt-4"
-                                                                    style="width: 100px;">
-                                                                    <input type="text"
-                                                                        class="form-control form-control-sm text-center border-0"
-                                                                        value="${orderDetail.quantity}">
-                                                                </div>
-                                                            </td>
-                                                            <td>
-                                                                <p class="mb-0 mt-4"
-                                                                    data-cart-detail-id="${orderDetail.id}">
-                                                                    <fmt:formatNumber type="number"
-                                                                        value="${orderDetail.price * orderDetail.quantity}" />
-                                                                    đ
-                                                                </p>
-                                                            </td>
-                                                        </tr>
-                                                    </c:forEach>
-
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                        <a href="/admin/order" class="btn btn-success mt-3">Back</a>
-
-                                    </div>
-
+                            <div class="order-container">
+                                <h3 class="order-title">Order Detail</h3>
+                                <div class="table-responsive order-table">
+                                    <table class="table table-bordered table-hover mb-0">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">Sản phẩm</th>
+                                                <th scope="col">Tên</th>
+                                                <th scope="col">Giá cả</th>
+                                                <th scope="col">Số lượng</th>
+                                                <th scope="col">Thành tiền</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <c:if test="${ empty orderDetails }">
+                                                <tr>
+                                                    <td colspan="5">Không có sản phẩm trong giỏ hàng</td>
+                                                </tr>
+                                            </c:if>
+                                            <c:forEach var="orderDetail" items="${orderDetails}">
+                                                <tr>
+                                                    <td>
+                                                        <img src="/images/product/${orderDetail.product.image}"
+                                                            class="square-img" alt="">
+                                                    </td>
+                                                    <td>
+                                                        <a href="/product/${orderDetail.product.id}" target="_blank"
+                                                            style="color: #f8f9fa; text-decoration: none; font-weight: 500;">
+                                                            ${orderDetail.product.name}
+                                                        </a>
+                                                    </td>
+                                                    <td>
+                                                        <fmt:formatNumber type="number" value="${orderDetail.price}" />
+                                                        đ
+                                                    </td>
+                                                    <td>
+                                                        ${orderDetail.quantity}
+                                                    </td>
+                                                    <td>
+                                                        <fmt:formatNumber type="number"
+                                                            value="${orderDetail.price * orderDetail.quantity}" /> đ
+                                                    </td>
+                                                </tr>
+                                            </c:forEach>
+                                        </tbody>
+                                    </table>
                                 </div>
-
+                                <div style="text-align: center;">
+                                    <a href="/admin/order" class="btn-success">Back</a>
+                                </div>
                             </div>
+                        </main>
                     </div>
-                    </main>
-
-                    </div>
-                    </div>
-
-
                 </body>
 
                 </html>

@@ -29,34 +29,57 @@ public class OrderController {
     @GetMapping("/admin/order")
     public String getDashboard(Model model, @RequestParam("page") Optional<String> pageOptional) {
         int page = 1;
-        try {
-            if (pageOptional.isPresent()) {
-                // convert from String to int
+        if (pageOptional.isPresent()) {
+            try {
                 page = Integer.parseInt(pageOptional.get());
-            } else {
-                // page = 1
+            } catch (Exception e) {
+                // nếu parse thất bại, giữ mặc định page = 1
             }
-        } catch (Exception e) {
-            // page = 1
-            // TODO: handle exception
         }
-
-        Pageable pageable = PageRequest.of(page - 1, 2);
+        Pageable pageable = PageRequest.of(page - 1, 10);
         Page<Order> ordersPage = this.orderService.fetchAllOrders(pageable);
         List<Order> orders = ordersPage.getContent();
-        // List<Order> orders = this.orderService.fetchAllOrders();
         model.addAttribute("orders", orders);
         model.addAttribute("currentPage", page);
         model.addAttribute("totalPages", ordersPage.getTotalPages());
+        System.out.println("---------------------------------------------------------");
+        System.out.println("Total Pages: " + ordersPage.getTotalPages());
+        System.out.println("Total Elements: " + ordersPage.getTotalElements());
+        System.out.println("Page Size: " + ordersPage.getSize());
+        System.out.println("Page Number: " + ordersPage.getNumber());
+        for (Order o : orders) {
+            System.out.println("Order ID: " + o.getId());
+            System.out.println("Total Price: " + o.getTotalPrice());
+            System.out.println("Receiver Name: " + o.getRecriverName());
+            System.out.println("Receiver Address: " + o.getReceiverAddress());
+            System.out.println("Receiver Phone: " + o.getReceiverPhone());
+            System.out.println("Status: " + o.getStatus());
+        }
+        System.out.println("---------------------------------------------------------");
         return "admin/order/show-order";
     }
 
     @GetMapping("/admin/order/{id}")
     public String getOrderDetailPage(Model model, @PathVariable long id) {
-        Order order = this.orderService.fetchOrderById(id).get();
-        model.addAttribute("order", order);
-        model.addAttribute("id", id);
+        Optional<Order> optOrder = this.orderService.fetchOrderById(id);
+        if (optOrder.isEmpty()) {
+            return "redirect:/admin/order";
+        }
+        Order order = optOrder.get();
         model.addAttribute("orderDetails", order.getOrderDetails());
+        model.addAttribute("id", id);
+        // Hiển thị orderDetails một cách an toàn (nếu cần, lọc hoặc tránh in đệ quy)
+        System.out.println("---------------------------------------------------------");
+        System.out.println("Order ID: " + order.getId());
+        System.out.println("Total Price: " + order.getTotalPrice());
+        System.out.println("Receiver Name: " + order.getRecriverName());
+        System.out.println("Receiver Address: " + order.getReceiverAddress());
+        System.out.println("Receiver Phone: " + order.getReceiverPhone());
+        System.out.println("Status: " + order.getStatus());
+        // Nếu orderDetails là collection phức tạp, hãy in từng thuộc tính cần thiết
+        System.out.println(
+                "Order Details Count: " + (order.getOrderDetails() != null ? order.getOrderDetails().size() : 0));
+        System.out.println("---------------------------------------------------------");
         return "admin/order/view-order";
     }
 
@@ -76,14 +99,32 @@ public class OrderController {
     @GetMapping("/admin/order/update/{id}")
     public String getUpdateOrderPage(Model model, @PathVariable long id) {
         Optional<Order> currentOrder = this.orderService.fetchOrderById(id);
+        if (currentOrder.isEmpty()) {
+            return "redirect:/admin/order";
+        }
         model.addAttribute("newOrder", currentOrder.get());
+        System.out.println("---------------------------------------------------------");
+        System.out.println("Current Order TotalPrice: " + currentOrder.get().getTotalPrice());
+        System.out.println("Current Order ReceiverName: " + currentOrder.get().getRecriverName());
+        System.out.println("Current Order ReceiverAddress: " + currentOrder.get().getReceiverAddress());
+        System.out.println("Current Order ReceiverPhone: " + currentOrder.get().getReceiverPhone());
+        System.out.println("Current Order Status: " + currentOrder.get().getStatus());
+        System.out.println("Current Order ID: " + currentOrder.get().getId());
+        System.out.println("---------------------------------------------------------");
         return "admin/order/update-order";
     }
 
     @PostMapping("/admin/order/update")
     public String handleUpdateOrder(@ModelAttribute("newOrder") Order order) {
         this.orderService.updateOrder(order);
+        System.out.println("---------------------------------------------------------");
+        System.out.println("Updated Order ID: " + order.getId());
+        System.out.println("Updated Order TotalPrice: " + order.getTotalPrice());
+        System.out.println("Updated Order ReceiverName: " + order.getRecriverName());
+        System.out.println("Updated Order ReceiverAddress: " + order.getReceiverAddress());
+        System.out.println("Updated Order ReceiverPhone: " + order.getReceiverPhone());
+        System.out.println("Updated Order Status: " + order.getStatus());
+        System.out.println("---------------------------------------------------------");
         return "redirect:/admin/order";
     }
-
 }

@@ -29,80 +29,71 @@
 
             <body>
 
-                <div class="min-height-300 bg-dark position-absolute w-100"></div>
                 <jsp:include page="../layout/sidebar.jsp" />
 
-
                 <main>
-
-                    <div class="container-fluid">
-
-                        <div class="row">
-                            <div class="col-md-3"></div>
-                            <div class="col-md-6">
-                                <div class="inner-header"
-                                    style="display: flex; justify-content: space-between;margin-top: 94px;">
-                                    <h2 style="color: antiquewhite;">Manage Products</h2>
-                                    <button type="button" class="btn btn-primary"
-                                        onclick="window.location.href='http://localhost:8080/admin/product/create'">Create
-                                        a product</button>
+                    <div class="container" style="margin-top: 100px;">
+                        <div class="row justify-content-center">
+                            <div class="col-lg-10">
+                                <div class="d-flex justify-content-between align-items-center mb-4">
+                                    <h2 class="fw-bold text-light mb-0">Manage Products</h2>
+                                    <button type="button" class="btn btn-primary shadow"
+                                        onclick="window.location.href='http://localhost:8080/admin/product/create'">
+                                        <i class="bi bi-plus-circle me-1"></i> Create a product
+                                    </button>
                                 </div>
-                                <hr>
-                            </div>
-                            <div class="col-md-3"></div>
-                            <div class="col-md-3"></div>
-                            <div class="col-md-6">
-                                <table class="table table-hover" style="margin-top: 70px;">
-                                    <thead>
-                                        <tr>
-                                            <th scope="col" style="color: antiquewhite;">ID</th>
-                                            <th scope="col" style="color: antiquewhite;">Name</th>
-                                            <th scope="col" style="color: antiquewhite;">Price</th>
-                                            <th scope="col" style="color: antiquewhite;">Factory</th>
-                                            <th scope="col" style="color: antiquewhite;padding-left: 104px;">Action</th>
-                                        </tr>
-                                    </thead>
-
-                                    <!-- noi xuat du lieu -->
-                                    <tbody>
-                                        <c:forEach var="product" items="${products}">
-                                            <tr>
-                                                <th scope="row" style="text-align: center;">${product.id}</th>
-                                                <td style="text-align: center;">${product.name}</td>
-                                                <td style="text-align: center;">
-                                                    <fmt:formatNumber value="${product.price}" type="currency"
-                                                        currencySymbol="₫" />
-                                                </td>
-                                                <td style="text-align: center;">${product.factory}</td>
-                                                <td>
-                                                    <a href="/admin/product/${product.id}"
-                                                        class="btn btn-success">View</a>
-                                                    <a href="/admin/product/update/${product.id}"
-                                                        class="btn btn-warning">Update</a>
-
-                                                    <button type="button" class="btn btn-danger"
-                                                        onclick="window.location.href='http://localhost:8080/admin/delete/${product.id}'">Delete</button>
-                                                </td>
-                                            </tr>
-                                        </c:forEach>
-
-
-                                    </tbody>
-                                </table>
-                                <!-- Sửa phần pagination -->
-                                <nav aria-label="Page navigation example">
+                                <div class="card shadow-lg border-0">
+                                    <div class="card-body p-0">
+                                        <table class="table table-hover align-middle mb-0">
+                                            <thead class="table-dark">
+                                                <tr>
+                                                    <th scope="col" class="text-center">ID</th>
+                                                    <th scope="col" class="text-center">Name</th>
+                                                    <th scope="col" class="text-center">Price</th>
+                                                    <th scope="col" class="text-center">Factory</th>
+                                                    <th scope="col" class="text-center">Action</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <c:forEach var="product" items="${products}">
+                                                    <tr>
+                                                        <th scope="row" class="text-center">${product.id}</th>
+                                                        <td class="text-center">${product.name}</td>
+                                                        <td class="text-center">
+                                                            <fmt:formatNumber value="${product.price}" type="currency"
+                                                                currencySymbol="₫" />
+                                                        </td>
+                                                        <td class="text-center">${product.factory}</td>
+                                                        <td class="text-center">
+                                                            <a href="/admin/product/${product.id}"
+                                                                class="btn btn-success btn-sm me-1">
+                                                                <i class="bi bi-eye"></i>
+                                                            </a>
+                                                            <a href="/admin/product/update/${product.id}"
+                                                                class="btn btn-warning btn-sm me-1">
+                                                                <i class="bi bi-pencil-square"></i>
+                                                            </a>
+                                                            <button type="button" class="btn btn-danger btn-sm"
+                                                                onclick="if(confirm('Are you sure you want to delete this product?')) window.location.href='http://localhost:8080/admin/product/delete/${product.id}'">
+                                                                <i class="bi bi-trash"></i>
+                                                            </button>
+                                                        </td>
+                                                    </tr>
+                                                </c:forEach>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                                <!-- Pagination -->
+                                <nav aria-label="Page navigation" class="mt-4">
                                     <ul class="pagination justify-content-center">
-
                                         <li class="page-item ${currentPage == 1 ? 'disabled' : ''}">
                                             <a class="page-link" href="/admin/product?page=${currentPage - 1}"
                                                 aria-label="Previous" ${currentPage==1
                                                 ? 'tabindex="-1" aria-disabled="true"' : '' }>
                                                 <span aria-hidden="true">&laquo;</span>
-                                                <span class="sr-only">Previous</span>
                                             </a>
                                         </li>
-
-
                                         <c:if test="${totalPages > 0}">
                                             <c:forEach begin="1" end="${totalPages}" varStatus="loop">
                                                 <li class="page-item ${loop.index == currentPage ? 'active' : ''}">
@@ -112,32 +103,20 @@
                                                 </li>
                                             </c:forEach>
                                         </c:if>
-
-
                                         <li class="page-item ${currentPage == totalPages ? 'disabled' : ''}">
                                             <a class="page-link" href="/admin/product?page=${currentPage + 1}"
                                                 aria-label="Next" ${currentPage==totalPages
                                                 ? 'tabindex="-1" aria-disabled="true"' : '' }>
                                                 <span aria-hidden="true">&raquo;</span>
-                                                <span class="sr-only">Next</span>
                                             </a>
                                         </li>
                                     </ul>
                                 </nav>
-
                             </div>
-                            <div class="col-md-3"></div>
                         </div>
-
-
+                    </div>
                 </main>
 
-
-
-
-                <script src="/js/bootstrap.min.js"></script>
-                <script src="/js/dashboard.js"></script>
-                <script src="/js/main.js"></script>
                 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
                 <script>
                     $(document).ready(function () {
@@ -205,6 +184,138 @@
 
                     });
                 </script>
+
+                <style>
+                    body {
+                        background: linear-gradient(135deg, #232526 0%, #414345 100%);
+                        min-height: 100vh;
+                        font-family: 'Open Sans', sans-serif;
+                    }
+
+                    .card {
+                        background: #23272b;
+                        border-radius: 18px;
+                        box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
+                        border: none;
+                    }
+
+                    .table {
+                        color: #fff;
+                        background: transparent;
+                    }
+
+                    .table thead th {
+                        border: none;
+                        font-size: 1.08rem;
+                        letter-spacing: 0.04em;
+                        background: #18191a !important;
+                        color: #f8f9fa;
+                        text-transform: uppercase;
+                    }
+
+                    .table tbody tr {
+                        transition: background 0.2s;
+                        border-bottom: 1px solid #343a40;
+                    }
+
+                    .table tbody tr:hover {
+                        background: #2d3238;
+                    }
+
+                    /* Style cải tiến cho các nút */
+                    .btn {
+                        display: inline-block;
+                        padding: 0.5rem 1rem;
+                        font-size: 1rem;
+                        font-weight: 500;
+                        color: #fff;
+                        text-align: center;
+                        text-decoration: none;
+                        background-color: #6c757d;
+                        border: none;
+                        border-radius: 8px;
+                        transition: background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+                        cursor: pointer;
+                    }
+
+                    .btn:hover,
+                    .btn:focus {
+                        transform: scale(1.03);
+                        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+                    }
+
+                    .btn-success {
+                        background-color: #198754;
+                    }
+
+                    .btn-warning {
+                        background-color: #ffc107;
+                        color: #23272b;
+                        /* đảm bảo độ tương phản tốt */
+                    }
+
+                    .btn-danger {
+                        background-color: #dc3545;
+                    }
+
+                    .btn-primary {
+                        background-color: #0d6efd;
+                    }
+
+                    .btn.shadow {
+                        box-shadow: 0 2px 8px rgba(13, 110, 253, 0.15) !important;
+                        font-weight: 600;
+                        letter-spacing: 0.02em;
+                    }
+
+                    .pagination .page-link {
+                        color: #343a40;
+                        border-radius: 8px !important;
+                        margin: 0 2px;
+                        background: #fff;
+                        border: none;
+                        box-shadow: 0 1px 4px rgba(0, 0, 0, 0.07);
+                        transition: background 0.2s, color 0.2s;
+                    }
+
+                    .pagination .active .page-link {
+                        background: #0d6efd;
+                        color: #fff;
+                        border: none;
+                        font-weight: bold;
+                    }
+
+                    .pagination .page-link:hover {
+                        background: #e9ecef;
+                        color: #0d6efd;
+                    }
+
+                    .container,
+                    main {
+                        margin-left: 150px;
+                        transition: margin-left 0.3s;
+                    }
+
+                    @media (max-width: 991px) {
+
+                        .container,
+                        main {
+                            margin-left: 0;
+                        }
+                    }
+
+                    h2.fw-bold {
+                        letter-spacing: 0.04em;
+                        color: #fff;
+                        text-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+                    }
+
+                    .btn-primary.shadow {
+                        box-shadow: 0 2px 8px rgba(13, 110, 253, 0.15) !important;
+                        font-weight: 600;
+                        letter-spacing: 0.02em;
+                    }
+                </style>
             </body>
 
             </html>

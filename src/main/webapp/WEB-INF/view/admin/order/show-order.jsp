@@ -1,7 +1,6 @@
 <%@page contentType="text/html" pageEncoding="UTF-8" %>
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
         <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-
             <!DOCTYPE html>
             <html lang="en">
 
@@ -23,147 +22,206 @@
                 <link href="https://demos.creative-tim.com/argon-dashboard-pro/assets/css/nucleo-svg.css"
                     rel="stylesheet" />
 
-                <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
-                <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
-                <!-- CSS Files -->
                 <link href="/css/dashboard.css" rel="stylesheet" />
-                <style>
-                    .satisfaction-stats {
-                        width: 300px;
-                        margin: 50px auto;
-                        text-align: center;
-                        font-family: sans-serif;
-                    }
-
-                    .stats {
-                        display: flex;
-                        justify-content: space-around;
-                        margin-bottom: 20px;
-                    }
-
-                    .satisfied,
-                    .dissatisfied {
-                        padding: 20px;
-                        border-radius: 5px;
-                    }
-
-                    .satisfied {
-                        background-color: #e6f7e6;
-                        color: #27ae60;
-                    }
-
-                    .dissatisfied {
-                        background-color: #ffe6e6;
-                        color: #e74c3c;
-                    }
-
-                    .stats span {
-                        font-size: 2em;
-                        font-weight: bold;
-                        display: block;
-                    }
-                </style>
             </head>
 
-            <body class="g-sidenav-show   bg-gray-100">
-                <div class="min-height-300 bg-dark position-absolute w-100"></div>
+            <body>
+              
                 <jsp:include page="../layout/sidebar.jsp" />
-                <div id="layoutSidenav_content">
-                    <main>
-                        <div class="container-fluid px-4">
-
-                            <div class="mt-5">
-                                <div class="row">
-                                    <div class="col-12 mx-auto">
-                                        <div class="d-flex">
-                                            <h3 style="color: antiquewhite; margin-top: 50px; justify-content: center;">
-                                                Table Orders</h3>
-                                        </div>
-
-                                        <hr />
-                                        <table class=" table table-bordered table-hover" style="margin-top: 150px;">
-                                            <thead>
+                <main>
+                    <div class="container" style="margin-top: 100px;">
+                        <div class="row justify-content-center">
+                            <div class="col-lg-10">
+                                <div class="d-flex justify-content-between align-items-center mb-4">
+                                    <h2 class="fw-bold text-light mb-0">Manage Orders</h2>
+                                </div>
+                                <div class="card shadow-lg border-0">
+                                    <div class="card-body p-0">
+                                        <table class="table table-hover align-middle mb-0">
+                                            <thead class="table-dark">
                                                 <tr>
-                                                    <th>ID</th>
-                                                    <th>Total Price</th>
-                                                    <th>User</th>
-                                                    <th>Status</th>
-                                                    <th>Action</th>
+                                                    <th class="text-center">ID</th>
+                                                    <th class="text-center">Total Price</th>
+                                                    <th class="text-center">User</th>
+                                                    <th class="text-center">Status</th>
+                                                    <th class="text-center">Action</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
                                                 <c:forEach var="order" items="${orders}">
                                                     <tr>
-                                                        <th>${order.id}</th>
-                                                        <td>
-                                                            <fmt:formatNumber type="number"
-                                                                value="${order.totalPrice}" /> đ
+                                                        <th class="text-center">${order.id}</th>
+                                                        <td class="text-center">
+                                                            <fmt:formatNumber type="currency"
+                                                                value="${order.totalPrice}" currencySymbol="₫" />
                                                         </td>
-                                                        <td>${order.user.fullName}</td>
-                                                        <td>${order.status}</td>
-                                                        <td>
+                                                        <td class="text-center">${order.user.fullName}</td>
+                                                        <td class="text-center">${order.status}</td>
+                                                        <td class="text-center">
                                                             <a href="/admin/order/${order.id}"
-                                                                class="btn btn-success">View</a>
+                                                                class="btn btn-success btn-sm me-1" title="View">
+                                                                <i class="bi bi-eye"></i>
+                                                            </a>
                                                             <a href="/admin/order/update/${order.id}"
-                                                                class="btn btn-warning  mx-2">Update</a>
+                                                                class="btn btn-warning btn-sm me-1" title="Update">
+                                                                <i class="bi bi-pencil-square"></i>
+                                                            </a>
                                                             <a href="/admin/order/delete/${order.id}"
-                                                                class="btn btn-danger">Delete</a>
+                                                                class="btn btn-danger btn-sm" title="Delete"
+                                                                onclick="return confirm('Are you sure you want to delete this order?');">
+                                                                <i class="bi bi-trash"></i>
+                                                            </a>
                                                         </td>
                                                     </tr>
-
                                                 </c:forEach>
-
                                             </tbody>
                                         </table>
-                                        <nav aria-label="Page navigation example">
-                                            <ul class="pagination justify-content-center">
-
-                                                <li class="page-item ${currentPage == 1 ? 'disabled' : ''}">
-                                                    <a class="page-link" href="/admin/order?page=${currentPage - 1}"
-                                                        aria-label="Previous" ${currentPage==1
-                                                        ? 'tabindex="-1" aria-disabled="true"' : '' }>
-                                                        <span aria-hidden="true">&laquo;</span>
-                                                        <span class="sr-only">Previous</span>
-                                                    </a>
-                                                </li>
-
-
-                                                <c:if test="${totalPages > 0}">
-                                                    <c:forEach begin="1" end="${totalPages}" varStatus="loop">
-                                                        <li
-                                                            class="page-item ${loop.index == currentPage ? 'active' : ''}">
-                                                            <a class="page-link" href="/admin/order?page=${loop.index}">
-                                                                ${loop.index}
-                                                            </a>
-                                                        </li>
-                                                    </c:forEach>
-                                                </c:if>
-
-
-                                                <li class="page-item ${currentPage == totalPages ? 'disabled' : ''}">
-                                                    <a class="page-link" href="/admin/order?page=${currentPage + 1}"
-                                                        aria-label="Next" ${currentPage==totalPages
-                                                        ? 'tabindex="-1" aria-disabled="true"' : '' }>
-                                                        <span aria-hidden="true">&raquo;</span>
-                                                        <span class="sr-only">Next</span>
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                        </nav>
-
-
                                     </div>
-
                                 </div>
-
+                                <!-- Pagination -->
+                                <nav aria-label="Page navigation" class="mt-4">
+                                    <ul class="pagination justify-content-center">
+                                        <li class="page-item ${currentPage == 1 ? 'disabled' : ''}">
+                                            <a class="page-link" href="/admin/order?page=${currentPage - 1}"
+                                                aria-label="Previous" ${currentPage==1
+                                                ? 'tabindex="-1" aria-disabled="true"' : '' }>
+                                                <span aria-hidden="true">&laquo;</span>
+                                            </a>
+                                        </li>
+                                        <c:if test="${totalPages > 0}">
+                                            <c:forEach begin="1" end="${totalPages}" varStatus="loop">
+                                                <li class="page-item ${loop.index == currentPage ? 'active' : ''}">
+                                                    <a class="page-link" href="/admin/order?page=${loop.index}">
+                                                        ${loop.index}
+                                                    </a>
+                                                </li>
+                                            </c:forEach>
+                                        </c:if>
+                                        <li class="page-item ${currentPage == totalPages ? 'disabled' : ''}">
+                                            <a class="page-link" href="/admin/order?page=${currentPage + 1}"
+                                                aria-label="Next" ${currentPage==totalPages
+                                                ? 'tabindex="-1" aria-disabled="true"' : '' }>
+                                                <span aria-hidden="true">&raquo;</span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </nav>
                             </div>
                         </div>
-                    </main>
+                    </div>
+                </main>
 
-                </div>
-                </div>
+                <style>
+                    body {
+                        background: linear-gradient(135deg, #232526 0%, #414345 100%);
+                        min-height: 100vh;
+                        font-family: 'Open Sans', sans-serif;
+                    }
 
+                    .card {
+                        background: #23272b;
+                        border-radius: 18px;
+                        box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
+                        border: none;
+                    }
 
+                    .table {
+                        color: #fff;
+                        background: transparent;
+                    }
+
+                    .table thead th {
+                        border: none;
+                        font-size: 1.08rem;
+                        letter-spacing: 0.04em;
+                        background: #18191a !important;
+                        color: #f8f9fa;
+                        text-transform: uppercase;
+                    }
+
+                    .table tbody tr {
+                        transition: background 0.2s;
+                        border-bottom: 1px solid #343a40;
+                    }
+
+                    .table tbody tr:hover {
+                        background: #2d3238;
+                    }
+
+                    .btn {
+                        min-width: 36px;
+                        border-radius: 8px;
+                        font-size: 1rem;
+                        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+                        transition: background 0.2s, color 0.2s;
+                    }
+
+                    .btn-success {
+                        background: #198754;
+                        border: none;
+                    }
+
+                    .btn-warning {
+                        background: #ffc107;
+                        border: none;
+                        color: #23272b;
+                    }
+
+                    .btn-danger {
+                        background: #dc3545;
+                        border: none;
+                    }
+
+                    .btn:hover,
+                    .btn:focus {
+                        opacity: 0.9;
+                        color: #fff;
+                    }
+
+                    .pagination .page-link {
+                        color: #343a40;
+                        border-radius: 8px !important;
+                        margin: 0 2px;
+                        background: #fff;
+                        border: none;
+                        box-shadow: 0 1px 4px rgba(0, 0, 0, 0.07);
+                        transition: background 0.2s, color 0.2s;
+                    }
+
+                    .pagination .active .page-link {
+                        background: #0d6efd;
+                        color: #fff;
+                        border: none;
+                        font-weight: bold;
+                    }
+
+                    .pagination .page-link:hover {
+                        background: #e9ecef;
+                        color: #0d6efd;
+                    }
+
+                    .container,
+                    main {
+                        margin-left: 150px;
+                        transition: margin-left 0.3s;
+                    }
+
+                    @media (max-width: 991px) {
+
+                        .container,
+                        main {
+                            margin-left: 0;
+                        }
+                    }
+
+                    h2.fw-bold {
+                        letter-spacing: 0.04em;
+                        color: #fff;
+                        text-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+                    }
+                </style>
+                <script src="/js/bootstrap.min.js"></script>
+                <script src="/js/dashboard.js"></script>
             </body>
 
             </html>
