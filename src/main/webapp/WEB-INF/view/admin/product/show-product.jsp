@@ -36,22 +36,39 @@
                         <div class="row justify-content-center">
                             <div class="col-lg-10">
                                 <div class="d-flex justify-content-between align-items-center mb-4">
-                                    <h2 class="fw-bold text-light mb-0">Manage Products</h2>
+                                    <h2 class="fw-bold text-light mb-0">Quản lý sản phẩm</h2>
                                     <button type="button" class="btn btn-primary shadow"
-                                        onclick="window.location.href='http://localhost:8080/admin/product/create'">
-                                        <i class="bi bi-plus-circle me-1"></i> Create a product
+                                        onclick="window.location.href='/admin/product/create'">
+                                        <i class="bi bi-plus-circle me-1"></i> Thêm sản phẩm
                                     </button>
                                 </div>
+                               <!-- tìm sản phẩm theo tên -->
+                                <form method="get" action="/admin/product">
+                                    <div style="display: flex;">
+                                        <div>
+                                            <input type="text" name="keyword" placeholder="Tìm kiếm sản phẩm..."
+                                                value="${keyword}" class="form-control border-0"
+                                                style="background:#23272b; color:#fff;">
+                                        </div>
+
+                                        <div>
+                                            <button type="submit" class="btn btn-primary px-4">
+                                                <i class="bi bi-search"></i> Tìm kiếm
+                                            </button>
+                                        </div>
+
+                                    </div>
+                                </form>
                                 <div class="card shadow-lg border-0">
                                     <div class="card-body p-0">
                                         <table class="table table-hover align-middle mb-0">
                                             <thead class="table-dark">
                                                 <tr>
                                                     <th scope="col" class="text-center">ID</th>
-                                                    <th scope="col" class="text-center">Name</th>
-                                                    <th scope="col" class="text-center">Price</th>
-                                                    <th scope="col" class="text-center">Factory</th>
-                                                    <th scope="col" class="text-center">Action</th>
+                                                    <th scope="col" class="text-center">Tên sản phẩm</th>
+                                                    <th scope="col" class="text-center">Giá</th>
+                                                    <th scope="col" class="text-center">Hãng</th>
+                                                    <th scope="col" class="text-center">Thao tác</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -66,15 +83,17 @@
                                                         <td class="text-center">${product.factory}</td>
                                                         <td class="text-center">
                                                             <a href="/admin/product/${product.id}"
-                                                                class="btn btn-success btn-sm me-1">
+                                                                class="btn btn-success btn-sm me-1"
+                                                                title="Xem chi tiết">
                                                                 <i class="bi bi-eye"></i>
                                                             </a>
                                                             <a href="/admin/product/update/${product.id}"
-                                                                class="btn btn-warning btn-sm me-1">
+                                                                class="btn btn-warning btn-sm me-1" title="Chỉnh sửa">
                                                                 <i class="bi bi-pencil-square"></i>
                                                             </a>
                                                             <button type="button" class="btn btn-danger btn-sm"
-                                                                onclick="if(confirm('Are you sure you want to delete this product?')) window.location.href='http://localhost:8080/admin/product/delete/${product.id}'">
+                                                                title="Xóa"
+                                                                onclick="if(confirm('Bạn chắc chắn muốn xóa sản phẩm này?')) window.location.href='/admin/product/delete/${product.id}'">
                                                                 <i class="bi bi-trash"></i>
                                                             </button>
                                                         </td>
@@ -88,7 +107,8 @@
                                 <nav aria-label="Page navigation" class="mt-4">
                                     <ul class="pagination justify-content-center">
                                         <li class="page-item ${currentPage == 1 ? 'disabled' : ''}">
-                                            <a class="page-link" href="/admin/product?page=${currentPage - 1}"
+                                            <a class="page-link"
+                                                href="/admin/product?page=${currentPage - 1}${not empty keyword ? '&keyword=' + keyword : ''}"
                                                 aria-label="Previous" ${currentPage==1
                                                 ? 'tabindex="-1" aria-disabled="true"' : '' }>
                                                 <span aria-hidden="true">&laquo;</span>
@@ -97,14 +117,16 @@
                                         <c:if test="${totalPages > 0}">
                                             <c:forEach begin="1" end="${totalPages}" varStatus="loop">
                                                 <li class="page-item ${loop.index == currentPage ? 'active' : ''}">
-                                                    <a class="page-link" href="/admin/product?page=${loop.index}">
+                                                    <a class="page-link"
+                                                        href="/admin/product?page=${loop.index}${not empty keyword ? '&keyword=' + keyword : ''}">
                                                         ${loop.index}
                                                     </a>
                                                 </li>
                                             </c:forEach>
                                         </c:if>
                                         <li class="page-item ${currentPage == totalPages ? 'disabled' : ''}">
-                                            <a class="page-link" href="/admin/product?page=${currentPage + 1}"
+                                            <a class="page-link"
+                                                href="/admin/product?page=${currentPage + 1}${not empty keyword ? '&keyword=' + keyword : ''}"
                                                 aria-label="Next" ${currentPage==totalPages
                                                 ? 'tabindex="-1" aria-disabled="true"' : '' }>
                                                 <span aria-hidden="true">&raquo;</span>
@@ -288,6 +310,20 @@
                     .pagination .page-link:hover {
                         background: #e9ecef;
                         color: #0d6efd;
+                    }
+
+                    .input-group-lg>.form-control,
+                    .input-group-lg>.input-group-text,
+                    .input-group-lg>.btn {
+                        font-size: 1.15rem;
+                        border-radius: 12px;
+                    }
+
+                    .input-group .form-control:focus {
+                        background: #23272b;
+                        color: #fff;
+                        border-color: #0d6efd;
+                        box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, .25);
                     }
 
                     .container,

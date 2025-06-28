@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.example.smartphone.domain.Order;
 import com.example.smartphone.domain.OrderDetail;
+import com.example.smartphone.domain.Product;
 import com.example.smartphone.domain.User;
 import com.example.smartphone.repository.OrderDetailRepository;
 import com.example.smartphone.repository.OrderRepository;
@@ -37,11 +38,11 @@ public class OrderService {
             for (OrderDetail orderDetail : orderDetails) {
                 this.orderDetailRepository.deleteById(orderDetail.getId());
             }
-            System.out.println("====================================================");
-            System.out.println("Order ID: " + order.getId());
-            System.out.println("Order Status: " + order.getStatus());
-            System.out.println("Order Total Price: " + order.getTotalPrice());
-            System.out.println("======================================================");
+            // System.out.println("====================================================");
+            // System.out.println("Order ID: " + order.getId());
+            // System.out.println("Order Status: " + order.getStatus());
+            // System.out.println("Order Total Price: " + order.getTotalPrice());
+            // System.out.println("======================================================");
         }
 
         this.orderRepository.deleteById(id);
@@ -58,15 +59,19 @@ public class OrderService {
             currentOrder.setStatus(order.getStatus());
             this.orderRepository.save(currentOrder);
 
-            System.out.println("====================================================");
-            System.out.println("Order ID: " + currentOrder.getId());
-            System.out.println("Order Status: " + currentOrder.getStatus());
-            System.out.println("Order Total Price: " + currentOrder.getTotalPrice());
-            System.out.println("=====================================================");
+            // System.out.println("====================================================");
+            // System.out.println("Order ID: " + currentOrder.getId());
+            // System.out.println("Order Status: " + currentOrder.getStatus());
+            // System.out.println("Order Total Price: " + currentOrder.getTotalPrice());
+            // System.out.println("=====================================================");
         }
     }
 
     public List<Order> fetchOrderByUser(User user) {
         return this.orderRepository.findByUser(user);
     }
+
+//     public List<Product> getTopSellingProducts(int limit) {
+//     return orderRepository.findTopSellingProducts(limit);
+// }
 }

@@ -67,8 +67,9 @@ public class OrderController {
         }
         Order order = optOrder.get();
         model.addAttribute("orderDetails", order.getOrderDetails());
+        // model.addAttribute("order", order);
         model.addAttribute("id", id);
-        // Hiển thị orderDetails một cách an toàn (nếu cần, lọc hoặc tránh in đệ quy)
+        
         System.out.println("---------------------------------------------------------");
         System.out.println("Order ID: " + order.getId());
         System.out.println("Total Price: " + order.getTotalPrice());
@@ -76,7 +77,7 @@ public class OrderController {
         System.out.println("Receiver Address: " + order.getReceiverAddress());
         System.out.println("Receiver Phone: " + order.getReceiverPhone());
         System.out.println("Status: " + order.getStatus());
-        // Nếu orderDetails là collection phức tạp, hãy in từng thuộc tính cần thiết
+      
         System.out.println(
                 "Order Details Count: " + (order.getOrderDetails() != null ? order.getOrderDetails().size() : 0));
         System.out.println("---------------------------------------------------------");

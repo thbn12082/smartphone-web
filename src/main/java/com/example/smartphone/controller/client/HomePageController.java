@@ -125,7 +125,6 @@ public class HomePageController {
             System.out.println("Receiver Phone: " + order.getReceiverPhone());
             System.out.println("Status: " + order.getStatus());
             System.out.println("---------------------------------------------------------");
-
         }
         System.out.println("===================================================");
 

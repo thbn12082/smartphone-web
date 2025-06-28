@@ -19,6 +19,7 @@ import com.example.smartphone.domain.Product;
 import com.example.smartphone.domain.Product_;
 import com.example.smartphone.domain.User;
 import com.example.smartphone.domain.DTO.ProductCriterialDTO;
+import com.example.smartphone.domain.DTO.ProductDTO;
 import com.example.smartphone.repository.CartDetailRepository;
 import com.example.smartphone.repository.CartRepository;
 import com.example.smartphone.repository.OrderDetailRepository;
@@ -203,13 +204,13 @@ public class ProductService {
         order.setStatus("PENDING");
         order = this.orderRepository.save(order);
 
-        System.out.println("====================================================");
-        System.out.println("Order ID: " + order.getId());
-        System.out.println("Order Receiver Name: " + order.getRecriverName());
-        System.out.println("Order Receiver Address: " + order.getReceiverAddress());
-        System.out.println("Order Receiver Phone: " + order.getReceiverPhone());
-        System.out.println("Order Status: " + order.getStatus());
-        System.out.println("====================================================");
+        // System.out.println("====================================================");
+        // System.out.println("Order ID: " + order.getId());
+        // System.out.println("Order Receiver Name: " + order.getRecriverName());
+        // System.out.println("Order Receiver Address: " + order.getReceiverAddress());
+        // System.out.println("Order Receiver Phone: " + order.getReceiverPhone());
+        // System.out.println("Order Status: " + order.getStatus());
+        // System.out.println("====================================================");
         Cart cart = this.cartRepository.findByUser(user);
         if (cart != null) {
             List<CartDetail> cartDetails = cart.getCartDetails();
@@ -223,16 +224,18 @@ public class ProductService {
                 sum += cartDetail.getPrice() * cartDetail.getQuantity();
                 this.orderDetailRepository.save(orderDetail);
 
-
-                System.out.println("====================================================");
-                System.out.println("OrderDetail ID: " + orderDetail.getId());
-                System.out.println("OrderDetail Product ID: " + orderDetail.getProduct().getId());
-                System.out.println("OrderDetail Product Name: " + orderDetail.getProduct().getName());
-                System.out.println("OrderDetail Product Price: " + orderDetail.getPrice());
-                System.out.println("OrderDetail Product Quantity: " + orderDetail.getQuantity());
-                System.out.println("OrderDetail Product Total Price: "
-                        + (orderDetail.getPrice() * orderDetail.getQuantity()));
-                System.out.println("====================================================");
+                // System.out.println("====================================================");
+                // System.out.println("OrderDetail ID: " + orderDetail.getId());
+                // System.out.println("OrderDetail Product ID: " +
+                // orderDetail.getProduct().getId());
+                // System.out.println("OrderDetail Product Name: " +
+                // orderDetail.getProduct().getName());
+                // System.out.println("OrderDetail Product Price: " + orderDetail.getPrice());
+                // System.out.println("OrderDetail Product Quantity: " +
+                // orderDetail.getQuantity());
+                // System.out.println("OrderDetail Product Total Price: "
+                // + (orderDetail.getPrice() * orderDetail.getQuantity()));
+                // System.out.println("====================================================");
             }
             order.setTotalPrice(sum);
             this.orderRepository.save(order);
@@ -253,5 +256,33 @@ public class ProductService {
             sum = cart.getCartDetails().size();
         }
         session.setAttribute("sum", sum);
+    }
+
+    // Fetch product with native sql
+    public Page<ProductDTO> fetchProduct2(Pageable pageable) {
+        Page<Object[]> result = this.productRepository.fetchProductWithNativeSQL(pageable);
+        Page<ProductDTO> products = result.map(row -> new ProductDTO(
+                ((Number) row[0]).longValue(),
+                (String) row[1],
+                ((Number) row[2]).doubleValue(),
+                (String) row[3],
+                ((row[4] != null) ? ((Number) row[4]).longValue() : 0L)));
+        return products;
+    }
+
+    // Find top selling product
+    public Page<ProductDTO> findTopSellingProducts(Pageable pageable) {
+        Page<Object[]> result = this.productRepository.findTopSellingProducts(pageable);
+        Page<ProductDTO> topProductPage = result.map(row -> new ProductDTO(
+                ((Number) row[0]).longValue(),
+                (String) row[1],
+                ((Number) row[2]).doubleValue(),
+                (String) row[3],
+                ((Number) row[4]).longValue()));
+        return topProductPage;
+    }
+/////////////////
+    public Page<Product> searchProductsByKeyword(String keyword, Pageable pageable) {
+        return this.productRepository.findByNameContainingIgnoreCase(keyword, pageable);
     }
 }

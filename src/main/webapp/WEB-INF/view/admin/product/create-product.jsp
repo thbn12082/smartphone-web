@@ -31,9 +31,9 @@
                             color: #f8f9fa;
                         }
 
-                        .content {
+                        /* .content {
                             margin-top: 70px;
-                        }
+                        } */
 
                         .container {
                             background: rgba(0, 0, 0, 0.5);
@@ -116,7 +116,7 @@
                                     <div class="row">
                                         <div class="col-xl-3"></div>
                                         <div class="col-xl-6">
-                                            <h1 style="text-align: center ;margin-bottom: 50px;">
+                                            <h1 style="text-align: center ;">
                                                 Create a product</h1>
                                             <hr>
                                             <br>

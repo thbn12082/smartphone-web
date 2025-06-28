@@ -211,7 +211,7 @@
                     </div>
                     <div class="container my-4">
                         <div class="container my-4">
-                            <h2 class="section-heading check text-center mb-4">Các mặt hàng bán chạy</h2>
+                            <h2 class="section-heading check text-center mb-4">Một số sản phẩm</h2>
                             <div class="row">
                                 <c:if test="${not empty products}">
                                     <c:forEach var="product" items="${products}">
@@ -265,7 +265,7 @@
                         </div>
 
                         <!-- About -->
-                        <section class="page-section" id="about">
+                        <!-- <section class="page-section" id="about">
                             <div class="container">
                                 <div class="row align-items-center">
                                     <div class="col-lg-6 text-center text-lg-start">
@@ -307,7 +307,7 @@
                                     </div>
                                 </div>
                             </div>
-                        </section>
+                        </section> -->
                     </div>
 
 

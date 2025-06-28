@@ -34,7 +34,9 @@ public class ProductController {
     }
 
     @GetMapping("/admin/product")
-    public String getProduct(Model model, @RequestParam("page") Optional<String> pageOptional) {
+    public String getProduct(Model model,
+            @RequestParam("page") Optional<String> pageOptional,
+            @RequestParam(value = "keyword", required = false) String keyword) {
         int page = 1;
         if (pageOptional.isPresent()) {
             try {
@@ -44,32 +46,20 @@ public class ProductController {
             }
         }
         Pageable pageable = PageRequest.of(page - 1, 10);
-        Page<Product> pg = this.productService.handleAllProduct(pageable);
+        Page<Product> pg;
+        ///
+        if (keyword != null && !keyword.trim().isEmpty()) {
+            pg = this.productService.searchProductsByKeyword(keyword, pageable);
+            model.addAttribute("keyword", keyword);
+        } else {
+            pg = this.productService.handleAllProduct(pageable);
+        }
+        //
         List<Product> lsPr = pg.getContent();
         model.addAttribute("products", lsPr);
         model.addAttribute("currentPage", page);
         int totalPages = (pg.getTotalPages() == 0 ? 1 : pg.getTotalPages());
         model.addAttribute("totalPages", totalPages);
-
-        System.out.println("---------------------------------------------------------");
-        System.out.println("Total Pages: " + pg.getTotalPages());
-        System.out.println("Total Elements: " + pg.getTotalElements());
-        System.out.println("Page Size: " + pg.getSize());
-        System.out.println("Page Number: " + pg.getNumber());
-        // In các trường thay vì product.toString()
-        for (Product x : lsPr) {
-            System.out.println("Product ID: " + x.getId());
-            System.out.println("Product Name: " + x.getName());
-            System.out.println("Product Price: " + x.getPrice());
-            System.out.println("Product Image: " + x.getImage());
-            System.out.println("Product DetailDesc: " + x.getDetailDesc());
-            System.out.println("Product ShortDesc: " + x.getShortDesc());
-            System.out.println("Product Quantity: " + x.getQuantity());
-            System.out.println("Product Target: " + x.getTarget());
-            System.out.println("Product Factory: " + x.getFactory());
-            System.out.println("Product Sold: " + x.getSold());
-        }
-        System.out.println("---------------------------------------------------------");
         return "admin/product/show-product";
     }
 
@@ -121,7 +111,7 @@ public class ProductController {
         System.out.println("Product Quantity: " + product.getQuantity());
         System.out.println("Product Target: " + product.getTarget());
         System.out.println("Product Factory: " + product.getFactory());
-        System.out.println("Product Sold: " + product.getSold());
+
         System.out.println("---------------------------------------------------------");
         return "admin/product/product-detail";
     }
@@ -149,7 +139,7 @@ public class ProductController {
         System.out.println("Product Quantity: " + product.getQuantity());
         System.out.println("Product Target: " + product.getTarget());
         System.out.println("Product Factory: " + product.getFactory());
-        System.out.println("Product Sold: " + product.getSold());
+
         System.out.println("---------------------------------------------------------");
         return "redirect:/admin/product";
     }

@@ -59,7 +59,7 @@ public class ItemController {
         System.out.println("Product DetailDesc: " + product.getDetailDesc());
         System.out.println("Product ShortDesc: " + product.getShortDesc());
         System.out.println("Product Quantity: " + product.getQuantity());
-        System.out.println("Product Sold: " + product.getSold());
+      
         System.out.println("===================================================");
         System.out.println(
                 "===================================================More Products===================================================");
@@ -76,7 +76,7 @@ public class ItemController {
             System.out.println("Product DetailDesc: " + p.getDetailDesc());
             System.out.println("Product ShortDesc: " + p.getShortDesc());
             System.out.println("Product Quantity: " + p.getQuantity());
-            System.out.println("Product Sold: " + p.getSold());
+    
 
             System.out.println("===================================================");
         }
@@ -170,7 +170,7 @@ public class ItemController {
     public String getProducts(
             Model model,
             @RequestParam(value = "page", required = false, defaultValue = "1") int page,
-            @RequestParam(value = "size", required = false, defaultValue = "12") int size, // Thêm dòng này
+            @RequestParam(value = "size", required = false, defaultValue = "8") int size, // Thêm dòng này
             ProductCriterialDTO productCriterialDTO,
             HttpServletRequest request) {
 
